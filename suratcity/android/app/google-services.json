@@ -1,0 +1,460 @@
+{
+  "project_info": {
+    "project_number": "381652871944",
+    "project_id": "abt1-9841c",
+    "storage_bucket": "abt1-9841c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:381652871944:android:1a8fe863e4ef5d20bf9abd",
+        "android_client_info": {
+          "package_name": "th.go.borsaen"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "381652871944-n4kmi3n19o241iekpget1bk013dbd26l.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "th.go.borsaen",
+            "certificate_hash": "7073cb9489f6e341d3097122b29bc38aac3bcf52"
+          }
+        },
+        {
+          "client_id": "381652871944-n1b3lq2hdalnfs39qa5hs43ek6n89qgq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0E2vUDXMbe8uF81cJADYfElFyxbp7-24"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "381652871944-n1b3lq2hdalnfs39qa5hs43ek6n89qgq.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "381652871944-33n9tc5u78p27rae6eo2f0qanqpn5meb.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "th.go.nasancity",
+                "app_store_id": "1603752116"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:381652871944:android:3dee4a3a3c578481bf9abd",
+        "android_client_info": {
+          "package_name": "th.go.khaosamyod"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "381652871944-enkbsjijbn1ut1qraiem0v6haj6capds.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "th.go.khaosamyod",
+            "certificate_hash": "a1a17f38a303a7d0ba109418aceb09c816d7f143"
+          }
+        },
+        {
+          "client_id": "381652871944-n1b3lq2hdalnfs39qa5hs43ek6n89qgq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0E2vUDXMbe8uF81cJADYfElFyxbp7-24"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "381652871944-n1b3lq2hdalnfs39qa5hs43ek6n89qgq.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "381652871944-33n9tc5u78p27rae6eo2f0qanqpn5meb.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "th.go.nasancity",
+                "app_store_id": "1603752116"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:381652871944:android:6f0f46498672348ebf9abd",
+        "android_client_info": {
+          "package_name": "th.go.khukhot"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "381652871944-j83j4qvn1dss8742nu4lb0f8ufksguuq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "th.go.khukhot",
+            "certificate_hash": "06ca28e14639e1263d8a5afbe965aae52f4f8814"
+          }
+        },
+        {
+          "client_id": "381652871944-n1b3lq2hdalnfs39qa5hs43ek6n89qgq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0E2vUDXMbe8uF81cJADYfElFyxbp7-24"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "381652871944-n1b3lq2hdalnfs39qa5hs43ek6n89qgq.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "381652871944-33n9tc5u78p27rae6eo2f0qanqpn5meb.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "th.go.nasancity",
+                "app_store_id": "1603752116"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:381652871944:android:953d9a767bfcebabbf9abd",
+        "android_client_info": {
+          "package_name": "th.go.kledkaew"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "381652871944-0ppd72unihhol104ptaecu7r96ois7fe.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "th.go.kledkaew",
+            "certificate_hash": "0b27c9f841fd4538229012e1b1ded669364d38d0"
+          }
+        },
+        {
+          "client_id": "381652871944-n1b3lq2hdalnfs39qa5hs43ek6n89qgq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0E2vUDXMbe8uF81cJADYfElFyxbp7-24"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "381652871944-n1b3lq2hdalnfs39qa5hs43ek6n89qgq.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "381652871944-33n9tc5u78p27rae6eo2f0qanqpn5meb.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "th.go.nasancity",
+                "app_store_id": "1603752116"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:381652871944:android:7c5c6e162cb459d3bf9abd",
+        "android_client_info": {
+          "package_name": "th.go.krabicity"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "381652871944-rem3n3kc9i14t4htke1kchcpuc0dtg1p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "th.go.krabicity",
+            "certificate_hash": "010ced0273c9d8299db315f667fa362618992e58"
+          }
+        },
+        {
+          "client_id": "381652871944-n1b3lq2hdalnfs39qa5hs43ek6n89qgq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0E2vUDXMbe8uF81cJADYfElFyxbp7-24"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "381652871944-n1b3lq2hdalnfs39qa5hs43ek6n89qgq.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "381652871944-33n9tc5u78p27rae6eo2f0qanqpn5meb.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "th.go.nasancity",
+                "app_store_id": "1603752116"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:381652871944:android:fe239b9ed69f331ebf9abd",
+        "android_client_info": {
+          "package_name": "th.go.nasancity"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "381652871944-1sd44fldepnrik1pc2tpab9qip5etekv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "th.go.nasancity",
+            "certificate_hash": "459a5adf2d535d0127e5bc363f7b9dd85bd91e1e"
+          }
+        },
+        {
+          "client_id": "381652871944-n1b3lq2hdalnfs39qa5hs43ek6n89qgq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0E2vUDXMbe8uF81cJADYfElFyxbp7-24"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "381652871944-n1b3lq2hdalnfs39qa5hs43ek6n89qgq.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "381652871944-33n9tc5u78p27rae6eo2f0qanqpn5meb.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "th.go.nasancity",
+                "app_store_id": "1603752116"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:381652871944:android:ce8bfc431a845536bf9abd",
+        "android_client_info": {
+          "package_name": "th.go.suratcity"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "381652871944-n1b3lq2hdalnfs39qa5hs43ek6n89qgq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0E2vUDXMbe8uF81cJADYfElFyxbp7-24"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "381652871944-n1b3lq2hdalnfs39qa5hs43ek6n89qgq.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "381652871944-33n9tc5u78p27rae6eo2f0qanqpn5meb.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "th.go.nasancity",
+                "app_store_id": "1603752116"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:381652871944:android:6421cbd46a5e1616bf9abd",
+        "android_client_info": {
+          "package_name": "th.go.thakantho"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "381652871944-9ting3q5a407du8kggc8o23uc7is8ime.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "th.go.thakantho",
+            "certificate_hash": "a1a17f38a303a7d0ba109418aceb09c816d7f143"
+          }
+        },
+        {
+          "client_id": "381652871944-n1b3lq2hdalnfs39qa5hs43ek6n89qgq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0E2vUDXMbe8uF81cJADYfElFyxbp7-24"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "381652871944-n1b3lq2hdalnfs39qa5hs43ek6n89qgq.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "381652871944-33n9tc5u78p27rae6eo2f0qanqpn5meb.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "th.go.nasancity",
+                "app_store_id": "1603752116"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:381652871944:android:1adb74aa9577af63bf9abd",
+        "android_client_info": {
+          "package_name": "th.go.tmsbr"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "381652871944-n1b3lq2hdalnfs39qa5hs43ek6n89qgq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0E2vUDXMbe8uF81cJADYfElFyxbp7-24"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "381652871944-n1b3lq2hdalnfs39qa5hs43ek6n89qgq.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "381652871944-33n9tc5u78p27rae6eo2f0qanqpn5meb.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "th.go.nasancity",
+                "app_store_id": "1603752116"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:381652871944:android:d3be82d2a55acbb5bf9abd",
+        "android_client_info": {
+          "package_name": "th.go.tmsbr2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "381652871944-hdtevovqk5lq3abnhjmql8pren63nq2m.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "th.go.tmsbr2",
+            "certificate_hash": "2aef96f5b1455454382ec5d31c558d57250c0005"
+          }
+        },
+        {
+          "client_id": "381652871944-q5su1ollnrai2965c0bfai7c48dapu21.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "th.go.tmsbr2",
+            "certificate_hash": "a1a17f38a303a7d0ba109418aceb09c816d7f143"
+          }
+        },
+        {
+          "client_id": "381652871944-r3poi3d1i50tahf1ntnavjl48t7chm51.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "th.go.tmsbr2",
+            "certificate_hash": "2eebc75ac52950e089be0fd035a885ed22aa73b1"
+          }
+        },
+        {
+          "client_id": "381652871944-n1b3lq2hdalnfs39qa5hs43ek6n89qgq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0E2vUDXMbe8uF81cJADYfElFyxbp7-24"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "381652871944-n1b3lq2hdalnfs39qa5hs43ek6n89qgq.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "381652871944-33n9tc5u78p27rae6eo2f0qanqpn5meb.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "th.go.nasancity",
+                "app_store_id": "1603752116"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,5 +1,5 @@
-final String _base_url = "https://nakornnont.go.th/";
-final String _base_url_api = "https://nakornnont.go.th/app_api_v1";
+final String _base_url = "http://suratcity.thailocallink.com/";
+final String _base_url_api = "http://suratcity.thailocallink.com/app_api_v1";
 
 class Info {
   String baseUrl = _base_url;

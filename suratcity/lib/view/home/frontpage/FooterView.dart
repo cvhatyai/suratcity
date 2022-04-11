@@ -116,14 +116,14 @@ class _FooterViewState extends State<FooterView> {
                   ),
                 ),
                 TextSpan(
-                  text: 'nakornnont.go.th',
+                  text: 'suratcity.go.th',
                   style: TextStyle(
                     color: Color(0xFF00C3EB),
                     fontSize: 11,
                   ),
                   recognizer: TapGestureRecognizer()
                     ..onTap = () {
-                      _launchInBrowser("https://nakornnont.go.th");
+                      _launchInBrowser("https://suratcity.go.th");
                     },
                 ),
                 TextSpan(

@@ -24,7 +24,7 @@ class HomeView extends StatefulWidget {
 class _HomeViewState extends State<HomeView> {
   var user = User();
   bool isLogin = false;
-  var userAvatar = Info().baseUrl + "images/nopic-personal.jpg";
+  var userAvatar = Info().baseUrl + "images/nopic-personal.png";
 
   void initState() {
     super.initState();
@@ -46,7 +46,7 @@ class _HomeViewState extends State<HomeView> {
     return SafeArea(
       child: SingleChildScrollView(
         child: Container(
-          color: Color(0xFFc7dbf0),
+          color: Color(0xFFF1F2F6),
           child: Column(
             children: [
               //top marquee banner
@@ -59,81 +59,139 @@ class _HomeViewState extends State<HomeView> {
                     children: [
                       //top
                       Container(
-                        height: 80,
+                        height: 55,
+                        padding: EdgeInsets.symmetric(horizontal: 16),
                         alignment: Alignment.center,
                         child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Expanded(
-                              flex: 1,
-                              child: Container(),
+                            Image.asset(
+                              'assets/images/main/menu_top_left.png',
+                              width: 27,
+                              height: 20,
                             ),
-                            Expanded(
-                              flex: 3,
-                              child: Image.asset(
-                                'assets/images/main/logo_top.png',
-                              ),
-                            ),
-                            Expanded(
-                              flex: 1,
-                              child: GestureDetector(
-                                onTap: () {
-                                  if (!isLogin) {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => LoginView(
-                                          isHaveArrow: "1",
-                                        ),
+                            GestureDetector(
+                              onTap: () {
+                                if (!isLogin) {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => LoginView(
+                                        isHaveArrow: "1",
                                       ),
-                                    );
-                                  } else {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => SettingView(
-                                          isHaveArrow: "1",
-                                        ),
+                                    ),
+                                  );
+                                } else {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => SettingView(
+                                        isHaveArrow: "1",
                                       ),
-                                    );
-                                  }
-                                },
-                                child: Container(
-                                  padding: EdgeInsets.all(8),
-                                  child: CircleAvatar(
-                                    radius: 24,
-                                    backgroundImage: NetworkImage(userAvatar),
-                                    backgroundColor: Colors.transparent,
-                                  ),
+                                    ),
+                                  );
+                                }
+                              },
+                              child: Container(
+                                child: Row(
+                                  children: [
+                                    Container(
+                                      width: 36,
+                                      height: 36,
+                                      child: CircleAvatar(
+                                        radius: 24,
+                                        backgroundImage: NetworkImage(userAvatar),
+                                        backgroundColor: Colors.transparent,
+                                      ),
+                                    ),
+                                    Container(
+                                      margin: EdgeInsets.only(left: 8),
+                                      child: Image.asset(
+                                        'assets/images/main/noti_top.png',
+                                        width: 36,
+                                        height: 36,
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ),
                             ),
                           ],
                         ),
                       ),
+
+                      Stack(
+                        children: [
+                          Column(
+                            children: [
+                              //logo
+                              Stack(
+                                children: [
+                                  Container(
+                                    child: Image.asset(
+                                      'assets/images/main/bg_head.png',
+                                    ),
+                                  ),
+
+                                  Container(
+                                    margin: EdgeInsets.only(top: 6),
+                                    alignment: Alignment.center,
+                                    child: Image.asset(
+                                      'assets/images/main/logo_top.png',
+                                      width: 160,
+                                      height: 85.68,
+                                    ),
+                                  ),
+
+                                ],
+                              ),
+
+                              //search
+                              Container(
+                                padding: EdgeInsets.symmetric(horizontal: 42),
+                                color: Color(0xFFF1F2F6),
+                                height: 60,
+                                child:  Image.asset(
+                                  'assets/images/main/search_bg.png',
+                                ),
+                              ),
+                            ],
+                          ),
+
+                          Container(
+                            alignment: Alignment.centerRight,
+                            child: Image.asset(
+                              'assets/images/main/search_right.png',
+                              width: 73.5,
+                              height: 154.32,
+                            ),
+                          ),
+
+                        ],
+                      ),
+
                       //marquee
                       MarqueeView(),
-                      //banner
-                      BannerView(),
                     ],
                   ),
                 ],
               ),
               //บริการแนะนำ
-              ServiceHomeView(),
+              //ServiceHomeView(),
               //แนะนำสำหรับคุณ
-              SuggustView(),
+              //SuggustView(),
               //ทม.กระบี่อัพเดท
-              NewsView(),
+              //NewsView(),
               //แจ้งเรื่องร้องเรียน/ร้องทุกข์
-              ComplainView(),
+              //ComplainView(),
               //บรรเทาความเดือดร้อนล่าสุด
-              ComplainFollowView(),
+              //ComplainFollowView(),
               //กิจกรรมห้ามพลาด
-              GalleryView(),
+              //GalleryView(),
               //เสน่ห์เมืองนนท์
-              TravelView(),
+              //TravelView(),
               //footer
-              FooterView(),
+              //FooterView(),
             ],
           ),
         ),

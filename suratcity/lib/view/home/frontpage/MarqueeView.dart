@@ -28,10 +28,8 @@ class _MarqueeViewState extends State<MarqueeView> {
     return postMessageList(http.Client(), body, _map);
   }
 
-  Future<List<AllList>> postMessageList(
-      http.Client client, jsonMap, Map map) async {
-    final response = await client.post(Uri.parse(Info().messageList),
-        headers: {"Content-Type": "application/json"}, body: jsonMap);
+  Future<List<AllList>> postMessageList(http.Client client, jsonMap, Map map) async {
+    final response = await client.post(Uri.parse(Info().messageList), headers: {"Content-Type": "application/json"}, body: jsonMap);
     var rs = json.decode(response.body);
     setState(() {
       msg = rs["msg"].toString();
@@ -41,23 +39,28 @@ class _MarqueeViewState extends State<MarqueeView> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 40,
-      width: MediaQuery.of(context).size.width * 0.9,
+      height: 36,
+
+      margin: EdgeInsets.symmetric(horizontal: 19),
       decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.all(
-          Radius.circular(9.0),
+        image: DecorationImage(
+          image: AssetImage("assets/images/main/marquee2.png"),
+          fit: BoxFit.cover,
         ),
       ),
       child: Row(
         children: [
-          Image.asset(
-            'assets/images/main/marquee.png',
+          SizedBox(
+            width: 42,
           ),
           Expanded(
-            child: Marquee(
-              text: msg,
-              blankSpace: 280,
+            child: Container(
+              margin: EdgeInsets.only(bottom: 6),
+              padding: EdgeInsets.only(right: 12),
+              child: Marquee(
+                text: msg,
+                blankSpace: 280,
+              ),
             ),
           ),
         ],

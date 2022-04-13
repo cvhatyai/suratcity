@@ -51,10 +51,8 @@ class _ComplainViewState extends State<ComplainView> {
     return postComplainList(http.Client(), body, _map);
   }
 
-  Future<List<AllList>> postComplainList(
-      http.Client client, jsonMap, Map map) async {
-    final response = await client.post(Uri.parse(Info().cateInformList),
-        headers: {"Content-Type": "application/json"}, body: jsonMap);
+  Future<List<AllList>> postComplainList(http.Client client, jsonMap, Map map) async {
+    final response = await client.post(Uri.parse(Info().cateInformList), headers: {"Content-Type": "application/json"}, body: jsonMap);
     parseNewsList(response.body);
   }
 
@@ -154,8 +152,7 @@ class _ComplainViewState extends State<ComplainView> {
                                         builder: (context) => ComplainFormView(
                                           topicID: data[index]["id"].toString(),
                                           subjectTitle: data[index]["subject"],
-                                          displayImage: data[index]
-                                              ["display_image"],
+                                          displayImage: data[index]["display_image"],
                                         ),
                                       ),
                                     );
@@ -184,10 +181,7 @@ class _ComplainViewState extends State<ComplainView> {
                                         Expanded(
                                           flex: 4,
                                           child: Container(
-                                            width: MediaQuery.of(context)
-                                                    .size
-                                                    .width *
-                                                0.4,
+                                            width: MediaQuery.of(context).size.width * 0.4,
                                             alignment: Alignment.center,
                                             padding: EdgeInsets.all(4),
                                             child: Text(

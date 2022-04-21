@@ -169,7 +169,7 @@ class _NewsDetailViewState extends State<NewsDetailView> {
     return SafeArea(
         child: Scaffold(
       appBar: AppBarView(
-        title: "ทม.กระบี่อัพเดท",
+        title: "ทน.สุราษฎร์ธานีอัพเดท",
         isHaveArrow: "1",
       ),
       body: Container(

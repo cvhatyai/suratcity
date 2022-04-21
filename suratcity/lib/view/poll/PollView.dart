@@ -201,7 +201,7 @@ class _PollViewState extends State<PollView> {
                 Container(
                   padding: EdgeInsets.symmetric(horizontal: 24),
                   child: Text(
-                    'เทศบาลนครนนทบุรี',
+                    'เทศบาลนครสุราษฎร์ธานี',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Color(0xFF78B10E),
@@ -233,7 +233,7 @@ class _PollViewState extends State<PollView> {
                   padding: EdgeInsets.symmetric(horizontal: 24),
                   margin: EdgeInsets.only(top: 16),
                   child: Text(
-                    "ทุกความคิดเห็นของคุณจะเป็นประโยชน์ให้เรา นำไปพัฒนาเทศบาลนครนนทบุรีให้ดียิ่งขึ้น",
+                    "ทุกความคิดเห็นของคุณจะเป็นประโยชน์ให้เรา นำไปพัฒนาเทศบาลนครสุราษฎร์ธานีให้ดียิ่งขึ้น",
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 10,
@@ -447,7 +447,7 @@ class _PollViewState extends State<PollView> {
                       Container(
                         margin: EdgeInsets.only(top: 32),
                         child: Text(
-                          "ทุกความคิดเห็นของคุณจะเป็นประโยชน์ให้เรา\nนำไปพัฒนาเทศบาลนครนนทบุรีให้ดียิ่งขึ้น",
+                          "ทุกความคิดเห็นของคุณจะเป็นประโยชน์ให้เรา\nนำไปพัฒนาเทศบาลนครสุราษฎร์ธานีให้ดียิ่งขึ้น",
                           textAlign: TextAlign.center,
                         ),
                       ),

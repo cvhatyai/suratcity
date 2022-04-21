@@ -23,6 +23,16 @@ class ComplainView extends StatefulWidget {
 class _ComplainViewState extends State<ComplainView> {
   var user = User();
   bool isLogin = false;
+  List<Color>  boxColors = [
+    Color(0xFFCC141A),
+    Color(0xFFC440B7),
+    Color(0xFFA65CE7),
+    Color(0xFF5CC1E7),
+    Color(0xFF22925B),
+    Color(0xFF6AB92D),
+    Color(0xFFD2AB2C),
+    Color(0xFFFC5D17),
+  ];
 
   @override
   void initState() {
@@ -42,7 +52,7 @@ class _ComplainViewState extends State<ComplainView> {
   getComplainList() async {
     Map _map = {};
     _map.addAll({
-      "rows": "6",
+      "rows": "8",
     });
 
     EasyLoading.show(status: 'loading...');
@@ -72,18 +82,26 @@ class _ComplainViewState extends State<ComplainView> {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     final double itemWidth = size.width / 2;
-    final double itemHeight = (size.height - kToolbarHeight - 24) / 3;
+    final double itemHeight = (size.height - kToolbarHeight - 24) / 2.5;
 
     BoxDecoration boxWhite() {
       return BoxDecoration(
-        borderRadius: BorderRadius.all(
-          Radius.circular(9.0),
-        ),
         border: Border.all(
           color: Colors.white,
           width: 1.0,
         ),
         color: Color(0xFFF5F6FA),
+        borderRadius: BorderRadius.all(
+          Radius.circular(9.0),
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.5),
+            spreadRadius: 3,
+            blurRadius: 7,
+            offset: Offset(0, 3), // changes position of shadow
+          ),
+        ],
       );
     }
 
@@ -92,17 +110,17 @@ class _ComplainViewState extends State<ComplainView> {
       child: Container(
         decoration: BoxDecoration(
           color: Colors.white,
-          borderRadius: BorderRadius.all(
-            Radius.circular(9.0),
-          ),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey.withOpacity(0.5),
-              spreadRadius: 3,
-              blurRadius: 7,
-              offset: Offset(0, 3), // changes position of shadow
-            ),
-          ],
+          // borderRadius: BorderRadius.all(
+          //   Radius.circular(9.0),
+          // ),
+          // boxShadow: [
+          //   BoxShadow(
+          //     color: Colors.grey.withOpacity(0.5),
+          //     spreadRadius: 3,
+          //     blurRadius: 7,
+          //     offset: Offset(0, 3), // changes position of shadow
+          //   ),
+          // ],
         ),
         margin: EdgeInsets.only(
           top: 8,
@@ -117,24 +135,53 @@ class _ComplainViewState extends State<ComplainView> {
             ),
             Column(
               children: [
-                Container(
-                  alignment: Alignment.centerLeft,
-                  padding: EdgeInsets.only(left: 24, top: 8),
-                  child: Text(
-                    "แจ้งเรื่องร้องเรียน\n/ร้องทุกข์",
-                    style: TextStyle(color: Color(0xFF4283C4), fontSize: 18),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    children: [
+                      Container(
+                        color: Color(0xFFFFF600),
+                        alignment: Alignment.centerLeft,
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            "แจ้งเรื่อง",
+                            style: TextStyle(
+                              color: Color(0xFFA335AB),
+                              fontSize: 18,
+                              fontFamily: 'Kanit',
+                            ),
+                          ),
+                        ),
+                      ),
+                      Container(
+                        color: Color(0xFFA335AB),
+                        alignment: Alignment.centerLeft,
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            "ร้องเรียนร้องทุกข์",
+                            style: TextStyle(
+                              color: Color(0xFFFFF600),
+                              fontSize: 18,
+                              fontFamily: 'Kanit',
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
                 Container(
                   padding: EdgeInsets.all(4),
-                  margin: EdgeInsets.only(top: 16),
+                  margin: EdgeInsets.only(top: 0),
                   child: Center(
                     child: (data != null && data.length != 0)
                         ? GridView.count(
                             shrinkWrap: true,
                             physics: NeverScrollableScrollPhysics(),
                             childAspectRatio: (itemWidth / itemHeight),
-                            crossAxisCount: 3,
+                            crossAxisCount: 4,
                             children: List.generate(data.length, (index) {
                               return GestureDetector(
                                 onTap: () {
@@ -164,20 +211,28 @@ class _ComplainViewState extends State<ComplainView> {
                                 child: Center(
                                   child: Container(
                                     decoration: boxWhite(),
-                                    margin: EdgeInsets.only(
-                                      left: 4,
-                                      right: 4,
-                                      top: 8,
-                                    ),
-                                    //decoration: boxWhite(),
+                                    margin: EdgeInsets.all(4),
                                     child: Column(
                                       children: [
                                         Expanded(
                                           flex: 6,
                                           child: Container(
-                                            padding: EdgeInsets.all(16),
+                                            decoration: BoxDecoration(
+                                              borderRadius: BorderRadius.only(
+                                                  topLeft:
+                                                      Radius.circular(10.0),
+                                                  topRight:
+                                                      Radius.circular(10.0)),
+                                              color: boxColors[index],
+                                            ),
+                                            width: double.infinity,
+                                            padding: EdgeInsets.all(6),
                                             child: Image.network(
                                               data[index]["display_image"],
+                                              color: Colors.white,
+                                              fit: BoxFit.fitHeight,
+                                              alignment:
+                                                  FractionalOffset.topCenter,
                                             ),
                                           ),
                                         ),
@@ -196,7 +251,7 @@ class _ComplainViewState extends State<ComplainView> {
                                               textAlign: TextAlign.center,
                                               overflow: TextOverflow.ellipsis,
                                               style: TextStyle(
-                                                fontSize: 11,
+                                                fontSize: 11.5,
                                               ),
                                             ),
                                           ),
@@ -217,6 +272,7 @@ class _ComplainViewState extends State<ComplainView> {
                 ),
                 Container(
                   padding: EdgeInsets.all(4),
+                  margin: EdgeInsets.only(bottom: 8),
                   alignment: Alignment.centerRight,
                   child: GestureDetector(
                     onTap: () {
@@ -235,64 +291,64 @@ class _ComplainViewState extends State<ComplainView> {
                     ),
                   ),
                 ),
-                Container(
-                  margin: EdgeInsets.only(bottom: 16),
-                  alignment: Alignment.centerLeft,
-                  child: GestureDetector(
-                    onTap: () {
-                      if (!isLogin) {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => LoginView(
-                              isHaveArrow: "1",
-                            ),
-                          ),
-                        );
-                      } else {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => FollowComplainListView(
-                              isHaveArrow: "1",
-                            ),
-                          ),
-                        );
-                      }
-                    },
-                    child: Stack(
-                      alignment: AlignmentDirectional.center,
-                      children: [
-                        Container(
-                          alignment: Alignment.centerLeft,
-                          child: Image.asset(
-                            'assets/images/main/more_complain.png',
-                            height: 36,
-                          ),
-                        ),
-                        Container(
-                          padding: EdgeInsets.only(left: 4),
-                          child: Row(
-                            children: [
-                              Text(
-                                "ติดตามเรื่องร้องเรียน",
-                                style: TextStyle(
-                                  fontSize: 14,
-                                  color: Colors.white,
-                                ),
-                              ),
-                              Icon(
-                                Icons.arrow_forward_ios,
-                                color: Colors.white,
-                                size: 12,
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
+                // Container(
+                //   margin: EdgeInsets.only(bottom: 16),
+                //   alignment: Alignment.centerLeft,
+                //   child: GestureDetector(
+                //     onTap: () {
+                //       if (!isLogin) {
+                //         Navigator.push(
+                //           context,
+                //           MaterialPageRoute(
+                //             builder: (context) => LoginView(
+                //               isHaveArrow: "1",
+                //             ),
+                //           ),
+                //         );
+                //       } else {
+                //         Navigator.push(
+                //           context,
+                //           MaterialPageRoute(
+                //             builder: (context) => FollowComplainListView(
+                //               isHaveArrow: "1",
+                //             ),
+                //           ),
+                //         );
+                //       }
+                //     },
+                //     child: Stack(
+                //       alignment: AlignmentDirectional.center,
+                //       children: [
+                //         Container(
+                //           alignment: Alignment.centerLeft,
+                //           child: Image.asset(
+                //             'assets/images/main/more_complain.png',
+                //             height: 36,
+                //           ),
+                //         ),
+                //         Container(
+                //           padding: EdgeInsets.only(left: 4),
+                //           child: Row(
+                //             children: [
+                //               Text(
+                //                 "ติดตามเรื่องร้องเรียน",
+                //                 style: TextStyle(
+                //                   fontSize: 14,
+                //                   color: Colors.white,
+                //                 ),
+                //               ),
+                //               Icon(
+                //                 Icons.arrow_forward_ios,
+                //                 color: Colors.white,
+                //                 size: 12,
+                //               ),
+                //             ],
+                //           ),
+                //         ),
+                //       ],
+                //     ),
+                //   ),
+                // ),
               ],
             ),
           ],

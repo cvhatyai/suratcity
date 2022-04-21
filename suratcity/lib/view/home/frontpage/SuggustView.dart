@@ -123,32 +123,29 @@ class _SuggustViewState extends State<SuggustView> {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
-    final double itemHeight = (size.height - kToolbarHeight - 24) / 5.5;
+    final double itemHeight = (size.height - kToolbarHeight - 24) / 3.5;
     final double itemWidth = size.width / 2;
     return Container(
       color: Color(0xFFf5f6fa),
       child: Column(
         children: [
           Container(
-            padding: EdgeInsets.symmetric(horizontal: 18),
-            alignment: Alignment.centerLeft,
-            child: Text(
-              "แนะนำสำหรับคุณ",
-              style: TextStyle(color: Color(0xFF4283C4), fontSize: 18),
-            ),
-          ),
+              margin: EdgeInsets.only(top: 12, left: 12),
+              alignment: Alignment.centerLeft,
+              child: Image.asset('assets/images/main/travel1.png',
+                  fit: BoxFit.cover, height: 30)),
           Container(
             margin: EdgeInsets.only(top: 8),
             color: Colors.white,
             width: MediaQuery.of(context).size.width * 0.96,
-            padding: EdgeInsets.all(4),
+            padding: EdgeInsets.all(2),
             child: (data != null && data.length != 0)
                 ? Column(
                     children: [
                       Container(
                         child: CarouselSlider(
                           options: CarouselOptions(
-                              height: itemHeight * 1.8,
+                              height: itemHeight * 2,
                               viewportFraction: 1,
                               enableInfiniteScroll: false,
                               onPageChanged: (index, reason) {
@@ -187,23 +184,72 @@ class _SuggustViewState extends State<SuggustView> {
                                           : _currentPage == 2
                                               ? data[index + 8]["link"]
                                               : data[index]["link"];
-
                                       if (link != "") {
                                         _launchInBrowser(link);
                                       }
                                     }
                                   },
                                   child: Container(
-                                    margin: EdgeInsets.symmetric(horizontal: 4),
-                                    child: ClipRRect(
-                                      child: Image.network(
-                                        _currentPage == 1
-                                            ? data[index + 4]["display_image"]
-                                            : _currentPage == 2
-                                                ? data[index + 8]
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.only(
+                                          bottomLeft: Radius.circular(10.0),
+                                          bottomRight: Radius.circular(10.0),
+                                          topLeft: Radius.circular(10.0),
+                                          topRight: Radius.circular(10.0)),
+                                      color: Colors.black,
+                                    ),
+                                    margin: EdgeInsets.symmetric(
+                                        horizontal: 4, vertical: 4),
+                                    child: Stack(
+                                      children: [
+                                        ClipRRect(
+                                          borderRadius: BorderRadius.only(
+                                              topLeft: Radius.circular(10.0),
+                                              topRight: Radius.circular(10.0)),
+                                          child: Image.network(
+                                            _currentPage == 1
+                                                ? data[index + 4]
                                                     ["display_image"]
-                                                : data[index]["display_image"],
-                                      ),
+                                                : _currentPage == 2
+                                                    ? data[index + 8]
+                                                        ["display_image"]
+                                                    : data[index]
+                                                        ["display_image"],
+                                            fit: BoxFit.cover,
+                                          ),
+                                        ),
+                                        Align(
+                                          alignment: Alignment.bottomCenter,
+                                          child: Container(
+                                            decoration: BoxDecoration(
+                                              borderRadius: BorderRadius.only(
+                                                  bottomLeft:
+                                                      Radius.circular(10.0),
+                                                  bottomRight:
+                                                      Radius.circular(10.0)),
+                                              color: Colors.black,
+                                            ),
+                                            height: 40,
+                                            width: double.infinity,
+                                            child: Padding(
+                                              padding: const EdgeInsets.only(
+                                                  left: 4.0, right: 4.0),
+                                              child: Align(
+                                                alignment: Alignment.centerLeft,
+                                                child: Text(
+                                                  '${data[index]["subject"]}',
+                                                  style: TextStyle(
+                                                    color: Colors.white,
+                                                  ),
+                                                  maxLines: 1,
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
                                     ),
                                   ),
                                 );

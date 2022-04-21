@@ -280,7 +280,7 @@ class _NewsListViewState extends State<NewsListView> {
     return SafeArea(
         child: Scaffold(
       appBar: AppBarView(
-        title: "ทม.กระบี่อัพเดท",
+        title: "ทน.สุราษฎร์ธานีอัพเดท",
         isHaveArrow: widget.isHaveArrow,
       ),
       body: Column(

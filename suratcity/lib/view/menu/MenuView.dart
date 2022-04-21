@@ -1063,7 +1063,7 @@ class _MenuViewState extends State<MenuView> {
                       Container(
                         margin: EdgeInsets.only(left: 16),
                         child: Text(
-                          "ทม.กระบี่อัพเดท",
+                          "ทน.สุราษฎร์ธานีอัพเดท",
                           style: TextStyle(
                             fontSize: 15,
                           ),

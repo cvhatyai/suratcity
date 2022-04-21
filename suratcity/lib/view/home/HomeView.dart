@@ -1,3 +1,6 @@
+import 'package:cvapp/view/FrontPageView.dart';
+import 'package:cvapp/view/chat/ChatView.dart';
+import 'package:cvapp/view/noti/NotiListView.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:cvapp/model/user.dart';
@@ -14,6 +17,7 @@ import 'package:cvapp/view/home/frontpage/TravelView.dart';
 import 'package:cvapp/view/login/LoginView.dart';
 import 'package:cvapp/view/setting/SettingView.dart';
 
+import 'frontpage/Activity.dart';
 import 'frontpage/FooterView.dart';
 
 class HomeView extends StatefulWidget {
@@ -24,7 +28,8 @@ class HomeView extends StatefulWidget {
 class _HomeViewState extends State<HomeView> {
   var user = User();
   bool isLogin = false;
-  var userAvatar = Info().baseUrl + "images/nopic-personal.jpg";
+  var userAvatar = Info().baseUrl + "images/nopic-personal.png";
+  var userNoti = Info().baseUrl + "images/nopic-noti.png";
 
   void initState() {
     super.initState();
@@ -46,7 +51,7 @@ class _HomeViewState extends State<HomeView> {
     return SafeArea(
       child: SingleChildScrollView(
         child: Container(
-          color: Color(0xFFc7dbf0),
+          color: Color(0xFFFFFF),
           child: Column(
             children: [
               //top marquee banner
@@ -54,6 +59,8 @@ class _HomeViewState extends State<HomeView> {
                 children: [
                   Image.asset(
                     'assets/images/main/top_bg.png',
+                    fit: BoxFit.cover,
+                    alignment: FractionalOffset.topCenter,
                   ),
                   Column(
                     children: [
@@ -64,14 +71,18 @@ class _HomeViewState extends State<HomeView> {
                         child: Row(
                           children: [
                             Expanded(
-                              flex: 1,
+                              flex: 2,
                               child: Container(),
                             ),
+                            // Expanded(
+                            //   flex: 3,
+                            //   child: Image.asset(
+                            //     'assets/images/main/logo_top.png',
+                            //   ),
+                            // ),
                             Expanded(
                               flex: 3,
-                              child: Image.asset(
-                                'assets/images/main/logo_top.png',
-                              ),
+                              child: Container(),
                             ),
                             Expanded(
                               flex: 1,
@@ -107,13 +118,66 @@ class _HomeViewState extends State<HomeView> {
                                 ),
                               ),
                             ),
+                            Expanded(
+                              flex: 1,
+                              child: GestureDetector(
+                                onTap: () {
+                                  if (!isLogin) {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => LoginView(
+                                          isHaveArrow: "1",
+                                        ),
+                                      ),
+                                    );
+                                  } else {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => NotiListView(
+                                          isHaveArrow: "1",
+                                        ),
+                                      ),
+                                    );
+                                  }
+                                },
+                                child: Container(
+                                  padding: EdgeInsets.all(8),
+                                  child: CircleAvatar(
+                                    radius: 24,
+                                    backgroundImage: NetworkImage(userNoti),
+                                    backgroundColor: Colors.transparent,
+                                  ),
+                                ),
+                              ),
+                            ),
                           ],
+                        ),
+                      ),
+                      Container(
+                        height: 10,
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => FrontPageView(
+                                tab: "2",
+                              ),
+                            ),
+                          );
+                        },
+                        child: Image.asset(
+                          'assets/images/main/search.png',
+                          fit: BoxFit.cover,
                         ),
                       ),
                       //marquee
                       MarqueeView(),
                       //banner
-                      BannerView(),
+                      // BannerView(),
                     ],
                   ),
                 ],
@@ -122,18 +186,20 @@ class _HomeViewState extends State<HomeView> {
               ServiceHomeView(),
               //แนะนำสำหรับคุณ
               SuggustView(),
-              //ทม.กระบี่อัพเดท
-              NewsView(),
               //แจ้งเรื่องร้องเรียน/ร้องทุกข์
               ComplainView(),
               //บรรเทาความเดือดร้อนล่าสุด
               ComplainFollowView(),
+              //ทน.สุราษฎร์ธานีอัพเดท
+              NewsView(),
               //กิจกรรมห้ามพลาด
               GalleryView(),
-              //เสน่ห์เมืองนนท์
-              TravelView(),
-              //footer
-              FooterView(),
+              //กิจกรรมห้ามพลาด
+              Activity(),
+              // //เสน่ห์เมืองนนท์
+              // TravelView(),
+              // //footer
+              // FooterView(),
             ],
           ),
         ),

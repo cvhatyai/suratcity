@@ -57,20 +57,20 @@ class _NewsViewState extends State<NewsView> {
     return Container(
       color: Color(0xFFf5f6fa),
       child: Container(
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.all(
-            Radius.circular(9.0),
-          ),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey.withOpacity(0.5),
-              spreadRadius: 3,
-              blurRadius: 7,
-              offset: Offset(0, 3), // changes position of shadow
-            ),
-          ],
-        ),
+        // decoration: BoxDecoration(
+        //   color: Colors.white,
+        //   borderRadius: BorderRadius.all(
+        //     Radius.circular(9.0),
+        //   ),
+        //   boxShadow: [
+        //     BoxShadow(
+        //       color: Colors.grey.withOpacity(0.5),
+        //       spreadRadius: 3,
+        //       blurRadius: 7,
+        //       offset: Offset(0, 3), // changes position of shadow
+        //     ),
+        //   ],
+        // ),
         margin: EdgeInsets.only(
           top: 8,
           bottom: 14,
@@ -81,32 +81,28 @@ class _NewsViewState extends State<NewsView> {
         child: Column(
           children: [
             Container(
-              padding: EdgeInsets.symmetric(horizontal: 18),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    children: [
-                      Text(
-                        "ทม.กระบี่",
-                        style:
-                            TextStyle(color: Color(0xFF42AAFF), fontSize: 18),
-                      ),
-                      Text(
-                        "อัพเดท",
-                        style:
-                            TextStyle(color: Color(0xFFE4001B), fontSize: 18),
-                      ),
-                    ],
+              width: double.infinity,
+              height: 50,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(15.0),
+                    topRight: Radius.circular(15.0)),
+                color: Color(0xFF7C1B6A),
+              ),
+              padding: EdgeInsets.symmetric(horizontal: 60),
+              child: Padding(
+                padding: EdgeInsets.only(top: 10),
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(15.0),
+                        topRight: Radius.circular(15.0)),
+                    color: Colors.white,
                   ),
-                  Text(
-                    "ข่าวสำคัญ",
-                    style: TextStyle(
-                      color: Color(0xFF7E7E7E),
-                      fontSize: 10,
-                    ),
+                  child: Image.asset(
+                    'assets/images/main/more_complain.png',
                   ),
-                ],
+                ),
               ),
             ),
             Container(
@@ -133,9 +129,14 @@ class _NewsViewState extends State<NewsView> {
                               child: Stack(
                                 alignment: Alignment.topCenter,
                                 children: [
-                                  Image.network(
-                                    data[i]["display_image"],
-                                    fit: BoxFit.fill,
+                                  ClipRRect(
+                                    borderRadius: BorderRadius.all(
+                                      Radius.circular(9.0),
+                                    ),
+                                    child: Image.network(
+                                      data[i]["display_image"],
+                                      fit: BoxFit.fill,
+                                    ),
                                   ),
                                   Positioned(
                                     bottom: 20,
@@ -156,7 +157,7 @@ class _NewsViewState extends State<NewsView> {
                                       ),
                                       alignment: Alignment.center,
                                       width: MediaQuery.of(context).size.width *
-                                          0.48,
+                                          0.5,
                                       height: 80,
                                       child: Container(
                                         alignment: Alignment.centerLeft,

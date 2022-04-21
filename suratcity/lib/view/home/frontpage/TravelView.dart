@@ -155,7 +155,7 @@ class _TravelViewState extends State<TravelView> {
                       Container(
                         alignment: Alignment.centerLeft,
                         child: Text(
-                          "อากาศทม.กระบี่วันนี้",
+                          "อากาศทน.สุราษฎร์ธานีวันนี้",
                           style: TextStyle(
                             fontSize: 12,
                             color: Colors.white,

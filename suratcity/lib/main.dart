@@ -105,7 +105,7 @@ void main() async {
 
   runApp(
     MaterialApp(
-      title: 'ทม.กระบี่',
+      title: 'ทน.สุราษฎร์ธานี',
       debugShowCheckedModeBanner: false,
       navigatorKey: navigatorKey,
       theme: ThemeData(
@@ -328,7 +328,8 @@ class _MyHomePageState extends State<MyHomePage> {
         decoration: BoxDecoration(
           image: DecorationImage(
             image: AssetImage("assets/images/splash.png"),
-            fit: BoxFit.fill,
+            fit: BoxFit.cover,
+            alignment: FractionalOffset.topCenter,
           ),
         ),
       ),

@@ -25,8 +25,10 @@ class FrontPageView extends StatefulWidget {
   FrontPageView({
     Key key,
     this.payload = "",
+    this.tab = "",
   }) : super(key: key);
   String payload;
+  String tab;
 
   @override
   _FrontPageViewState createState() => _FrontPageViewState();
@@ -50,6 +52,10 @@ class _FrontPageViewState extends State<FrontPageView> {
     // TODO: implement initState
     super.initState();
     getUsers();
+    if(widget.tab != null && widget.tab != ""){
+      _onItemTapped(int.parse(widget.tab));
+      // print(widget.tab);
+    }
   }
 
   getUsers() async {

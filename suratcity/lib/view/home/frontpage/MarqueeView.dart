@@ -42,24 +42,25 @@ class _MarqueeViewState extends State<MarqueeView> {
   Widget build(BuildContext context) {
     return Container(
       height: 40,
-      width: MediaQuery.of(context).size.width * 0.9,
+      width: double.infinity,
       decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.all(
-          Radius.circular(9.0),
+        image: DecorationImage(
+          image: AssetImage('assets/images/main/marquee.png'),
+          fit: BoxFit.cover,
+          alignment: FractionalOffset.topCenter,
         ),
       ),
       child: Row(
         children: [
-          Image.asset(
-            'assets/images/main/marquee.png',
-          ),
+          Container(width: 50),
           Expanded(
             child: Marquee(
               text: msg,
+              style: TextStyle(height: 1.5),
               blankSpace: 280,
             ),
           ),
+          Container(width: 10),
         ],
       ),
     );

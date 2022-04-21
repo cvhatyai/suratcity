@@ -63,16 +63,46 @@ class _ComplainFollowViewState extends State<ComplainFollowView> {
         padding: EdgeInsets.all(4),
         child: Column(
           children: [
-            Container(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                "บรรเทาความเดือดร้อนล่าสุด",
-                style: TextStyle(color: Color(0xFF4283C4), fontSize: 18),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                children: [
+                  Container(
+                    color: Color(0xFFFFF600),
+                    alignment: Alignment.centerLeft,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        "บรรเทา",
+                        style: TextStyle(
+                          color: Color(0xFFA335AB),
+                          fontSize: 18,
+                          fontFamily: 'Kanit',
+                        ),
+                      ),
+                    ),
+                  ),
+                  Container(
+                    color: Color(0xFFA335AB),
+                    alignment: Alignment.centerLeft,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        "ความเดือดร้อนล่าสุด",
+                        style: TextStyle(
+                          color: Color(0xFFFFF600),
+                          fontSize: 18,
+                          fontFamily: 'Kanit',
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
             Container(
               margin: EdgeInsets.only(top: 16),
-              height: 180,
+              height: 220,
               child: (data != null && data.length != 0)
                   ? ListView(
                       scrollDirection: Axis.horizontal,
@@ -99,18 +129,31 @@ class _ComplainFollowViewState extends State<ComplainFollowView> {
                                     children: [
                                       Expanded(
                                         child: Container(
-                                          color: Colors.black,
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.all(
+                                              Radius.circular(9.0),
+                                            ),
+                                            color: Colors.black,
+                                          ),
                                           margin: EdgeInsets.symmetric(
                                               horizontal: 4),
                                           child: Stack(
                                             alignment: Alignment.center,
                                             children: [
                                               Container(
-                                                child: Image.network(
-                                                  data[i]["img_before"],
-                                                  fit: BoxFit.cover,
+                                                height: 110,
+                                                child: ClipRRect(
+                                                  borderRadius:
+                                                      BorderRadius.all(
+                                                    Radius.circular(9.0),
+                                                  ),
+                                                  child: Image.network(
+                                                    data[i]["img_before"],
+                                                    fit: BoxFit.cover,
+                                                    alignment: FractionalOffset
+                                                        .topCenter,
+                                                  ),
                                                 ),
-                                                height: 90,
                                               ),
                                               Positioned(
                                                 left: 0,
@@ -126,18 +169,31 @@ class _ComplainFollowViewState extends State<ComplainFollowView> {
                                       ),
                                       Expanded(
                                         child: Container(
-                                          color: Colors.black,
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.all(
+                                              Radius.circular(9.0),
+                                            ),
+                                            color: Colors.black,
+                                          ),
                                           margin: EdgeInsets.symmetric(
                                               horizontal: 4),
                                           child: Stack(
                                             alignment: Alignment.center,
                                             children: [
                                               Container(
-                                                child: Image.network(
-                                                  data[i]["img_after"],
-                                                  fit: BoxFit.cover,
+                                                height: 110,
+                                                child: ClipRRect(
+                                                  borderRadius:
+                                                      BorderRadius.all(
+                                                    Radius.circular(9.0),
+                                                  ),
+                                                  child: Image.network(
+                                                    data[i]["img_after"],
+                                                    fit: BoxFit.cover,
+                                                    alignment: FractionalOffset
+                                                        .topCenter,
+                                                  ),
                                                 ),
-                                                height: 90,
                                               ),
                                               Positioned(
                                                 left: 0,
@@ -154,53 +210,65 @@ class _ComplainFollowViewState extends State<ComplainFollowView> {
                                     ],
                                   ),
                                   Container(
+                                    height: 80,
+                                    margin: EdgeInsets.only(top: 8),
                                     child: Column(
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
                                       children: [
-                                        Text(
-                                          data[i]["subject"],
-                                          style: TextStyle(fontSize: 16),
-                                          maxLines: 1,
-                                          overflow: TextOverflow.ellipsis,
-                                        ),
-                                        Row(
-                                          children: [
-                                            Icon(
-                                              Icons.location_pin,
-                                              size: 18,
-                                              color: Colors.green,
+                                        Expanded(
+                                          child: Align(
+                                            alignment: Alignment.bottomLeft,
+                                            child: Text(
+                                              data[i]["subject"],
+                                              style: TextStyle(fontSize: 16),
+                                              maxLines: 1,
+                                              overflow: TextOverflow.ellipsis,
                                             ),
-                                            Expanded(
-                                              child: Text(
-                                                data[i]["near_location"],
-                                                maxLines: 1,
+                                          ),
+                                        ),
+                                        Expanded(
+                                          child: Row(
+                                            children: [
+                                              Icon(
+                                                Icons.location_pin,
+                                                size: 18,
+                                                color: Color(0xFF8C1F78),
+                                              ),
+                                              Expanded(
+                                                child: Text(
+                                                  data[i]["near_location"],
+                                                  maxLines: 1,
+                                                  style: TextStyle(
+                                                    fontSize: 12,
+                                                    color: Colors.grey,
+                                                  ),
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        Expanded(
+                                          child: Row(
+                                            children: [
+                                              Icon(
+                                                Icons.event_available_rounded,
+                                                size: 18,
+                                                color: Colors.grey,
+                                              ),
+                                              Text(
+                                                data[i]["finish_date"],
                                                 style: TextStyle(
                                                   fontSize: 12,
                                                   color: Colors.grey,
                                                 ),
+                                                maxLines: 1,
                                                 overflow: TextOverflow.ellipsis,
                                               ),
-                                            ),
-                                          ],
-                                        ),
-                                        Row(
-                                          children: [
-                                            Icon(
-                                              Icons.event_available_rounded,
-                                              size: 18,
-                                              color: Colors.grey,
-                                            ),
-                                            Text(
-                                              data[i]["finish_date"],
-                                              style: TextStyle(
-                                                fontSize: 11,
-                                                color: Colors.grey,
-                                              ),
-                                              maxLines: 1,
-                                              overflow: TextOverflow.ellipsis,
-                                            ),
-                                          ],
+                                            ],
+                                          ),
                                         ),
                                       ],
                                     ),

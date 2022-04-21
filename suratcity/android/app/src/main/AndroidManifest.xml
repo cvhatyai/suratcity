@@ -17,7 +17,7 @@
         android:name=".Application"
         android:icon="@mipmap/ic_launcher"
         android:requestLegacyExternalStorage="true"
-        android:label="ทม.กระบี่">
+        android:label="ทน.สุราษฎร์ธานี">
 
         <receiver android:name="com.dexterous.flutterlocalnotifications.ScheduledNotificationReceiver" />
         <receiver android:name="com.dexterous.flutterlocalnotifications.ScheduledNotificationBootReceiver">

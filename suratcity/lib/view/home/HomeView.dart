@@ -123,14 +123,6 @@ class _HomeViewState extends State<HomeView> {
                                           backgroundColor: Colors.transparent,
                                         ),
                                       ),
-                                      Container(
-                                        margin: EdgeInsets.only(left: 8),
-                                        child: Image.asset(
-                                          'assets/images/main/noti_top.png',
-                                          width: 36,
-                                          height: 36,
-                                        ),
-                                      ),
                                     ],
                                   ),
                                 ),
@@ -201,11 +193,11 @@ class _HomeViewState extends State<HomeView> {
                 ],
               ),
               //บริการแนะนำ
-              //ServiceHomeView(),
+              ServiceHomeView(),
               //แนะนำสำหรับคุณ
               SuggustView(),
               //แจ้งเรื่องร้องเรียน/ร้องทุกข์
-              //ComplainView(),
+              ComplainView(),
               //บรรเทาความเดือดร้อนล่าสุด
               ComplainFollowView(),
               //ทน.สุราษฎร์ธานีอัพเดท

@@ -118,7 +118,7 @@ class _FooterViewState extends State<FooterView> {
                 TextSpan(
                   text: 'suratcity.go.th',
                   style: TextStyle(
-                    color: Color(0xFF00C3EB),
+                    color: Color(0xFF8C1F78),
                     fontSize: 11,
                   ),
                   recognizer: TapGestureRecognizer()

@@ -66,9 +66,11 @@ class _HomeViewState extends State<HomeView> {
                     children: [
                       //top
                       Container(
-                        height: 80,
+                        height: 55,
+                        padding: EdgeInsets.symmetric(horizontal: 16),
                         alignment: Alignment.center,
                         child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Expanded(
                               flex: 2,
@@ -109,11 +111,27 @@ class _HomeViewState extends State<HomeView> {
                                   }
                                 },
                                 child: Container(
-                                  padding: EdgeInsets.all(8),
-                                  child: CircleAvatar(
-                                    radius: 24,
-                                    backgroundImage: NetworkImage(userAvatar),
-                                    backgroundColor: Colors.transparent,
+                                  child: Row(
+                                    children: [
+                                      Container(
+                                        width: 36,
+                                        height: 36,
+                                        child: CircleAvatar(
+                                          radius: 24,
+                                          backgroundImage:
+                                              NetworkImage(userAvatar),
+                                          backgroundColor: Colors.transparent,
+                                        ),
+                                      ),
+                                      Container(
+                                        margin: EdgeInsets.only(left: 8),
+                                        child: Image.asset(
+                                          'assets/images/main/noti_top.png',
+                                          width: 36,
+                                          height: 36,
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ),
                               ),
@@ -183,11 +201,11 @@ class _HomeViewState extends State<HomeView> {
                 ],
               ),
               //บริการแนะนำ
-              ServiceHomeView(),
+              //ServiceHomeView(),
               //แนะนำสำหรับคุณ
               SuggustView(),
               //แจ้งเรื่องร้องเรียน/ร้องทุกข์
-              ComplainView(),
+              //ComplainView(),
               //บรรเทาความเดือดร้อนล่าสุด
               ComplainFollowView(),
               //ทน.สุราษฎร์ธานีอัพเดท

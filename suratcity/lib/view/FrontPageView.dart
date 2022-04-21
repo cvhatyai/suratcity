@@ -36,13 +36,7 @@ class FrontPageView extends StatefulWidget {
 
 class _FrontPageViewState extends State<FrontPageView> {
   int _selectedIndex = 0;
-  List<Widget> _widgetOptions = [
-    HomeView(),
-    NewsListView(),
-    ChatView(),
-    NotiListView(),
-    MenuView()
-  ];
+  List<Widget> _widgetOptions = [HomeView(), NewsListView(), ChatView(), NotiListView(), MenuView()];
 
   var user = User();
   bool isLogin = false;
@@ -65,21 +59,9 @@ class _FrontPageViewState extends State<FrontPageView> {
     });
 
     if (isLogin) {
-      _widgetOptions = [
-        HomeView(),
-        NewsListView(),
-        ChatView(),
-        NotiListView(),
-        MenuView()
-      ];
+      _widgetOptions = [HomeView(), NewsListView(), ChatView(), NotiListView(), MenuView()];
     } else {
-      _widgetOptions = [
-        HomeView(),
-        NewsListView(),
-        ChatView(),
-        LoginView(),
-        MenuView()
-      ];
+      _widgetOptions = [HomeView(), NewsListView(), ChatView(), LoginView(), MenuView()];
     }
 
     if (widget.payload != null) {
@@ -127,16 +109,14 @@ class _FrontPageViewState extends State<FrontPageView> {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) =>
-                  ComplainDetailView(topicID: topicID.toString()),
+              builder: (context) => ComplainDetailView(topicID: topicID.toString()),
             ),
           );
         } else if (fnName == "informAdminDetail") {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) =>
-                  ComplainAdminDetailView(topicID: topicID.toString()),
+              builder: (context) => ComplainAdminDetailView(topicID: topicID.toString()),
             ),
           );
         } else if (fnName == "taxAdmin") {
@@ -256,55 +236,67 @@ class _FrontPageViewState extends State<FrontPageView> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        backgroundColor: Color(0xFFF1F2F6),
         body: Container(
           child: _widgetOptions.elementAt(_selectedIndex),
         ),
-        bottomNavigationBar: BottomNavigationBar(
-          type: BottomNavigationBarType.fixed,
-          currentIndex: _selectedIndex,
-          elevation: 5,
-          unselectedItemColor: Colors.blue,
-          //selectedItemColor: Colors.orange,
-          selectedFontSize: 10,
-          unselectedFontSize: 10,
-          onTap: _onItemTapped,
-          items: <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
+        bottomNavigationBar: Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(image: AssetImage('assets/images/main/menu_bar.png'), fit: BoxFit.fill),
+          ),
+          child: BottomNavigationBar(
+            backgroundColor: Colors.transparent,
+            elevation: 0,
+            type: BottomNavigationBarType.fixed,
+            currentIndex: _selectedIndex,
+            unselectedItemColor: Colors.white,
+            selectedItemColor: Colors.white,
+            selectedFontSize: 10,
+            unselectedFontSize: 10,
+            onTap: _onItemTapped,
+            items: <BottomNavigationBarItem>[
+              BottomNavigationBarItem(
                 icon: Image.asset(
                   'assets/images/home.png',
+                  color: Colors.white,
                   height: 22,
                 ),
                 label: 'หน้าแรก',
-                backgroundColor: Colors.blue),
-            BottomNavigationBarItem(
-              icon: Image.asset(
-                'assets/images/newspaper.png',
-                height: 22,
               ),
-              label: 'ข่าว',
-            ),
-            BottomNavigationBarItem(
-              icon: Image.asset(
-                'assets/images/search_btn.png',
-                height: 46,
+              BottomNavigationBarItem(
+                icon: Image.asset(
+                  'assets/images/newspaper.png',
+                  color: Colors.white,
+                  height: 22,
+                ),
+                label: 'ข่าว',
               ),
-              label: '',
-            ),
-            BottomNavigationBarItem(
-              icon: Image.asset(
-                'assets/images/noti.png',
-                height: 22,
+              BottomNavigationBarItem(
+                icon: Image.asset(
+                  'assets/images/search_btn.png',
+                  color: Colors.white,
+                  height: 22,
+                ),
+                label: 'ค้นหา',
               ),
-              label: 'แจ้งเตือน',
-            ),
-            BottomNavigationBarItem(
-              icon: Image.asset(
-                'assets/images/list.png',
-                height: 22,
+              BottomNavigationBarItem(
+                icon: Image.asset(
+                  'assets/images/noti.png',
+                  color: Colors.white,
+                  height: 22,
+                ),
+                label: 'แจ้งเตือน',
               ),
-              label: 'เมนูอื่น',
-            ),
-          ],
+              BottomNavigationBarItem(
+                icon: Image.asset(
+                  'assets/images/list.png',
+                  color: Colors.white,
+                  height: 22,
+                ),
+                label: 'เมนูอื่น',
+              ),
+            ],
+          ),
         ),
       ),
     );

@@ -965,7 +965,54 @@ class _MenuViewState extends State<MenuView> {
                 ],
               ),
             ),
-
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => WebPageView(
+                    isHaveArrow: "1",
+                    title: "vdo",
+                    cmd: "vdo",
+                  ),
+                ),
+              );
+            },
+            child: Column(
+              children: [
+                Container(
+                  padding: EdgeInsets.only(left: 32),
+                  alignment: Alignment.centerLeft,
+                  color: Colors.transparent,
+                  height: 40,
+                  child: Row(
+                    children: [
+                      /*Image.asset(
+                        'assets/images/menu1.png',
+                        height: 22,
+                        width: 22,
+                      ),*/
+                      Image.asset(
+                        'assets/images/menu/m4.png',
+                        height: 18,
+                        width: 18,
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(left: 16),
+                        child: Text(
+                          "Vdo",
+                          style: TextStyle(
+                            fontSize: 15,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Divider(height: 1, indent: 8, endIndent: 8),
+              ],
+            ),
+          ),
           //title menu 3
           Container(
             padding: EdgeInsets.only(left: 16, right: 16),

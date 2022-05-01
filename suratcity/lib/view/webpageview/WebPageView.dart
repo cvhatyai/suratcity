@@ -114,6 +114,11 @@ class _WebPageViewState extends State<WebPageView> {
       setState(() {
         isUploadFile = true;
       });
+    } else if (widget.cmd == "vdo") {
+      url = "https://www.dailymotion.com/embed/video/x8a7afx?autoplay=1";
+      setState(() {
+        isUploadFile = true;
+      });
     } else if (widget.cmd == "garbage") {
       if (user.userclass == "member") {
         url = Info().baseUrl +
@@ -122,7 +127,6 @@ class _WebPageViewState extends State<WebPageView> {
             "&redirect=" +
             Info().baseUrl +
             "garbage/showListWeb?app=1";
-
         setState(() {
           isUploadFile = true;
         });

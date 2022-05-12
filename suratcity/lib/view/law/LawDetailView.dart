@@ -179,7 +179,7 @@ class _LawDetailViewState extends State<LawDetailView> {
                     child: Text(
                       subject,
                       style: TextStyle(
-                        color: Color(0xFF55C3FF),
+                        color: Color(0xFF7C1B6A),
                         fontSize: 18,
                       ),
                     ),
@@ -193,7 +193,7 @@ class _LawDetailViewState extends State<LawDetailView> {
                   child: Text(
                     subject,
                     style: TextStyle(
-                      color: Color(0xFF55C3FF),
+                      color: Color(0xFF7C1B6A),
                       fontSize: 18,
                     ),
                   ),
@@ -262,17 +262,10 @@ class _LawDetailViewState extends State<LawDetailView> {
                         ),
                     ],
                   ),
-                //รายละเอียด
-                if (detail != "")
-                  Container(
-                    alignment: Alignment.centerLeft,
-                    padding: EdgeInsets.all(16),
-                    child: Text(detail),
-                  ),
-                //เวลา
+                   //เวลา
                 Container(
                   alignment: Alignment.centerLeft,
-                  padding: EdgeInsets.only(left: 16, right: 16, bottom: 16),
+                  padding: EdgeInsets.only(left: 16, right: 16, bottom: 8),
                   child: Row(
                     children: [
                       Icon(
@@ -284,12 +277,20 @@ class _LawDetailViewState extends State<LawDetailView> {
                         create_date,
                         style: TextStyle(
                           color: Colors.blue,
-                          fontSize: 9,
+                          fontSize: 11,
                         ),
                       ),
                     ],
                   ),
                 ),
+               
+                //รายละเอียด
+                if (detail != "")
+                  Container(
+                    alignment: Alignment.centerLeft,
+                    padding: EdgeInsets.all(16),
+                    child: Text(detail),
+                  ),
                 //กดเพื่อรับชมวิดีโอ
                 if (url != "")
                   Container(

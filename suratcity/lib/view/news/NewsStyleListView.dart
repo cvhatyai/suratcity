@@ -115,7 +115,7 @@ class _NewsStyleListViewState extends State<NewsStyleListView> {
             icon: Icon(Icons.keyboard_arrow_down_outlined),
             iconSize: 24,
             elevation: 16,
-            style: TextStyle(color: Colors.blue),
+            style: TextStyle(color: Color(0xFF7C1B6A)),
             underline: Container(
               height: 1,
               color: Colors.grey,

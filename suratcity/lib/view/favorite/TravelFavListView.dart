@@ -93,13 +93,13 @@ class _TravelFavListViewState extends State<TravelFavListView> {
   }
 
   getTitle(fn_name) {
-    var title = "ที่เที่ยว";
+    var title = "เที่ยว";
     if (fn_name == "travelDetail") {
-      title = "ที่เที่ยว";
+      title = "เที่ยว";
     } else if (fn_name == "restDetail") {
       title = "พัก";
     } else if (fn_name == "eatDetail") {
-      title = "ที่กิน";
+      title = "กิน";
     } else if (fn_name == "shopDetail") {
       title = "ชอป";
     }

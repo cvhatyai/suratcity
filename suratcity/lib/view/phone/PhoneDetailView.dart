@@ -31,7 +31,7 @@ class _PhoneDetailViewState extends State<PhoneDetailView> {
   var subject = "";
   var position = "";
   var tel = "";
-  var display_image = Info().baseUrl + "images/app/nopic.png";
+  var display_image = Info().baseUrl + "images/nopic.png";
   var last_update = "";
 
   List<String> arrFav = [];
@@ -132,7 +132,7 @@ class _PhoneDetailViewState extends State<PhoneDetailView> {
     return SafeArea(
         child: Scaffold(
       appBar: AppBarView(
-        title: "เบอร์โทรสำคัญ",
+        title: "หมายเลขโทรศัพท์ฉุกเฉิน",
         isHaveArrow: widget.isHaveArrow,
       ),
       body: Container(
@@ -162,7 +162,10 @@ class _PhoneDetailViewState extends State<PhoneDetailView> {
                           ),
                         );
                       },
-                      child: Text("แจ้งแก้ไขข้อมูล")),
+                      child: Text(
+                        "แจ้งแก้ไขข้อมูล",
+                        style: TextStyle(fontFamily: 'Kanit'),
+                      )),
                 ),
 
                 Container(
@@ -182,6 +185,7 @@ class _PhoneDetailViewState extends State<PhoneDetailView> {
                                   ? 'assets/images/travel/fav_selected.png'
                                   : 'assets/images/travel/fav.png',
                               height: 24,
+                              color: Color(0xFF8C1F78),
                             ),
                             padding: EdgeInsets.all(8),
                           ),
@@ -200,7 +204,7 @@ class _PhoneDetailViewState extends State<PhoneDetailView> {
                                     decoration: BoxDecoration(
                                       shape: BoxShape.circle,
                                       border: Border.all(
-                                        color: Colors.blueAccent,
+                                        color: Color(0xFF8C1F78),
                                         width: 3,
                                       ),
                                     ),
@@ -224,6 +228,7 @@ class _PhoneDetailViewState extends State<PhoneDetailView> {
                                           subject,
                                           style: TextStyle(
                                             fontWeight: FontWeight.bold,
+                                            fontFamily: 'Kanit',
                                             fontSize: 22,
                                           ),
                                         ),
@@ -233,7 +238,11 @@ class _PhoneDetailViewState extends State<PhoneDetailView> {
                                             children: [
                                               Flexible(
                                                 child: Container(
-                                                  child: Text("โทร : " + tel),
+                                                  child: Text(
+                                                    "โทร : " + tel,
+                                                    style: TextStyle(
+                                                        fontFamily: 'Kanit'),
+                                                  ),
                                                 ),
                                               ),
                                               GestureDetector(
@@ -243,7 +252,10 @@ class _PhoneDetailViewState extends State<PhoneDetailView> {
                                                 child: Container(
                                                   margin:
                                                       EdgeInsets.only(left: 8),
-                                                  child: Icon(Icons.phone),
+                                                  child: Icon(
+                                                    Icons.phone,
+                                                    color: Color(0xFF8C1F78),
+                                                  ),
                                                 ),
                                               ),
                                             ],
@@ -257,7 +269,10 @@ class _PhoneDetailViewState extends State<PhoneDetailView> {
                             //datetime
                             Container(
                               margin: EdgeInsets.all(16),
-                              child: Text(last_update),
+                              child: Text(
+                                last_update,
+                                style: TextStyle(fontFamily: 'Kanit'),
+                              ),
                             ),
                           ],
                         ),

@@ -131,7 +131,7 @@ class _FollowComplainListViewState extends State<FollowComplainListView> {
                             Radius.circular(9.0),
                           ),
                           border: Border.all(
-                            color: Colors.blue,
+                            color: Color(0xFF8C1F78),
                             width: 1.0,
                           ),
                           color: Colors.white,
@@ -152,7 +152,7 @@ class _FollowComplainListViewState extends State<FollowComplainListView> {
                                     margin: EdgeInsets.only(top: 12),
                                     child: Icon(
                                       Icons.circle,
-                                      color: Colors.blue,
+                                      color: Color(0xFF8C1F78),
                                       size: 12,
                                     ),
                                   ),

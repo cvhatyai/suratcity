@@ -149,7 +149,7 @@ class _ComplainDetailViewState extends State<ComplainDetailView> {
         Radius.circular(9.0),
       ),
       border: Border.all(
-        color: Colors.blue,
+        color: Color(0xFF8C1F78),
         width: 1.0,
       ),
       color: Colors.white,
@@ -283,6 +283,10 @@ class _ComplainDetailViewState extends State<ComplainDetailView> {
                         Container(
                           alignment: Alignment.centerRight,
                           child: ElevatedButton(
+                            style: ButtonStyle(
+                              backgroundColor: MaterialStateProperty.all<Color>(
+                                  Color(0xFF8C1F78)),
+                            ),
                             onPressed: () {
                               var urlMap =
                                   "https://www.google.com/maps/dir/?api=1&destination=" +

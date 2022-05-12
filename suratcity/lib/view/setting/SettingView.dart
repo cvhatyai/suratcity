@@ -81,7 +81,7 @@ class _SettingViewState extends State<SettingView> {
   var userGoogleID = "";
   var platform = "ios";
 
-  var userAvatar = Info().baseUrl + "images/nopic-personal.jpg";
+  var userAvatar = Info().baseUrl + "images/nopic-personal.png";
 
   bool isLoadingPath = false;
   String path;
@@ -858,7 +858,7 @@ class _SettingViewState extends State<SettingView> {
                                 suffixIcon: IconButton(
                                   icon: Icon(
                                     Icons.edit,
-                                    color: Colors.blue,
+                                    color: Color(0xFF8C1F78),
                                   ),
                                 ),
                               ),
@@ -896,7 +896,7 @@ class _SettingViewState extends State<SettingView> {
                                     IconButton(
                                       icon: Icon(
                                         Icons.edit,
-                                        color: Colors.blue,
+                                        color: Color(0xFF8C1F78),
                                       ),
                                     ),
                                   ],
@@ -940,7 +940,7 @@ class _SettingViewState extends State<SettingView> {
                                 suffixIcon: IconButton(
                                   icon: Icon(
                                     Icons.edit,
-                                    color: Colors.blue,
+                                    color: Color(0xFF8C1F78),
                                   ),
                                 ),
                               ),
@@ -975,7 +975,7 @@ class _SettingViewState extends State<SettingView> {
                                 child: IconButton(
                                   icon: Icon(
                                     Icons.edit,
-                                    color: Colors.blue,
+                                    color: Color(0xFF8C1F78),
                                   ),
                                 ),
                               ),
@@ -1288,6 +1288,10 @@ class _SettingViewState extends State<SettingView> {
                       children: [
                         Expanded(child: Text("การแจ้งเตือน")),
                         Switch(
+                          activeColor: Color(0xFF8C1F78),
+                          activeTrackColor: Color(0xFF8C1F78).withOpacity(0.7),
+                          // inactiveTrackColor: Color(0xFF8C1F78).withOpacity(0.5),
+                          inactiveThumbColor: Color(0xFF8C1F78),
                           value: isSwitched,
                           onChanged: (value) {
                             setState(() {
@@ -1325,7 +1329,7 @@ class _SettingViewState extends State<SettingView> {
                     child: Ink(
                       decoration: BoxDecoration(
                         gradient: LinearGradient(
-                          colors: [Colors.lightBlue, Colors.blue],
+                          colors: [Color(0xFF8C1F78), Color(0xFF8C1F78)],
                         ),
                         borderRadius: BorderRadius.circular(9),
                       ),
@@ -1338,6 +1342,9 @@ class _SettingViewState extends State<SettingView> {
                         ),
                       ),
                     ),
+                  ),
+                  SizedBox(
+                    height: 20,
                   ),
                 ],
               ),

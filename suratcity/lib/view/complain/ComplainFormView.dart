@@ -467,6 +467,7 @@ class _ComplainFormViewState extends State<ComplainFormView> {
                     Image.network(
                       widget.displayImage,
                       height: 36,
+                      color: Color(0xFF8C1F78),
                     ),
                     Expanded(
                       child: Container(
@@ -475,6 +476,8 @@ class _ComplainFormViewState extends State<ComplainFormView> {
                           widget.subjectTitle,
                           style: TextStyle(
                             fontSize: 22,
+                            fontFamily: 'Kanit',
+                            color: Color(0xFF8C1F78),
                           ),
                         ),
                       ),
@@ -546,7 +549,7 @@ class _ComplainFormViewState extends State<ComplainFormView> {
                 ElevatedButton(
                   style: ButtonStyle(
                     backgroundColor:
-                        MaterialStateProperty.all<Color>(Color(0xFF65A5D8)),
+                        MaterialStateProperty.all<Color>(Color(0xFF8C1F78)),
                   ),
                   onPressed: () {
                     showPlacePicker();
@@ -579,7 +582,7 @@ class _ComplainFormViewState extends State<ComplainFormView> {
                       borderRadius: BorderRadius.all(
                         Radius.circular(9.0),
                       ),
-                      color: Color(0xFFb2d5f1),
+                      color: Color(0xFF8C1F78).withOpacity(0.7),
                     ),
                     child: Row(
                       children: [
@@ -634,7 +637,7 @@ class _ComplainFormViewState extends State<ComplainFormView> {
                             margin: EdgeInsets.symmetric(horizontal: 2),
                             padding: EdgeInsets.all(16),
                             decoration: BoxDecoration(
-                              color: Color(0xFF65A5D8),
+                              color: Color(0xFF8C1F78),
                               borderRadius: BorderRadius.all(
                                 Radius.circular(9.0),
                               ),
@@ -673,7 +676,7 @@ class _ComplainFormViewState extends State<ComplainFormView> {
                             margin: EdgeInsets.symmetric(horizontal: 2),
                             padding: EdgeInsets.all(16),
                             decoration: BoxDecoration(
-                              color: Color(0xFF65A5D8),
+                              color: Color(0xFF8C1F78),
                               borderRadius: BorderRadius.all(
                                 Radius.circular(9.0),
                               ),
@@ -711,7 +714,7 @@ class _ComplainFormViewState extends State<ComplainFormView> {
                             margin: EdgeInsets.symmetric(horizontal: 2),
                             padding: EdgeInsets.all(16),
                             decoration: BoxDecoration(
-                              color: Color(0xFF65A5D8),
+                              color: Color(0xFF8C1F78),
                               borderRadius: BorderRadius.all(
                                 Radius.circular(9.0),
                               ),
@@ -945,7 +948,7 @@ class _ComplainFormViewState extends State<ComplainFormView> {
                     },
                     style: ButtonStyle(
                       backgroundColor:
-                          MaterialStateProperty.all<Color>(Color(0xFFFFA143)),
+                          MaterialStateProperty.all<Color>(Color(0xFFFFE73C)),
                       shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                         RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(18),
@@ -954,7 +957,8 @@ class _ComplainFormViewState extends State<ComplainFormView> {
                     ),
                     child: Container(
                       padding: EdgeInsets.symmetric(horizontal: 16),
-                      child: Text("ส่งเรื่องร้องเรียน"),
+                      child: Text("ส่งเรื่องร้องเรียน",
+                          style: TextStyle(color: Colors.black)),
                     ),
                   ),
                 )

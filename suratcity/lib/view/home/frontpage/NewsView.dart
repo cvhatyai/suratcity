@@ -178,7 +178,7 @@ class _NewsViewState extends State<NewsView> {
                                               data[i]["create_date"],
                                               style: TextStyle(
                                                 fontSize: 10,
-                                                color: Color(0xFF6399C4),
+                                                color: Color(0xFF7C1B6A),
                                               ),
                                             ),
                                           ],

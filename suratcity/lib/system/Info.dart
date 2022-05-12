@@ -1,5 +1,5 @@
-final String _base_url = "http://suratcity.thailocallink.com/";
-final String _base_url_api = "http://suratcity.thailocallink.com/app_api_v1";
+final String _base_url = "https://suratcity.thailocallink.com/";
+final String _base_url_api = "https://suratcity.thailocallink.com/app_api_v1";
 
 class Info {
   String baseUrl = _base_url;
@@ -76,6 +76,13 @@ class Info {
   String cancelContectUser = _base_url_api + '/cancelContectUser';
   String weatherApi = 'https://api.cityvariety.com/weather/json.php?id=1608133';
   String weatherListApi = 'https://api.cityvariety.com/weather/json.php?type=forecast&fnList=tempList&id=1608133';
+  
+  String cateListPity = _base_url_api + '/cateListPity';
+  String insertMarketAndProduct = _base_url_api + '/insertMarketAndProduct';
+  String getShopDetail = _base_url_api + '/getShopDetail';
+  String marketList = _base_url_api + '/marketList';
+  String marketDetail = _base_url_api + '/marketDetail';
+  String nearMe = _base_url_api + '/nearMe';
 
   Info() : super();
 }

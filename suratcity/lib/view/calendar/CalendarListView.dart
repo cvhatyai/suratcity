@@ -23,6 +23,11 @@ class CalendarListView extends StatefulWidget {
 class _CalendarListViewState extends State<CalendarListView> {
   var userFullname;
   var uid;
+  List<Color> boxColors = [
+    Color(0xFFF5FFF5),
+    Color(0xFFF8F5E7),
+    Color(0xFFFFECFC),
+  ];
 
   @override
   void initState() {
@@ -108,7 +113,7 @@ class _CalendarListViewState extends State<CalendarListView> {
     return SafeArea(
         child: Scaffold(
       appBar: AppBarView(
-        title: "กิจกรรมห้ามพลาด",
+        title: "กิจกรรมที่กำลังจะมาถึง",
         isHaveArrow: widget.isHaveArrow,
       ),
       body: Container(
@@ -209,7 +214,7 @@ class _CalendarListViewState extends State<CalendarListView> {
                                           borderRadius:
                                               BorderRadius.circular(8),
                                           border: Border.all(
-                                              color: Colors.blueAccent,
+                                              color: Color(0xFF8C1F78),
                                               width: 4),
                                         ),
                                       ),
@@ -238,10 +243,11 @@ class _CalendarListViewState extends State<CalendarListView> {
                                         Radius.circular(9.0),
                                       ),
                                       border: Border.all(color: Colors.black12),
-                                      color: Colors.white,
+                                      color: boxColors[index % 3],
                                     ),
                                     margin: EdgeInsets.symmetric(horizontal: 8),
-                                    padding: EdgeInsets.all(6),
+                                    padding: EdgeInsets.only(
+                                        left: 8, right: 8, top: 12),
                                     child: Row(
                                       children: [
                                         Expanded(
@@ -253,7 +259,12 @@ class _CalendarListViewState extends State<CalendarListView> {
                                                 data[index]["subject"],
                                                 overflow: TextOverflow.ellipsis,
                                                 maxLines: 2,
-                                                style: TextStyle(height: 1),
+                                                style: TextStyle(
+                                                  height: 1,
+                                                  fontSize: 16,
+                                                  fontFamily: 'Kanit',
+                                                  color: Color(0xFF8C1F78),
+                                                ),
                                               ),
                                               Container(
                                                 margin: EdgeInsets.only(top: 4),
@@ -261,8 +272,9 @@ class _CalendarListViewState extends State<CalendarListView> {
                                                   data[index]["location"],
                                                   overflow:
                                                       TextOverflow.ellipsis,
-                                                  style:
-                                                      TextStyle(fontSize: 10),
+                                                  style: TextStyle(
+                                                      color: Color(0xFF505050),
+                                                      fontSize: 14),
                                                 ),
                                               ),
                                             ],

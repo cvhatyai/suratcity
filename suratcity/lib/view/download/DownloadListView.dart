@@ -106,7 +106,7 @@ class _DownloadListViewState extends State<DownloadListView> {
             icon: Icon(Icons.keyboard_arrow_down_outlined),
             iconSize: 24,
             elevation: 16,
-            style: TextStyle(color: Colors.blue),
+            style: TextStyle(color: Color(0xFF7C1B6A)),
             underline: Container(
               height: 1,
               color: Colors.grey,
@@ -206,7 +206,14 @@ class _DownloadListViewState extends State<DownloadListView> {
                             child: Container(
                               margin: EdgeInsets.only(top: 4),
                               child: Card(
-                                color: Color(0xFFF1F9FF),
+                                color: Color(0xFFFFFEE8),
+                                shape: RoundedRectangleBorder(
+                                  side: BorderSide(
+                                    color: Color(0xFFE6E6E6),
+                                    width: 1,
+                                  ),
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
                                 child: ConstrainedBox(
                                   constraints: new BoxConstraints(
                                     minHeight:
@@ -218,21 +225,21 @@ class _DownloadListViewState extends State<DownloadListView> {
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
                                         Expanded(
-                                          flex: 1,
-                                          child: Icon(
-                                            Icons.circle,
-                                            color: Color(0xFF707070),
-                                            size: 12,
-                                          ),
-                                        ),
-                                        Expanded(
                                           flex: 10,
                                           child: Container(
                                             padding: EdgeInsets.all(4),
+                                            margin: EdgeInsets.only(left: 15),
                                             child: Text(
                                               data[index]["subject"],
+                                              style: TextStyle(
+                                                  fontFamily: 'Kanit',
+                                                  fontSize: 17),
                                             ),
                                           ),
+                                        ),
+                                        Icon(
+                                          Icons.arrow_forward_ios,
+                                          color: Color(0xFF8C1F78),
                                         ),
                                       ],
                                     ),

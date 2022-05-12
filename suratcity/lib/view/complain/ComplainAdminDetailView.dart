@@ -196,7 +196,7 @@ class _ComplainAdminDetailViewState extends State<ComplainAdminDetailView> {
             icon: Icon(Icons.keyboard_arrow_down_outlined),
             iconSize: 24,
             elevation: 16,
-            style: TextStyle(color: Colors.blue),
+            style: TextStyle(color: Color(0xFF7C1B6A)),
             underline: Container(
               height: 1,
               color: Colors.grey,
@@ -264,7 +264,7 @@ class _ComplainAdminDetailViewState extends State<ComplainAdminDetailView> {
             icon: Icon(Icons.keyboard_arrow_down_outlined),
             iconSize: 24,
             elevation: 16,
-            style: TextStyle(color: Colors.blue),
+            style: TextStyle(color: Color(0xFF7C1B6A)),
             underline: Container(
               height: 1,
               color: Colors.grey,
@@ -412,7 +412,7 @@ class _ComplainAdminDetailViewState extends State<ComplainAdminDetailView> {
         Radius.circular(9.0),
       ),
       border: Border.all(
-        color: Colors.blue,
+        color: Color(0xFF8C1F78),
         width: 1.0,
       ),
       color: Colors.white,
@@ -724,6 +724,10 @@ class _ComplainAdminDetailViewState extends State<ComplainAdminDetailView> {
                         Container(
                           alignment: Alignment.centerRight,
                           child: ElevatedButton(
+                            style: ButtonStyle(
+                              backgroundColor: MaterialStateProperty.all<Color>(
+                                  Color(0xFF8C1F78)),
+                            ),
                             onPressed: () {
                               var urlMap =
                                   "https://www.google.com/maps/dir/?api=1&destination=" +
@@ -827,7 +831,7 @@ class _ComplainAdminDetailViewState extends State<ComplainAdminDetailView> {
                   width: MediaQuery.of(context).size.width,
                   height: 40,
                   padding: EdgeInsets.symmetric(horizontal: 8),
-                  color: Colors.blue,
+                  color: Color(0xFF8C1F78),
                   child: Text(
                     "สำหรับเจ้าหน้าที่",
                     style: TextStyle(
@@ -1084,6 +1088,11 @@ class _ComplainAdminDetailViewState extends State<ComplainAdminDetailView> {
                             Expanded(child: Text("รูปภาพก่อนดำเนินการ")),
                             Expanded(
                               child: ElevatedButton(
+                                style: ButtonStyle(
+                                  backgroundColor:
+                                      MaterialStateProperty.all<Color>(
+                                          Color(0xFF8C1F78)),
+                                ),
                                 onPressed: () {
                                   _openFileImagesExplorer();
                                 },
@@ -1195,6 +1204,11 @@ class _ComplainAdminDetailViewState extends State<ComplainAdminDetailView> {
                             Expanded(child: Text("รูปภาพหลังดำเนินการ")),
                             Expanded(
                               child: ElevatedButton(
+                                style: ButtonStyle(
+                                  backgroundColor:
+                                      MaterialStateProperty.all<Color>(
+                                          Color(0xFF8C1F78)),
+                                ),
                                 onPressed: () {
                                   _openFileImagesExplorer2();
                                 },
@@ -1299,6 +1313,10 @@ class _ComplainAdminDetailViewState extends State<ComplainAdminDetailView> {
                 Container(
                   width: MediaQuery.of(context).size.width * 0.9,
                   child: ElevatedButton(
+                    style: ButtonStyle(
+                      backgroundColor:
+                          MaterialStateProperty.all<Color>(Color(0xFF8C1F78)),
+                    ),
                     onPressed: () {
                       updateComplain();
                     },

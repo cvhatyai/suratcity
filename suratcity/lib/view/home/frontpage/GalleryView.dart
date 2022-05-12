@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:cvapp/view/video/VideoListView.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:cvapp/model/AllList.dart';
@@ -9,9 +10,11 @@ import 'package:cvapp/view/calendar/CalendarListView.dart';
 import 'package:cvapp/view/gallery/GalleryDetailView.dart';
 import 'package:cvapp/view/gallery/GalleryListView.dart';
 import 'package:http/http.dart' as http;
+import 'package:url_launcher/url_launcher.dart';
 
 var data;
 var data2;
+var data3;
 
 class GalleryView extends StatefulWidget {
   @override
@@ -24,6 +27,7 @@ class _GalleryViewState extends State<GalleryView> {
     // TODO: implement initState
     super.initState();
     getNewsList();
+    getVdoList();
     getActivtyList();
   }
 
@@ -87,9 +91,66 @@ class _GalleryViewState extends State<GalleryView> {
     EasyLoading.dismiss();
   }
 
+  //vdo
+  getVdoList() async {
+    Map _map = {};
+    _map.addAll({
+      "rows": "6",
+    });
+    EasyLoading.show(status: 'loading...');
+    print("_map : " + _map.toString());
+    var body = json.encode(_map);
+    return postVdoList(http.Client(), body, _map);
+  }
+
+  Future<List<AllList>> postVdoList(
+      http.Client client, jsonMap, Map map) async {
+    final response = await client.post(Uri.parse(Info().videoList),
+        headers: {"Content-Type": "application/json"}, body: jsonMap);
+    parseVdoList(response.body);
+  }
+
+  List<AllList> parseVdoList(String responseBody) {
+    data3 = [];
+    data3.addAll(json.decode(responseBody));
+
+    final parsed = json.decode(responseBody).cast<Map<String, dynamic>>();
+    parsed.map<AllList>((json) => AllList.fromJson(json)).toList();
+    setState(() {});
+    EasyLoading.dismiss();
+  }
+
+  Future<void> _launchInBrowser(String url) async {
+    if (await canLaunch(url)) {
+      await launch(
+        url,
+        forceSafariVC: false,
+        forceWebView: false,
+        headers: <String, String>{'my_header_key': 'my_header_value'},
+      );
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
+
+  updateVideoHit(id) {
+    Map _map = {};
+    _map.addAll({
+      "id": id,
+    });
+    var body = json.encode(_map);
+    return postVideoHit(http.Client(), body, _map);
+  }
+
+  Future<List<AllList>> postVideoHit(
+      http.Client client, jsonMap, Map map) async {
+    await client.post(Uri.parse(Info().videoDetail),
+        headers: {"Content-Type": "application/json"}, body: jsonMap);
+  }
+
   //tab
   Color tabTextColorNormal = Color(0xFF707070);
-  Color tabTextColorActive = Color(0xFF4283C4);
+  Color tabTextColorActive = Color(0xFF8C1F78);
   Color indicatorTabColorNormal = Color(0xFFFFFFFF);
   Color indicatorTabColorActive = Color(0xFFFCC402);
   bool isFirstTabActivated = true;
@@ -137,6 +198,7 @@ class _GalleryViewState extends State<GalleryView> {
                                     ? tabTextColorActive
                                     : tabTextColorNormal,
                                 fontSize: 16,
+                                fontFamily: 'Kanit',
                               ),
                             ),
                           ),
@@ -163,7 +225,7 @@ class _GalleryViewState extends State<GalleryView> {
                         children: [
                           Container(
                             child: Text(
-                              "กิจกรรมห้ามพลาด",
+                              "วีดีโอ",
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
                               style: TextStyle(
@@ -172,6 +234,7 @@ class _GalleryViewState extends State<GalleryView> {
                                     ? tabTextColorActive
                                     : tabTextColorNormal,
                                 fontSize: 16,
+                                fontFamily: 'Kanit',
                               ),
                             ),
                           ),
@@ -186,6 +249,9 @@ class _GalleryViewState extends State<GalleryView> {
                         ],
                       ),
                     ),
+                  ),
+                  Expanded(
+                    child: Container(),
                   ),
                 ],
               ),
@@ -215,9 +281,9 @@ class _GalleryViewState extends State<GalleryView> {
                                         );
                                       },
                                       child: Container(
-                                        width:
+                                        /*width:
                                             MediaQuery.of(context).size.width *
-                                                0.5,
+                                                0.5,*/
                                         margin:
                                             EdgeInsets.symmetric(horizontal: 4),
                                         child: Column(
@@ -239,9 +305,8 @@ class _GalleryViewState extends State<GalleryView> {
                                               ),
                                               height: 135,
                                               child: Image.network(
-                                                data[i]["display_image"],
-                                                fit: BoxFit.fill,
-                                              ),
+                                                  data[i]["display_image"],
+                                                  fit: BoxFit.fill),
                                             ),
                                             Container(
                                               decoration: BoxDecoration(
@@ -283,7 +348,7 @@ class _GalleryViewState extends State<GalleryView> {
                                                       style: TextStyle(
                                                         fontSize: 10,
                                                         color:
-                                                            Color(0xFF6399C4),
+                                                            Color(0xFF7C1B6A),
                                                       ),
                                                     ),
                                                   ],
@@ -326,6 +391,134 @@ class _GalleryViewState extends State<GalleryView> {
                     ],
                   )
                 : Column(
+                    children: [
+                      Container(
+                        padding: EdgeInsets.all(8),
+                        height: 240,
+                        margin: EdgeInsets.only(top: 8),
+                        child: (data3 != null && data3.length != 0)
+                            ? ListView(
+                                scrollDirection: Axis.horizontal,
+                                children: [
+                                  for (var i = 0; i < data3.length; i++)
+                                    GestureDetector(
+                                      onTap: () {
+                                        _launchInBrowser(data3[i]["link"]);
+                                        updateVideoHit(data3[i]["id"]);
+                                      },
+                                      child: Container(
+                                        width:
+                                            MediaQuery.of(context).size.width *
+                                                0.5,
+                                        margin:
+                                            EdgeInsets.symmetric(horizontal: 4),
+                                        child: Column(
+                                          children: [
+                                            Container(
+                                              decoration: BoxDecoration(
+                                                boxShadow: [
+                                                  BoxShadow(
+                                                    color: Colors.grey
+                                                        .withOpacity(0.5),
+                                                    spreadRadius: 1,
+                                                    blurRadius: 7,
+                                                    offset: Offset(
+                                                      0,
+                                                      1,
+                                                    ), // changes position of shadow
+                                                  ),
+                                                ],
+                                              ),
+                                              height: 135,
+                                              child: Image.network(
+                                                data3[i]["display_image"],
+                                                fit: BoxFit.fill,
+                                              ),
+                                            ),
+                                            Container(
+                                              decoration: BoxDecoration(
+                                                color: Colors.white,
+                                                boxShadow: [
+                                                  BoxShadow(
+                                                    color: Colors.grey
+                                                        .withOpacity(0.5),
+                                                    spreadRadius: 1,
+                                                    blurRadius: 7,
+                                                    offset: Offset(
+                                                      0,
+                                                      1,
+                                                    ), // changes position of shadow
+                                                  ),
+                                                ],
+                                              ),
+                                              width: MediaQuery.of(context)
+                                                      .size
+                                                      .width *
+                                                  0.5,
+                                              height: 80,
+                                              child: Container(
+                                                padding: EdgeInsets.all(8),
+                                                child: Column(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: [
+                                                    Expanded(
+                                                      child: Text(
+                                                        data3[i]["subject"],
+                                                        maxLines: 2,
+                                                        overflow: TextOverflow
+                                                            .ellipsis,
+                                                      ),
+                                                    ),
+                                                    Text(
+                                                      data3[i]["create_date"],
+                                                      style: TextStyle(
+                                                        fontSize: 10,
+                                                        color:
+                                                            Color(0xFF7C1B6A),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                ],
+                              )
+                            : Container(
+                                height: MediaQuery.of(context).size.height,
+                                width: MediaQuery.of(context).size.width,
+                                child: Center(child: Text("ไม่มีข้อมูล")),
+                              ),
+                      ),
+                      if (data3 != null && data3.length != 0)
+                        Container(
+                          padding: EdgeInsets.all(8),
+                          alignment: Alignment.centerRight,
+                          child: GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => VideoListView(
+                                    isHaveArrow: "1",
+                                  ),
+                                ),
+                              );
+                            },
+                            child: Image.asset(
+                              'assets/images/main/more.png',
+                              height: 24,
+                            ),
+                          ),
+                        )
+                    ],
+                  )
+
+            /*: Column(
                     children: [
                       Container(
                         padding: EdgeInsets.all(8),
@@ -569,6 +762,7 @@ class _GalleryViewState extends State<GalleryView> {
                         )
                     ],
                   )
+          */
           ],
         ),
       ),

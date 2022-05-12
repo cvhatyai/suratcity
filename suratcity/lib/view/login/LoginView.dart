@@ -31,7 +31,7 @@ GoogleSignIn _googleSignIn = GoogleSignIn(
 
 class SignInLine {
   void lineSDKInit() async {
-    await LineSDK.instance.setup("1655954746").then((_) {
+    await LineSDK.instance.setup("1657127329").then((_) {
       print("LineSDK is Prepared");
     });
   }
@@ -655,7 +655,7 @@ class _LoginViewState extends State<LoginView> {
                   child: ElevatedButton(
                     style: ButtonStyle(
                       backgroundColor:
-                          MaterialStateProperty.all<Color>(Color(0xFF65A5D8)),
+                          MaterialStateProperty.all<Color>(Color(0xFF8C1F78)),
                     ),
                     onPressed: () {
                       setState(() {
@@ -722,7 +722,7 @@ class _LoginViewState extends State<LoginView> {
                       children: [
                         Expanded(
                           child: Divider(
-                            color: Color(0xFF65A5D8),
+                            color: Color(0xFF8C1F78),
                           ),
                         ),
                         Container(
@@ -731,7 +731,7 @@ class _LoginViewState extends State<LoginView> {
                         ),
                         Expanded(
                           child: Divider(
-                            color: Color(0xFF65A5D8),
+                            color: Color(0xFF8C1F78),
                           ),
                         ),
                       ],

@@ -71,16 +71,45 @@ class _ComplainCateListViewState extends State<ComplainCateListView> {
 
   BoxDecoration boxWhite() {
     return BoxDecoration(
-      borderRadius: BorderRadius.all(
-        Radius.circular(9.0),
-      ),
       border: Border.all(
         color: Colors.white,
         width: 1.0,
       ),
       color: Color(0xFFF5F6FA),
+      borderRadius: BorderRadius.all(
+        Radius.circular(9.0),
+      ),
+      boxShadow: [
+        BoxShadow(
+          color: Colors.grey.withOpacity(0.5),
+          spreadRadius: 3,
+          blurRadius: 7,
+          offset: Offset(0, 3), // changes position of shadow
+        ),
+      ],
     );
   }
+
+  List<Color> boxColors = [
+    Color(0xFFCC141A),
+    Color(0xFFC440B7),
+    Color(0xFFA65CE7),
+    Color(0xFF5CC1E7),
+    Color(0xFF22925B),
+    Color(0xFF6AB92D),
+    Color(0xFFD2AB2C),
+    Color(0xFFFC5D17),
+    Color(0xFFCC141A),
+    Color(0xFFC440B7),
+    Color(0xFFA65CE7),
+    Color(0xFF5CC1E7),
+    Color(0xFF22925B),
+    Color(0xFF6AB92D),
+    Color(0xFFD2AB2C),
+    Color(0xFFFC5D17),
+    Color(0xFFCC141A),
+    Color(0xFFC440B7),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -104,7 +133,18 @@ class _ComplainCateListViewState extends State<ComplainCateListView> {
                 color: Color(0xFFFFFFFF),
                 margin: EdgeInsets.symmetric(vertical: 16),
                 padding: EdgeInsets.only(left: 16, right: 16),
-                child: Text("เลือกหมวดหมู่เพื่อแจ้งเรื่อง"),
+                child: Center(
+                    child: Container(
+                        decoration: BoxDecoration(
+                          color: Color(0xFFFFF600),
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(17.0),
+                          ),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text("เลือกหมวดหมู่เพื่อแจ้งเรื่อง"),
+                        ))),
                 alignment: Alignment.centerLeft,
               ),
               Container(
@@ -145,33 +185,45 @@ class _ComplainCateListViewState extends State<ComplainCateListView> {
                             child: Center(
                               child: Container(
                                 decoration: boxWhite(),
-                                margin: EdgeInsets.only(
-                                  left: 4,
-                                  right: 4,
-                                  top: 8,
-                                ),
-                                //decoration: boxWhite(),
+                                margin: EdgeInsets.all(4),
                                 child: Column(
                                   children: [
-                                    Container(
-                                      padding: EdgeInsets.all(16),
-                                      child: Image.network(
-                                        data[index]["display_image"],
-                                        height: 24,
+                                    Expanded(
+                                      flex: 6,
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.only(
+                                            topLeft: Radius.circular(10.0),
+                                            topRight: Radius.circular(10.0),
+                                          ),
+                                          color: boxColors[index],
+                                        ),
+                                        width: double.infinity,
+                                        padding: EdgeInsets.all(6),
+                                        child: Image.network(
+                                          data[index]["display_image"],
+                                          color: Colors.white,
+                                          fit: BoxFit.fitHeight,
+                                          alignment: FractionalOffset.topCenter,
+                                        ),
                                       ),
                                     ),
-                                    Container(
-                                      width: MediaQuery.of(context).size.width *
-                                          0.4,
-                                      alignment: Alignment.center,
-                                      padding: EdgeInsets.all(6),
-                                      child: Text(
-                                        data[index]["subject"],
-                                        maxLines: 2,
-                                        textAlign: TextAlign.center,
-                                        overflow: TextOverflow.ellipsis,
-                                        style: TextStyle(
-                                          fontSize: 11,
+                                    Expanded(
+                                      flex: 4,
+                                      child: Container(
+                                        width:
+                                            MediaQuery.of(context).size.width *
+                                                0.4,
+                                        alignment: Alignment.center,
+                                        padding: EdgeInsets.all(4),
+                                        child: Text(
+                                          data[index]["subject"],
+                                          maxLines: 2,
+                                          textAlign: TextAlign.center,
+                                          overflow: TextOverflow.ellipsis,
+                                          style: TextStyle(
+                                            fontSize: 11.5,
+                                          ),
                                         ),
                                       ),
                                     ),

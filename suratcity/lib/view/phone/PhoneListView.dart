@@ -88,7 +88,7 @@ class _PhoneListViewState extends State<PhoneListView> {
     return SafeArea(
         child: Scaffold(
       appBar: AppBarView(
-        title: "เบอร์โทรสำคัญ",
+        title: "หมายเลขโทรศัพท์ฉุกเฉิน",
         isHaveArrow: widget.isHaveArrow,
       ),
       body: Container(
@@ -107,7 +107,8 @@ class _PhoneListViewState extends State<PhoneListView> {
                     overflow: TextOverflow.ellipsis,
                     maxLines: 1,
                     style: TextStyle(
-                      fontSize: 20,
+                      fontSize: 22,
+                      fontFamily: 'Kanit',
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -126,44 +127,74 @@ class _PhoneListViewState extends State<PhoneListView> {
                       );
                     },
                     child: Container(
-                      color: Colors.white,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(9.0),
+                        ),
+                        border: Border.all(
+                          color: Colors.white,
+                          width: 1.0,
+                        ),
+                        color: Colors.white,
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.5),
+                            spreadRadius: 3,
+                            blurRadius: 7,
+                            offset: Offset(0, 3), // changes position of shadow
+                          ),
+                        ],
+                      ),
                       child: Column(
                         children: [
-                          Row(
-                            children: [
-                              CircleAvatar(
-                                radius: 20,
-                                backgroundImage: NetworkImage(
-                                  element["display_image"],
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Row(
+                              children: [
+                                /*CircleAvatar(
+                                  radius: 20,
+                                  backgroundImage: NetworkImage(
+                                    element["display_image"],
+                                  ),
+                                ),*/
+                                Icon(
+                                  Icons.phone,
+                                  color: Color(0xFF8C1F78),
                                 ),
-                              ),
-                              Expanded(
-                                child: Container(
-                                  padding: EdgeInsets.all(8),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        element["subject"],
-                                        overflow: TextOverflow.ellipsis,
-                                        maxLines: 1,
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.bold,
+                                Expanded(
+                                  child: Container(
+                                    padding: EdgeInsets.only(left: 10),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          element["subject"],
+                                          overflow: TextOverflow.ellipsis,
+                                          maxLines: 1,
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontFamily: 'Kanit',
+                                            fontSize: 18,
+                                          ),
                                         ),
-                                      ),
-                                      Text(
-                                        element["tel"],
-                                        overflow: TextOverflow.ellipsis,
-                                        maxLines: 1,
-                                      ),
-                                    ],
+                                        Text(
+                                          element["tel"],
+                                          overflow: TextOverflow.ellipsis,
+                                          maxLines: 1,
+                                          style: TextStyle(
+                                            fontFamily: 'Kanit',
+                                            fontSize: 16,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
-                          Divider(),
+                          // Divider(),
                         ],
                       ),
                     ),

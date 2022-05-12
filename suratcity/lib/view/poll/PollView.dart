@@ -166,7 +166,7 @@ class _PollViewState extends State<PollView> {
                         alignment: Alignment.centerRight,
                         child: Icon(
                           Icons.cancel_sharp,
-                          color: Color(0xFF1084F8),
+                          color: Color(0xFF8C1F78),
                           size: 48,
                         ),
                       ),
@@ -204,7 +204,7 @@ class _PollViewState extends State<PollView> {
                     'เทศบาลนครสุราษฎร์ธานี',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      color: Color(0xFF78B10E),
+                      color: Color(0xFF8C1F78),
                     ),
                   ),
                 ),

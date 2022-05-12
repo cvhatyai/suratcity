@@ -68,7 +68,10 @@ class _FinishedComplainListViewState extends State<FinishedComplainListView> {
 
     final parsed = json.decode(responseBody).cast<Map<String, dynamic>>();
     parsed.map<AllList>((json) => AllList.fromJson(json)).toList();
-    setState(() {});
+    setState(() {
+      print("data : ");
+      print(data);
+    });
     EasyLoading.dismiss();
   }
 
@@ -106,7 +109,7 @@ class _FinishedComplainListViewState extends State<FinishedComplainListView> {
                             Radius.circular(9.0),
                           ),
                           border: Border.all(
-                            color: Colors.blue,
+                            color: Color(0xFF8C1F78),
                             width: 1.0,
                           ),
                           color: Colors.white,
@@ -127,7 +130,7 @@ class _FinishedComplainListViewState extends State<FinishedComplainListView> {
                                     margin: EdgeInsets.only(top: 12),
                                     child: Icon(
                                       Icons.circle,
-                                      color: Colors.blue,
+                                      color: Color(0xFF8C1F78),
                                       size: 12,
                                     ),
                                   ),
@@ -141,14 +144,15 @@ class _FinishedComplainListViewState extends State<FinishedComplainListView> {
                                       Container(
                                         padding: EdgeInsets.all(4),
                                         child: Text(
-                                          "เรื่อง " + data[index]["subject"],
+                                          "เรื่อง " +
+                                              data[index]["subject"].toString(),
                                           maxLines: 1,
                                           overflow: TextOverflow.ellipsis,
                                         ),
                                       ),
                                       Container(
                                         child: Text(
-                                          data[index]["create_date"],
+                                          data[index]["finish_date"],
                                           style: TextStyle(
                                               fontSize: 12, color: Colors.grey),
                                         ),

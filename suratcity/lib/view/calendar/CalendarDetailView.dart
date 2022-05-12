@@ -177,7 +177,7 @@ class _CalendarDetailViewState extends State<CalendarDetailView> {
     return SafeArea(
         child: Scaffold(
       appBar: AppBarView(
-        title: "กิจกรรมห้ามพลาด",
+        title: "กิจกรรมที่กำลังจะมาถึง",
         isHaveArrow: "1",
       ),
       body: Container(
@@ -195,7 +195,7 @@ class _CalendarDetailViewState extends State<CalendarDetailView> {
                 Text(
                   subject,
                   style: TextStyle(
-                      color: Colors.blue,
+                      color: Color(0xFF8C1F78),
                       fontWeight: FontWeight.bold,
                       fontSize: 20),
                 ),
@@ -353,7 +353,7 @@ class _CalendarDetailViewState extends State<CalendarDetailView> {
                     padding:
                         EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 8),
                     width: MediaQuery.of(context).size.width,
-                    color: Colors.blue,
+                    color: Color(0xFF8C1F78),
                     child: Text(
                       "เอกสารดาวน์โหลด",
                       style: TextStyle(color: Colors.white),

@@ -172,7 +172,7 @@ class _GalleryDetailViewState extends State<GalleryDetailView> {
       body: Container(
         width: double.infinity,
         height: double.infinity,
-        color: Color(0xFFD8E2EB),
+        // color: Color(0xFFD8E2EB),
         child: SingleChildScrollView(
           child: Container(
             margin: EdgeInsets.only(top: 8),
@@ -257,7 +257,7 @@ class _GalleryDetailViewState extends State<GalleryDetailView> {
                     child: Text(
                       subject,
                       style: TextStyle(
-                        color: Color(0xFF55C3FF),
+                        color: Color(0xFF7C1B6A),
                         fontSize: 18,
                       ),
                     ),
@@ -271,7 +271,7 @@ class _GalleryDetailViewState extends State<GalleryDetailView> {
                   child: Text(
                     subject,
                     style: TextStyle(
-                      color: Color(0xFF55C3FF),
+                      color: Color(0xFF7C1B6A),
                       fontSize: 18,
                     ),
                   ),
@@ -340,17 +340,10 @@ class _GalleryDetailViewState extends State<GalleryDetailView> {
                         ),
                     ],
                   ),
-                //รายละเอียด
-                if (detail != "")
-                  Container(
-                    alignment: Alignment.centerLeft,
-                    padding: EdgeInsets.all(16),
-                    child: Text(detail),
-                  ),
                 //เวลา
                 Container(
                   alignment: Alignment.centerLeft,
-                  padding: EdgeInsets.only(left: 16, right: 16, bottom: 16),
+                  padding: EdgeInsets.only(left: 16, right: 16, bottom: 8),
                   child: Row(
                     children: [
                       Expanded(
@@ -358,14 +351,14 @@ class _GalleryDetailViewState extends State<GalleryDetailView> {
                           children: [
                             Icon(
                               Icons.access_time_sharp,
-                              color: Colors.blue,
+                              color: Color(0xFF7C1B6A),
                               size: 22,
                             ),
                             Text(
                               create_date,
                               style: TextStyle(
-                                color: Colors.blue,
-                                fontSize: 9,
+                                color: Color(0xFF7C1B6A),
+                                fontSize: 11,
                               ),
                             ),
                           ],
@@ -381,10 +374,14 @@ class _GalleryDetailViewState extends State<GalleryDetailView> {
                             Image.asset(
                               'assets/images/travel/share.png',
                               height: 12,
+                              color: Color(0xFF7C1B6A),
                             ),
                             Text(
                               "แชร์",
-                              style: TextStyle(fontSize: 11),
+                              style: TextStyle(
+                                fontSize: 11,
+                                color: Color(0xFF7C1B6A),
+                              ),
                             ),
                           ],
                         ),
@@ -392,6 +389,14 @@ class _GalleryDetailViewState extends State<GalleryDetailView> {
                     ],
                   ),
                 ),
+
+                //รายละเอียด
+                if (detail != "")
+                  Container(
+                    alignment: Alignment.centerLeft,
+                    padding: EdgeInsets.all(16),
+                    child: Text(detail),
+                  ),
                 //กดเพื่อรับชมวิดีโอ
                 if (url != "")
                   Container(

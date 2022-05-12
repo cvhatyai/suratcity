@@ -100,7 +100,7 @@ class _PhoneCateListViewOldState extends State<PhoneCateListViewOld> {
     return SafeArea(
         child: Scaffold(
       appBar: AppBarView(
-        title: "เบอร์โทรสำคัญ",
+        title: "หมายเลขโทรศัพท์ฉุกเฉิน",
         isHaveArrow: widget.isHaveArrow,
       ),
       body: Column(
@@ -266,7 +266,7 @@ class _PhoneCateListViewOldState extends State<PhoneCateListViewOld> {
                                       margin: EdgeInsets.all(8),
                                       child: Icon(
                                         Icons.phone,
-                                        color: Color(0xFF55C3FF),
+                                        color: Color(0xFF7C1B6A),
                                       ),
                                     ),
                                   ),

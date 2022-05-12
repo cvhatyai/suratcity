@@ -157,7 +157,7 @@ class _NewsListViewState extends State<NewsListView> {
             icon: Icon(Icons.keyboard_arrow_down_outlined),
             iconSize: 24,
             elevation: 16,
-            style: TextStyle(color: Colors.blue),
+            style: TextStyle(color: Color(0xFF7C1B6A)),
             underline: Container(
               height: 1,
               color: Colors.grey,
@@ -167,7 +167,7 @@ class _NewsListViewState extends State<NewsListView> {
                 dropdownValue2 = newValue;
                 cateVal = dropdownValue2;
                 getNewsList();
-                getCateSubList();
+                // getCateSubList();
                 print("cateVal" + cateVal);
               });
             },
@@ -239,7 +239,7 @@ class _NewsListViewState extends State<NewsListView> {
             icon: Icon(Icons.keyboard_arrow_down_outlined),
             iconSize: 24,
             elevation: 16,
-            style: TextStyle(color: Colors.blue),
+            style: TextStyle(color: Color(0xFF7C1B6A)),
             underline: Container(
               height: 1,
               color: Colors.grey,
@@ -280,7 +280,7 @@ class _NewsListViewState extends State<NewsListView> {
     return SafeArea(
         child: Scaffold(
       appBar: AppBarView(
-        title: "ทน.สุราษฎร์ธานีอัพเดท",
+        title: "นครสุราษฎร์วันนี้",
         isHaveArrow: widget.isHaveArrow,
       ),
       body: Column(
@@ -326,9 +326,14 @@ class _NewsListViewState extends State<NewsListView> {
                             child: Stack(
                               alignment: Alignment.topCenter,
                               children: [
-                                Image.network(
-                                  data[index]["display_image"],
-                                  fit: BoxFit.fill,
+                                ClipRRect(
+                                  borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(10.0),
+                                      topRight: Radius.circular(10.0)),
+                                  child: Image.network(
+                                    data[index]["display_image"],
+                                    fit: BoxFit.fill,
+                                  ),
                                 ),
                                 Positioned(
                                   bottom: 20,
@@ -348,9 +353,9 @@ class _NewsListViewState extends State<NewsListView> {
                                       ],
                                     ),
                                     alignment: Alignment.center,
-                                    width: MediaQuery.of(context).size.width *
-                                        0.42,
-                                    height: 85,
+                                    width:
+                                        MediaQuery.of(context).size.width * 0.5,
+                                    height: 80,
                                     child: Container(
                                       alignment: Alignment.centerLeft,
                                       padding: EdgeInsets.all(8),
@@ -373,7 +378,7 @@ class _NewsListViewState extends State<NewsListView> {
                                                   data[index]["create_date"],
                                                   style: TextStyle(
                                                     fontSize: 10,
-                                                    color: Color(0xFF6399C4),
+                                                    color: Color(0xFF7C1B6A),
                                                   ),
                                                 ),
                                               ),

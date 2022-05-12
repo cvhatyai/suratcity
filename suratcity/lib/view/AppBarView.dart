@@ -24,7 +24,7 @@ class _AppBarViewState extends State<AppBarView> {
     return IconButton(
       icon: Icon(
         Icons.arrow_back_ios,
-        color: Color(0xFF00B9FF),
+        color: Color(0xFFe5c21c),
       ),
       onPressed: () => Navigator.of(context).pop(),
     );
@@ -36,7 +36,7 @@ class _AppBarViewState extends State<AppBarView> {
       leading: (widget.isHaveArrow == "") ? Container() : leading(),
       title: Text(
         widget.title,
-        style: TextStyle(fontSize: 18, color: Color(0xFF4283C4)),
+        style: TextStyle(fontSize: 18, color: Color(0xFFFFFFFF)),
       ),
       elevation: 0,
       centerTitle: true,
@@ -45,8 +45,9 @@ class _AppBarViewState extends State<AppBarView> {
           'assets/images/app_bar.png',
         ),
         fit: BoxFit.cover,
+        alignment: Alignment.bottomCenter,
       ),
-      //backgroundColor: Color(0xFFD8E2EB),
+      backgroundColor: Color(0xFFFFFFFF),
     );
   }
 }

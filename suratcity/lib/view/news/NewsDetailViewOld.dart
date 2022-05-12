@@ -253,7 +253,7 @@ class _NewsDetailViewOldState extends State<NewsDetailViewOld> {
                     child: Text(
                       subject,
                       style: TextStyle(
-                        color: Color(0xFF55C3FF),
+                        color: Color(0xFF7C1B6A),
                         fontSize: 18,
                       ),
                     ),
@@ -267,7 +267,7 @@ class _NewsDetailViewOldState extends State<NewsDetailViewOld> {
                   child: Text(
                     subject,
                     style: TextStyle(
-                      color: Color(0xFF55C3FF),
+                      color: Color(0xFF7C1B6A),
                       fontSize: 18,
                     ),
                   ),
@@ -360,7 +360,7 @@ class _NewsDetailViewOldState extends State<NewsDetailViewOld> {
                         create_date,
                         style: TextStyle(
                           color: Colors.blue,
-                          fontSize: 9,
+                          fontSize: 11,
                         ),
                       ),
                     ],

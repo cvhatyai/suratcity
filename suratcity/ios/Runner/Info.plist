@@ -23,7 +23,7 @@
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>fb556575839052948</string>
+				<string>fb340049884712626</string>
 			</array>
 		</dict>
 		<dict>
@@ -46,7 +46,7 @@
 	<key>CFBundleVersion</key>
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
 	<key>FacebookAppID</key>
-	<string>556575839052948</string>
+	<string>340049884712626</string>
 	<key>FacebookDisplayName</key>
 	<string>ทน.สุราษฎร์ธานี</string>
 	<key>FirebaseAppDelegateProxyEnabled</key>

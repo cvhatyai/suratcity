@@ -1,6 +1,8 @@
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:cvapp/view/greenmarket/GreenMarketListView.dart';
+import 'package:cvapp/view/webpageview/WebVdoView.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:cvapp/model/AllList.dart';
@@ -47,7 +49,7 @@ class _MenuViewState extends State<MenuView> {
   var userFullname = "เข้าสู่ระบบ";
   var userClass = "เข้าสู่ระบบ";
   var uid = "";
-  var userAvatar = Info().baseUrl + "images/nopic-personal.jpg";
+  var userAvatar = Info().baseUrl + "images/nopic-personal.png";
 
   var guideLink = "";
   var favCount = 0;
@@ -78,6 +80,7 @@ class _MenuViewState extends State<MenuView> {
   initFav() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     arrFav = prefs.getStringList("favList");
+    print("arrFav : ${arrFav}");
     setState(() {
       if (arrFav != null) {
         favCount = arrFav.length;
@@ -243,9 +246,10 @@ class _MenuViewState extends State<MenuView> {
                                     }
                                   },
                                   child: Container(
-                                    padding: EdgeInsets.all(4),
+                                    padding: EdgeInsets.only(
+                                        bottom: 6, left: 4, right: 4, top: 4),
                                     decoration: BoxDecoration(
-                                      color: Colors.white,
+                                      color: Color(0xFF8C1F77),
                                       borderRadius: BorderRadius.only(
                                         bottomRight: Radius.circular(18),
                                         topRight: Radius.circular(18),
@@ -256,13 +260,17 @@ class _MenuViewState extends State<MenuView> {
                                         Text(
                                           "คู่มือสำหรับผู้ใช้งาน",
                                           style: TextStyle(
-                                            color: Color(0xFF5B5B5F),
+                                            color: Color(0xFFFFF600),
                                           ),
                                         ),
-                                        Icon(
-                                          Icons.arrow_forward_ios,
-                                          color: Colors.blueAccent,
-                                          size: 16,
+                                        Padding(
+                                          padding:
+                                              const EdgeInsets.only(top: 4.0),
+                                          child: Icon(
+                                            Icons.arrow_forward_ios,
+                                            color: Color(0xFFFFF600),
+                                            size: 16,
+                                          ),
                                         ),
                                       ],
                                     ),
@@ -347,7 +355,7 @@ class _MenuViewState extends State<MenuView> {
                                           children: [
                                             Container(
                                               margin: EdgeInsets.only(
-                                                  right: 4, left: 4),
+                                                  right: 0, left: 4),
                                               child: Icon(
                                                 Icons.bookmark_sharp,
                                                 color: Colors.white,
@@ -362,7 +370,7 @@ class _MenuViewState extends State<MenuView> {
                                                   padding: EdgeInsets.all(4),
                                                   decoration: BoxDecoration(
                                                     shape: BoxShape.circle,
-                                                    color: Colors.red,
+                                                    color: Color(0xFF8C1F78),
                                                   ),
                                                   child: Text(
                                                     favCount.toString(),
@@ -418,6 +426,7 @@ class _MenuViewState extends State<MenuView> {
                                             userFullname,
                                             style: TextStyle(
                                                 color: Colors.white,
+                                                fontFamily: 'Kanit',
                                                 fontSize: 22),
                                           ),
                                         ),
@@ -427,17 +436,26 @@ class _MenuViewState extends State<MenuView> {
                                           padding: EdgeInsets.only(left: 8),
                                           child: GestureDetector(
                                             onTap: () {
-                                              logout();
+                                              Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      SettingView(
+                                                    isHaveArrow: "1",
+                                                  ),
+                                                ),
+                                              );
                                             },
                                             child: Row(
                                               crossAxisAlignment:
                                                   CrossAxisAlignment.center,
                                               children: [
                                                 Text(
-                                                  "ออกจากระบบ",
+                                                  "ข้อมูลผู้ใช้",
                                                   style: TextStyle(
                                                     color: Colors.white,
-                                                    fontSize: 12,
+                                                    fontSize: 14,
+                                                    fontFamily: 'Kanit',
                                                   ),
                                                 ),
                                                 Container(
@@ -456,6 +474,37 @@ class _MenuViewState extends State<MenuView> {
                                     ],
                                   ),
                                 ),
+                                if (isLogin)
+                                  Container(
+                                    padding: EdgeInsets.only(left: 8),
+                                    child: GestureDetector(
+                                      onTap: () {
+                                        logout();
+                                      },
+                                      child: Row(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            "ออกจากระบบ",
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 14,
+                                              fontFamily: 'Kanit',
+                                            ),
+                                          ),
+                                          Container(
+                                            margin: EdgeInsets.only(top: 2),
+                                            child: Icon(
+                                              Icons.arrow_forward_ios,
+                                              color: Colors.white,
+                                              size: 12,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
                               ],
                             ),
                           ),
@@ -464,10 +513,10 @@ class _MenuViewState extends State<MenuView> {
                     ),
                     //top menu2
                     Container(
-                      margin: EdgeInsets.symmetric(horizontal: 8, vertical: 32),
+                      margin: EdgeInsets.symmetric(horizontal: 8, vertical: 12),
                       padding: EdgeInsets.all(8),
                       decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: Color(0xFF8C1F77),
                         borderRadius: BorderRadius.circular(9),
                         boxShadow: [
                           BoxShadow(
@@ -485,196 +534,230 @@ class _MenuViewState extends State<MenuView> {
                               "ติดต่อ/แจ้งเรื่องร้องเรียน",
                               style: TextStyle(
                                 fontSize: 18,
-                                color: Color(0xFF4B4B4B),
+                                fontFamily: 'Kanit',
+                                color: Color(0xFFFFFFFF),
                               ),
                             ),
                             alignment: Alignment.centerLeft,
                             margin: EdgeInsets.only(bottom: 16),
                           ),
-                          Row(
-                            children: [
-                              Expanded(
-                                child: GestureDetector(
-                                  onTap: () {
-                                    if (!isLogin) {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) => LoginView(
-                                            isHaveArrow: "1",
+                          Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(9),
+                              image: DecorationImage(
+                                image: AssetImage("assets/images/bg_top_m.png"),
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Row(
+                                children: [
+                                  Expanded(
+                                    child: GestureDetector(
+                                      onTap: () {
+                                        if (!isLogin) {
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) => LoginView(
+                                                isHaveArrow: "1",
+                                              ),
+                                            ),
+                                          );
+                                        } else {
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) =>
+                                                  ComplainCateListView(
+                                                isHaveArrow: "1",
+                                              ),
+                                            ),
+                                          );
+                                        }
+                                      },
+                                      child: Column(
+                                        children: [
+                                          Image.asset(
+                                            'assets/images/menu/top1.png',
+                                            height: 32,
+                                            color: Color(0xFFFFF600),
                                           ),
-                                        ),
-                                      );
-                                    } else {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) =>
-                                              ComplainCateListView(
-                                            isHaveArrow: "1",
+                                          SizedBox(
+                                            height: 10,
                                           ),
-                                        ),
-                                      );
-                                    }
-                                  },
-                                  child: Column(
-                                    children: [
-                                      Image.asset(
-                                        'assets/images/menu/top1.png',
-                                        height: 32,
+                                          Text(
+                                            "แจ้งเรื่อง\nร้องเรียน",
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                                fontSize: 11,
+                                                color: Colors.white),
+                                          ),
+                                        ],
                                       ),
-                                      Text(
-                                        "แจ้งเรื่อง\nร้องเรียน",
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(
-                                          fontSize: 12,
-                                        ),
-                                      ),
-                                    ],
+                                    ),
                                   ),
-                                ),
-                              ),
-                              Container(
-                                margin: EdgeInsets.symmetric(horizontal: 4),
-                                color: Color(0xFFE3E3E3),
-                                height: 40,
-                                width: 1,
-                              ),
-                              Expanded(
-                                child: GestureDetector(
-                                  onTap: () {
-                                    if (!isLogin) {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) => LoginView(
-                                            isHaveArrow: "1",
-                                          ),
-                                        ),
-                                      );
-                                    } else {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) =>
-                                              FollowComplainListView(
-                                            isHaveArrow: "1",
-                                          ),
-                                        ),
-                                      );
-                                    }
-                                  },
-                                  child: Column(
-                                    children: [
-                                      Image.asset(
-                                        'assets/images/menu/top2.png',
-                                        height: 32,
-                                      ),
-                                      Text(
-                                        "ติดตามเรื่อง\nร้องเรียน",
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(
-                                          fontSize: 12,
-                                        ),
-                                      ),
-                                    ],
+                                  Container(
+                                    margin: EdgeInsets.symmetric(horizontal: 4),
+                                    color: Color(0xFFE3E3E3),
+                                    height: 40,
+                                    width: 1,
                                   ),
-                                ),
-                              ),
-                              Container(
-                                margin: EdgeInsets.symmetric(horizontal: 4),
-                                color: Color(0xFFE3E3E3),
-                                height: 40,
-                                width: 1,
-                              ),
-                              Expanded(
-                                child: GestureDetector(
-                                  onTap: () {
-                                    if (!isLogin) {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) => LoginView(
-                                            isHaveArrow: "1",
+                                  Expanded(
+                                    child: GestureDetector(
+                                      onTap: () {
+                                        if (!isLogin) {
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) => LoginView(
+                                                isHaveArrow: "1",
+                                              ),
+                                            ),
+                                          );
+                                        } else {
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) =>
+                                                  FollowComplainListView(
+                                                isHaveArrow: "1",
+                                              ),
+                                            ),
+                                          );
+                                        }
+                                      },
+                                      child: Column(
+                                        children: [
+                                          Image.asset(
+                                            'assets/images/menu/top2.png',
+                                            height: 32,
+                                            color: Color(0xFFFFF600),
                                           ),
-                                        ),
-                                      );
-                                    } else {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) => ContactusView(
-                                            isHaveArrow: "1",
+                                          SizedBox(
+                                            height: 10,
                                           ),
-                                        ),
-                                      );
-                                    }
-                                  },
-                                  child: Column(
-                                    children: [
-                                      Image.asset(
-                                        'assets/images/menu/top3.png',
-                                        height: 32,
+                                          Text(
+                                            "ติดตามเรื่อง\nร้องเรียน",
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                                fontSize: 11,
+                                                color: Colors.white),
+                                          ),
+                                        ],
                                       ),
-                                      Text(
-                                        "ติดต่อ\nเจ้าหน้าที่",
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(
-                                          fontSize: 12,
-                                        ),
-                                      ),
-                                    ],
+                                    ),
                                   ),
-                                ),
-                              ),
-                              Container(
-                                margin: EdgeInsets.symmetric(horizontal: 4),
-                                color: Color(0xFFE3E3E3),
-                                height: 40,
-                                width: 1,
-                              ),
-                              Expanded(
-                                child: GestureDetector(
-                                  onTap: () {
-                                    if (!isLogin) {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) => LoginView(
-                                            isHaveArrow: "1",
-                                          ),
-                                        ),
-                                      );
-                                    } else {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) =>
-                                              FollowContactusListView(
-                                            isHaveArrow: "1",
-                                          ),
-                                        ),
-                                      );
-                                    }
-                                  },
-                                  child: Column(
-                                    children: [
-                                      Image.asset(
-                                        'assets/images/menu/top4.png',
-                                        height: 32,
-                                      ),
-                                      Text(
-                                        "ติดตามเรื่อง\nที่ติดต่อ",
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(
-                                          fontSize: 12,
-                                        ),
-                                      ),
-                                    ],
+                                  Container(
+                                    margin: EdgeInsets.symmetric(horizontal: 4),
+                                    color: Color(0xFFE3E3E3),
+                                    height: 40,
+                                    width: 1,
                                   ),
-                                ),
+                                  Expanded(
+                                    child: GestureDetector(
+                                      onTap: () {
+                                        if (!isLogin) {
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) => LoginView(
+                                                isHaveArrow: "1",
+                                              ),
+                                            ),
+                                          );
+                                        } else {
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) =>
+                                                  ContactusView(
+                                                isHaveArrow: "1",
+                                              ),
+                                            ),
+                                          );
+                                        }
+                                      },
+                                      child: Column(
+                                        children: [
+                                          Padding(
+                                            padding: const EdgeInsets.only(
+                                                left: 12.0),
+                                            child: Image.asset(
+                                              'assets/images/menu/top3.png',
+                                              height: 32,
+                                              color: Color(0xFFFFF600),
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            height: 10,
+                                          ),
+                                          Text(
+                                            "ติดต่อ\nเจ้าหน้าที่",
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                                fontSize: 11,
+                                                color: Colors.white),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                  Container(
+                                    margin: EdgeInsets.symmetric(horizontal: 4),
+                                    color: Color(0xFFE3E3E3),
+                                    height: 40,
+                                    width: 1,
+                                  ),
+                                  Expanded(
+                                    child: GestureDetector(
+                                      onTap: () {
+                                        if (!isLogin) {
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) => LoginView(
+                                                isHaveArrow: "1",
+                                              ),
+                                            ),
+                                          );
+                                        } else {
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) =>
+                                                  FollowContactusListView(
+                                                isHaveArrow: "1",
+                                              ),
+                                            ),
+                                          );
+                                        }
+                                      },
+                                      child: Column(
+                                        children: [
+                                          Image.asset(
+                                            'assets/images/menu/top4.png',
+                                            height: 32,
+                                            color: Color(0xFFFFF600),
+                                          ),
+                                          SizedBox(
+                                            height: 10,
+                                          ),
+                                          Text(
+                                            "ติดตามเรื่อง\nที่ติดต่อ",
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                                fontSize: 11,
+                                                color: Colors.white),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ],
                               ),
-                            ],
+                            ),
                           ),
                         ],
                       ),
@@ -687,20 +770,31 @@ class _MenuViewState extends State<MenuView> {
           ),
 
           //title menu 1
-          if (user.userclass != "superadmin" && user.userclass != "admin")
+          /*if (user.userclass != "superadmin" && user.userclass != "admin")
             Container(
               padding: EdgeInsets.only(left: 16, right: 16),
               alignment: Alignment.centerLeft,
-              color: Color(0xFFE2F2FF),
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [
+                    Color(0xFF8C1F78),
+                    Color(0xFFEA8BF1),
+                  ],
+                ),
+              ),
               height: 40,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
                     "ชำระภาษี/ค่าบริการ",
-                    style: TextStyle(fontSize: 15),
+                    style: TextStyle(
+                      fontSize: 18,
+                      color: Colors.white,
+                      fontFamily: 'Kanit',
+                    ),
                   ),
-                  Icon(Icons.keyboard_arrow_down),
+                  Icon(Icons.keyboard_arrow_down,color:Color(0xFFFFF600)),
                 ],
               ),
             ),
@@ -840,7 +934,7 @@ class _MenuViewState extends State<MenuView> {
                     "สวัสดิการ/เบี้ยยังชีพ",
                     style: TextStyle(fontSize: 15),
                   ),
-                  Icon(Icons.keyboard_arrow_down),
+                  Icon(Icons.keyboard_arrow_down,color:Color(0xFFFFF600)),
                 ],
               ),
             ),
@@ -965,15 +1059,15 @@ class _MenuViewState extends State<MenuView> {
                 ],
               ),
             ),
-          GestureDetector(
+          */
+          /*GestureDetector(
             onTap: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => WebPageView(
-                    isHaveArrow: "1",
-                    title: "vdo",
-                    cmd: "vdo",
+                  builder: (context) => WebVdoView(
+                    vdo:
+                        "https://geo.dailymotion.com/player/x8nxb.html?video=x8anisk",
                   ),
                 ),
               );
@@ -987,11 +1081,6 @@ class _MenuViewState extends State<MenuView> {
                   height: 40,
                   child: Row(
                     children: [
-                      /*Image.asset(
-                        'assets/images/menu1.png',
-                        height: 22,
-                        width: 22,
-                      ),*/
                       Image.asset(
                         'assets/images/menu/m4.png',
                         height: 18,
@@ -1013,31 +1102,56 @@ class _MenuViewState extends State<MenuView> {
               ],
             ),
           ),
+          */
           //title menu 3
           Container(
             padding: EdgeInsets.only(left: 16, right: 16),
             alignment: Alignment.centerLeft,
-            color: Color(0xFFE2F2FF),
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [
+                  Color(0xFF8C1F78),
+                  Color(0xFFEA8BF1),
+                ],
+              ),
+              borderRadius: BorderRadius.only(
+                bottomRight: Radius.circular(12),
+              ),
+            ),
             height: 40,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
                   "ข้อมูลเกี่ยวกับเทศบาล",
-                  style: TextStyle(fontSize: 15),
+                  style: TextStyle(
+                    fontSize: 18,
+                    color: Colors.white,
+                    fontFamily: 'Kanit',
+                  ),
                 ),
-                Icon(Icons.keyboard_arrow_down),
+                Icon(Icons.keyboard_arrow_down, color: Color(0xFFFFF600)),
               ],
             ),
           ),
           //sub menu 3
           GestureDetector(
             onTap: () {
-              Navigator.push(
+              /*Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) => GeneralView(
                     isHaveArrow: "1",
+                  ),
+                ),
+              );*/
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => WebPageView(
+                    isHaveArrow: "1",
+                    title: "ข้อมูลทั่วไปของเทศบาล",
+                    cmd: "general",
                   ),
                 ),
               );
@@ -1051,13 +1165,9 @@ class _MenuViewState extends State<MenuView> {
                   height: 40,
                   child: Row(
                     children: [
-                      /*Image.asset(
-                        'assets/images/menu1.png',
-                        height: 22,
-                        width: 22,
-                      ),*/
                       Image.asset(
                         'assets/images/menu/m5.png',
+                        color: Color(0xFFed2489),
                         height: 18,
                         width: 18,
                       ),
@@ -1104,13 +1214,14 @@ class _MenuViewState extends State<MenuView> {
                       ),*/
                       Image.asset(
                         'assets/images/menu/m6.png',
+                        color: Color(0xFFed2489),
                         height: 18,
                         width: 18,
                       ),
                       Container(
                         margin: EdgeInsets.only(left: 16),
                         child: Text(
-                          "ทน.สุราษฎร์ธานีอัพเดท",
+                          "นครสุราษฎร์วันนี้",
                           style: TextStyle(
                             fontSize: 15,
                           ),
@@ -1125,6 +1236,7 @@ class _MenuViewState extends State<MenuView> {
           ),
 
           //new
+          /*
           GestureDetector(
             onTap: () {
               Navigator.push(
@@ -1155,6 +1267,7 @@ class _MenuViewState extends State<MenuView> {
                       ),*/
                       Image.asset(
                         'assets/images/menu/m25.png',
+                        color: Color(0xFFed2489),
                         height: 18,
                         width: 18,
                       ),
@@ -1201,6 +1314,7 @@ class _MenuViewState extends State<MenuView> {
                       ),*/
                       Image.asset(
                         'assets/images/menu/m26.png',
+                        color: Color(0xFFed2489),
                         height: 18,
                         width: 18,
                       ),
@@ -1249,6 +1363,7 @@ class _MenuViewState extends State<MenuView> {
                       ),*/
                       Image.asset(
                         'assets/images/menu/m27.png',
+                        color: Color(0xFFed2489),
                         height: 18,
                         width: 18,
                       ),
@@ -1268,7 +1383,7 @@ class _MenuViewState extends State<MenuView> {
               ],
             ),
           ),
-
+      */
           GestureDetector(
             onTap: () {
               Navigator.push(
@@ -1296,6 +1411,7 @@ class _MenuViewState extends State<MenuView> {
                       ),*/
                       Image.asset(
                         'assets/images/menu/m7.png',
+                        color: Color(0xFFed2489),
                         height: 18,
                         width: 18,
                       ),
@@ -1342,13 +1458,14 @@ class _MenuViewState extends State<MenuView> {
                       ),*/
                       Image.asset(
                         'assets/images/menu/m8.png',
+                        color: Color(0xFFed2489),
                         height: 18,
                         width: 18,
                       ),
                       Container(
                         margin: EdgeInsets.only(left: 16),
                         child: Text(
-                          "กิจกรรมห้ามพลาด",
+                          "กิจกรรมที่กำลังจะมาถึง",
                           style: TextStyle(
                             fontSize: 15,
                           ),
@@ -1388,6 +1505,7 @@ class _MenuViewState extends State<MenuView> {
                       ),*/
                       Image.asset(
                         'assets/images/menu/m9.png',
+                        color: Color(0xFFed2489),
                         height: 18,
                         width: 18,
                       ),
@@ -1407,7 +1525,7 @@ class _MenuViewState extends State<MenuView> {
               ],
             ),
           ),
-          GestureDetector(
+          /*GestureDetector(
             onTap: () {
               Navigator.push(
                 context,
@@ -1434,6 +1552,7 @@ class _MenuViewState extends State<MenuView> {
                       ),*/
                       Image.asset(
                         'assets/images/menu/m10.png',
+                        color: Color(0xFFed2489),
                         height: 18,
                         width: 18,
                       ),
@@ -1453,6 +1572,7 @@ class _MenuViewState extends State<MenuView> {
               ],
             ),
           ),
+          */
           GestureDetector(
             onTap: () {
               Navigator.push(
@@ -1480,6 +1600,7 @@ class _MenuViewState extends State<MenuView> {
                       ),*/
                       Image.asset(
                         'assets/images/menu/m11.png',
+                        color: Color(0xFFed2489),
                         height: 18,
                         width: 18,
                       ),
@@ -1499,7 +1620,7 @@ class _MenuViewState extends State<MenuView> {
               ],
             ),
           ),
-          GestureDetector(
+          /*GestureDetector(
             onTap: () {
               Navigator.push(
                 context,
@@ -1526,6 +1647,7 @@ class _MenuViewState extends State<MenuView> {
                       ),*/
                       Image.asset(
                         'assets/images/menu/m12.png',
+                        color: Color(0xFFed2489),
                         height: 18,
                         width: 18,
                       ),
@@ -1545,6 +1667,7 @@ class _MenuViewState extends State<MenuView> {
               ],
             ),
           ),
+      */
           GestureDetector(
             onTap: () {
               Navigator.push(
@@ -1576,13 +1699,14 @@ class _MenuViewState extends State<MenuView> {
                       ),*/
                       Image.asset(
                         'assets/images/menu/m13.png',
+                        color: Color(0xFFed2489),
                         height: 18,
                         width: 18,
                       ),
                       Container(
                         margin: EdgeInsets.only(left: 16),
                         child: Text(
-                          "เบอร์โทรสำคัญ",
+                          "หมายเลขโทรศัพท์ฉุกเฉิน",
                           style: TextStyle(
                             fontSize: 15,
                           ),
@@ -1626,6 +1750,7 @@ class _MenuViewState extends State<MenuView> {
                       ),*/
                       Image.asset(
                         'assets/images/menu/m28.png',
+                        color: Color(0xFFed2489),
                         height: 18,
                         width: 18,
                       ),
@@ -1650,16 +1775,30 @@ class _MenuViewState extends State<MenuView> {
           Container(
             padding: EdgeInsets.only(left: 16, right: 16),
             alignment: Alignment.centerLeft,
-            color: Color(0xFFE2F2FF),
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [
+                  Color(0xFF8C1F78),
+                  Color(0xFFEA8BF1),
+                ],
+              ),
+              borderRadius: BorderRadius.only(
+                bottomRight: Radius.circular(12),
+              ),
+            ),
             height: 40,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
                   "ข้อมูลท่องเที่ยว",
-                  style: TextStyle(fontSize: 15),
+                  style: TextStyle(
+                    fontSize: 18,
+                    color: Colors.white,
+                    fontFamily: 'Kanit',
+                  ),
                 ),
-                Icon(Icons.keyboard_arrow_down),
+                Icon(Icons.keyboard_arrow_down, color: Color(0xFFFFF600)),
               ],
             ),
           ),
@@ -1671,7 +1810,7 @@ class _MenuViewState extends State<MenuView> {
                 MaterialPageRoute(
                   builder: (context) => TravelListView(
                     isHaveArrow: "1",
-                    title: "ที่เที่ยว",
+                    title: "เที่ยว",
                     tid: "1",
                   ),
                 ),
@@ -1697,13 +1836,14 @@ class _MenuViewState extends State<MenuView> {
                       ),*/
                       Image.asset(
                         'assets/images/menu/m14.png',
+                        color: Color(0xFFed2489),
                         height: 18,
                         width: 18,
                       ),
                       Container(
                         margin: EdgeInsets.only(left: 16),
                         child: Text(
-                          "ที่เที่ยว",
+                          "เที่ยว",
                           style: TextStyle(
                             fontSize: 15,
                           ),
@@ -1723,7 +1863,7 @@ class _MenuViewState extends State<MenuView> {
                 MaterialPageRoute(
                   builder: (context) => TravelListView(
                     isHaveArrow: "1",
-                    title: "ที่กิน",
+                    title: "กิน",
                     tid: "3",
                   ),
                 ),
@@ -1749,13 +1889,14 @@ class _MenuViewState extends State<MenuView> {
                       ),*/
                       Image.asset(
                         'assets/images/menu/m15.png',
+                        color: Color(0xFFed2489),
                         height: 18,
                         width: 18,
                       ),
                       Container(
                         margin: EdgeInsets.only(left: 16),
                         child: Text(
-                          "ที่กิน",
+                          "กิน",
                           style: TextStyle(
                             fontSize: 15,
                           ),
@@ -1800,7 +1941,8 @@ class _MenuViewState extends State<MenuView> {
                         width: 22,
                       ),*/
                       Image.asset(
-                        'assets/images/menu/m16.png',
+                        'assets/images/main/t4.png',
+                        color: Color(0xFFed2489),
                         height: 18,
                         width: 18,
                       ),
@@ -1853,6 +1995,7 @@ class _MenuViewState extends State<MenuView> {
                       ),*/
                       Image.asset(
                         'assets/images/menu/m17.png',
+                        color: Color(0xFFed2489),
                         height: 18,
                         width: 18,
                       ),
@@ -1872,21 +2015,86 @@ class _MenuViewState extends State<MenuView> {
               ],
             ),
           ),
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => GreenMarketListView(
+                    isHaveArrow: "1",
+                  ),
+                ),
+              ).then((value) {
+                setState(() {
+                  initFav();
+                });
+              });
+            },
+            child: Column(
+              children: [
+                Container(
+                  padding: EdgeInsets.only(left: 32),
+                  alignment: Alignment.centerLeft,
+                  color: Colors.transparent,
+                  height: 40,
+                  child: Row(
+                    children: [
+                      /*Image.asset(
+                        'assets/images/menu1.png',
+                        height: 22,
+                        width: 22,
+                      ),*/
+                      Image.asset(
+                        'assets/images/menu/m16.png',
+                        color: Color(0xFFed2489),
+                        height: 18,
+                        width: 18,
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(left: 16),
+                        child: Text(
+                          "ตลาดชาวบ้าน",
+                          style: TextStyle(
+                            fontSize: 15,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Divider(height: 1, indent: 8, endIndent: 8),
+              ],
+            ),
+          ),
 
           //title menu 5
           Container(
             padding: EdgeInsets.only(left: 16, right: 16),
             alignment: Alignment.centerLeft,
-            color: Color(0xFFE2F2FF),
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [
+                  Color(0xFF8C1F78),
+                  Color(0xFFEA8BF1),
+                ],
+              ),
+              borderRadius: BorderRadius.only(
+                bottomRight: Radius.circular(12),
+              ),
+            ),
             height: 40,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
                   "ติดต่อ",
-                  style: TextStyle(fontSize: 15),
+                  style: TextStyle(
+                    fontSize: 18,
+                    color: Colors.white,
+                    fontFamily: 'Kanit',
+                  ),
                 ),
-                Icon(Icons.keyboard_arrow_down),
+                Icon(Icons.keyboard_arrow_down, color: Color(0xFFFFF600)),
               ],
             ),
           ),
@@ -1918,6 +2126,7 @@ class _MenuViewState extends State<MenuView> {
                       ),*/
                       Image.asset(
                         'assets/images/menu/m18.png',
+                        color: Color(0xFFed2489),
                         height: 18,
                         width: 18,
                       ),
@@ -1975,6 +2184,7 @@ class _MenuViewState extends State<MenuView> {
                       ),*/
                       Image.asset(
                         'assets/images/menu/m19.png',
+                        color: Color(0xFFed2489),
                         height: 18,
                         width: 18,
                       ),
@@ -2021,6 +2231,7 @@ class _MenuViewState extends State<MenuView> {
                       ),*/
                       Image.asset(
                         'assets/images/menu/m20.png',
+                        color: Color(0xFFed2489),
                         height: 18,
                         width: 18,
                       ),
@@ -2046,16 +2257,30 @@ class _MenuViewState extends State<MenuView> {
             Container(
               padding: EdgeInsets.only(left: 16, right: 16),
               alignment: Alignment.centerLeft,
-              color: Color(0xFFE2F2FF),
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [
+                    Color(0xFF8C1F78),
+                    Color(0xFFEA8BF1),
+                  ],
+                ),
+                borderRadius: BorderRadius.only(
+                  bottomRight: Radius.circular(12),
+                ),
+              ),
               height: 40,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
                     "สำหรับเจ้าหน้าที่",
-                    style: TextStyle(fontSize: 15),
+                    style: TextStyle(
+                      fontSize: 18,
+                      color: Colors.white,
+                      fontFamily: 'Kanit',
+                    ),
                   ),
-                  Icon(Icons.keyboard_arrow_down),
+                  Icon(Icons.keyboard_arrow_down, color: Color(0xFFFFF600)),
                 ],
               ),
             ),
@@ -2089,6 +2314,7 @@ class _MenuViewState extends State<MenuView> {
                       ),*/
                         Image.asset(
                           'assets/images/menu/m21.png',
+                          color: Color(0xFFed2489),
                           height: 18,
                           width: 18,
                         ),
@@ -2138,6 +2364,7 @@ class _MenuViewState extends State<MenuView> {
                       ),*/
                         Image.asset(
                           'assets/images/menu/m22.png',
+                          color: Color(0xFFed2489),
                           height: 18,
                           width: 18,
                         ),
@@ -2187,6 +2414,7 @@ class _MenuViewState extends State<MenuView> {
                       ),*/
                         Image.asset(
                           'assets/images/menu/m23.png',
+                          color: Color(0xFFed2489),
                           height: 18,
                           width: 18,
                         ),
@@ -2206,6 +2434,8 @@ class _MenuViewState extends State<MenuView> {
                 ],
               ),
             ),
+
+/*            
           if (user.userclass == "superadmin" || user.userclass == "admin")
             GestureDetector(
               onTap: () {
@@ -2236,6 +2466,7 @@ class _MenuViewState extends State<MenuView> {
                       ),*/
                         Image.asset(
                           'assets/images/menu/m24.png',
+                          color: Color(0xFFed2489),
                           height: 18,
                           width: 18,
                         ),
@@ -2285,6 +2516,7 @@ class _MenuViewState extends State<MenuView> {
                       ),*/
                         Image.asset(
                           'assets/images/menu/m2.png',
+                          color: Color(0xFFed2489),
                           height: 18,
                           width: 18,
                         ),
@@ -2335,6 +2567,7 @@ class _MenuViewState extends State<MenuView> {
                       ),*/
                         Image.asset(
                           'assets/images/menu/m11.png',
+                          color: Color(0xFFed2489),
                           height: 18,
                           width: 18,
                         ),
@@ -2385,6 +2618,7 @@ class _MenuViewState extends State<MenuView> {
                       ),*/
                         Image.asset(
                           'assets/images/menu/m11.png',
+                          color: Color(0xFFed2489),
                           height: 18,
                           width: 18,
                         ),
@@ -2404,7 +2638,7 @@ class _MenuViewState extends State<MenuView> {
                 ],
               ),
             ),
-
+*/
           //version
           /*Stack(
             children: [

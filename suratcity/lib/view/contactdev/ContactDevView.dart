@@ -316,13 +316,13 @@ class _ContactDevViewState extends State<ContactDevView> {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(80.0)),
                         child: Container(
-                          width: 300,
+                          width: double.infinity,
                           decoration: new BoxDecoration(
                             borderRadius: BorderRadius.circular(25.0),
                             gradient: new LinearGradient(
                               colors: [
-                                Colors.blue,
-                                Colors.lightBlueAccent,
+                                Color(0xFF8C1F78),
+                                Color(0xFFBE55AB),
                               ],
                             ),
                           ),
@@ -350,7 +350,7 @@ class _ContactDevViewState extends State<ContactDevView> {
                   child: Text(
                     "บริษัท ซิตี้วาไรตี้ คอร์เปอเรชั่น จำกัด",
                     style: TextStyle(
-                      color: Colors.blueAccent,
+                      color: Color(0xFF8C1F78),
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
                       //decoration: TextDecoration.underline,
@@ -396,7 +396,7 @@ class _ContactDevViewState extends State<ContactDevView> {
                             Text("Powered by "),
                             Text(
                               "CityVariety Co.,Ltd,",
-                              style: TextStyle(color: Colors.blueAccent),
+                              style: TextStyle(color: Color(0xFF8C1F78)),
                             ),
                           ],
                         ),

@@ -192,7 +192,7 @@ class _TravelDetailViewState extends State<TravelDetailView> {
     }
     final response = await http.Client().post(Uri.parse(fnName),
         headers: {"Content-Type": "application/json"}, body: body);
-
+    print(Uri.parse(fnName));
     data = json.decode(response.body);
     var status = data['status'].toString();
     var tmpLove = data['love'].toString();
@@ -385,7 +385,7 @@ class _TravelDetailViewState extends State<TravelDetailView> {
                       margin: EdgeInsets.only(top: 8),
                       padding: EdgeInsets.all(8),
                       width: MediaQuery.of(context).size.width,
-                      color: Color(0xFF2DA3FF),
+                      color: Color(0xFF8C1F78),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -426,7 +426,7 @@ class _TravelDetailViewState extends State<TravelDetailView> {
                       child: Text(
                         subject,
                         style: TextStyle(
-                          color: Color(0xFF55C3FF),
+                          color: Color(0xFF7C1B6A),
                           fontSize: 18,
                         ),
                       ),
@@ -469,7 +469,7 @@ class _TravelDetailViewState extends State<TravelDetailView> {
                                                 borderRadius: BorderRadius.all(
                                                   Radius.circular(6),
                                                 ),
-                                                color: Color(0xFF00B9FF),
+                                                color: Color(0xFF8C1F78),
                                               ),
                                               child: Container(
                                                 alignment: Alignment.center,
@@ -531,7 +531,7 @@ class _TravelDetailViewState extends State<TravelDetailView> {
                                                 borderRadius: BorderRadius.all(
                                                   Radius.circular(6),
                                                 ),
-                                                color: Color(0xFF00B9FF),
+                                                color: Color(0xFF8C1F78),
                                               ),
                                               child: Container(
                                                 alignment: Alignment.center,
@@ -644,7 +644,7 @@ class _TravelDetailViewState extends State<TravelDetailView> {
                                             ),
                                             padding: EdgeInsets.all(8),
                                           ),
-                                          if (favCount != 0)
+                                          if (favCount != 0 && isFav != "")
                                             Positioned(
                                               right: 0,
                                               top: 4,
@@ -656,7 +656,7 @@ class _TravelDetailViewState extends State<TravelDetailView> {
                                                       BorderRadius.all(
                                                     Radius.circular(6),
                                                   ),
-                                                  color: Color(0xFF00B9FF),
+                                                  color: Color(0xFF8C1F78),
                                                 ),
                                                 child: Container(
                                                   alignment: Alignment.center,

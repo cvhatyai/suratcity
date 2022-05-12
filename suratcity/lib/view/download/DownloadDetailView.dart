@@ -179,7 +179,7 @@ class _DownloadDetailViewState extends State<DownloadDetailView> {
                     child: Text(
                       subject,
                       style: TextStyle(
-                        color: Color(0xFF55C3FF),
+                        color: Color(0xFF7C1B6A),
                         fontSize: 18,
                       ),
                     ),
@@ -193,18 +193,41 @@ class _DownloadDetailViewState extends State<DownloadDetailView> {
                   child: Text(
                     subject,
                     style: TextStyle(
-                      color: Color(0xFF55C3FF),
+                      color: Color(0xFF7C1B6A),
                       fontSize: 18,
                     ),
                   ),
                 ),
+
+                //เวลา
+                Container(
+                  alignment: Alignment.centerLeft,
+                  padding: EdgeInsets.only(left: 16, right: 16, bottom: 8),
+                  child: Row(
+                    children: [
+                      Icon(
+                        Icons.access_time_sharp,
+                        color: Color(0xFF8C1F78),
+                        size: 22,
+                      ),
+                      Text(
+                        create_date,
+                        style: TextStyle(
+                          color: Color(0xFF8C1F78),
+                          fontSize: 13,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+
                 if (filecount > 0)
                   Container(
                     margin: EdgeInsets.only(left: 16, right: 16),
                     padding:
                         EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 8),
                     width: MediaQuery.of(context).size.width,
-                    color: Colors.blue,
+                    color: Color(0xFF8C1F78),
                     child: Text(
                       "เอกสารดาวน์โหลด",
                       style: TextStyle(color: Colors.white),
@@ -262,6 +285,7 @@ class _DownloadDetailViewState extends State<DownloadDetailView> {
                         ),
                     ],
                   ),
+
                 //รายละเอียด
                 if (detail != "")
                   Container(
@@ -269,27 +293,6 @@ class _DownloadDetailViewState extends State<DownloadDetailView> {
                     padding: EdgeInsets.all(16),
                     child: Text(detail),
                   ),
-                //เวลา
-                Container(
-                  alignment: Alignment.centerLeft,
-                  padding: EdgeInsets.only(left: 16, right: 16, bottom: 16),
-                  child: Row(
-                    children: [
-                      Icon(
-                        Icons.access_time_sharp,
-                        color: Colors.blue,
-                        size: 22,
-                      ),
-                      Text(
-                        create_date,
-                        style: TextStyle(
-                          color: Colors.blue,
-                          fontSize: 9,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
                 //กดเพื่อรับชมวิดีโอ
                 if (url != "")
                   Container(
@@ -310,7 +313,7 @@ class _DownloadDetailViewState extends State<DownloadDetailView> {
                             gradient: new LinearGradient(
                               colors: [
                                 Colors.lightBlueAccent,
-                                Colors.blueAccent,
+                                Color(0xFF8C1F78),
                               ],
                             )),
                         child: Container(

@@ -1,4 +1,5 @@
 import 'package:cvapp/view/download/DownloadListView.dart';
+import 'package:cvapp/view/nearview/NearMeView.dart';
 import 'package:cvapp/view/phone/PhoneCateListView.dart';
 import 'package:cvapp/view/travel/TravelListView.dart';
 import 'package:flutter/material.dart';
@@ -213,7 +214,7 @@ class _ServiceHomeViewState extends State<ServiceHomeView> {
                         MaterialPageRoute(
                           builder: (context) => TravelListView(
                             isHaveArrow: "1",
-                            title: "ที่เที่ยว",
+                            title: "เที่ยว",
                             tid: "1",
                           ),
                         ),
@@ -233,7 +234,7 @@ class _ServiceHomeViewState extends State<ServiceHomeView> {
                           Container(
                             margin: EdgeInsets.only(top: 4),
                             child: Text(
-                              "ที่เที่ยว",
+                              "เที่ยว",
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   fontSize: 12, color: Color(0xFFFFF600)),
@@ -252,7 +253,7 @@ class _ServiceHomeViewState extends State<ServiceHomeView> {
                         MaterialPageRoute(
                           builder: (context) => TravelListView(
                             isHaveArrow: "1",
-                            title: "ที่กิน",
+                            title: "กิน",
                             tid: "3",
                           ),
                         ),
@@ -272,7 +273,7 @@ class _ServiceHomeViewState extends State<ServiceHomeView> {
                           Container(
                             margin: EdgeInsets.only(top: 4),
                             child: Text(
-                              "ที่กิน",
+                              "กิน",
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   fontSize: 12, color: Color(0xFFFFF600)),
@@ -324,7 +325,16 @@ class _ServiceHomeViewState extends State<ServiceHomeView> {
                 ),
                 Expanded(
                   child: GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => NearMeView(
+                            isHaveArrow: "1",
+                          ),
+                        ),
+                      );
+                    },
                     child: Container(
                       child: Column(
                         children: [

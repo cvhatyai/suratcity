@@ -75,7 +75,7 @@ class _PhoneEditViewState extends State<PhoneEditView> {
                 children: [
                   Text(
                     "แจ้งแก้ไขข้อมูลของ " + widget.subject,
-                    style: TextStyle(fontSize: 18),
+                    style: TextStyle(fontSize: 18, fontFamily: 'Kanit'),
                   ),
                   Container(
                     margin: EdgeInsets.only(top: 16),
@@ -124,6 +124,9 @@ class _PhoneEditViewState extends State<PhoneEditView> {
                     margin: EdgeInsets.only(top: 16),
                     width: MediaQuery.of(context).size.width,
                     child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        primary: Color(0xFF8C1F78),
+                      ),
                       onPressed: () {
                         setState(() {
                           _detail.text.isEmpty

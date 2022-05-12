@@ -41,6 +41,7 @@ class _FavoriteViewState extends State<FavoriteView> {
               Container(
                 height: 50,
                 child: TabBar(
+                  indicatorColor: Color(0xFF8C1F78),
                   onTap: (index) {
                     print(index.toString());
                     setState(() {
@@ -54,7 +55,7 @@ class _FavoriteViewState extends State<FavoriteView> {
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
-                          color: (currentTab == 0) ? Colors.blue : Colors.grey,
+                          color: (currentTab == 0) ? Color(0xFF8C1F78) : Colors.grey,
                         ),
                       ),
                     ),
@@ -64,7 +65,7 @@ class _FavoriteViewState extends State<FavoriteView> {
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
-                          color: (currentTab == 1) ? Colors.blue : Colors.grey,
+                          color: (currentTab == 1) ? Color(0xFF8C1F78) : Colors.grey,
                         ),
                       ),
                     ),
@@ -73,6 +74,7 @@ class _FavoriteViewState extends State<FavoriteView> {
               ),
               Expanded(
                 child: TabBarView(
+                  
                   physics: NeverScrollableScrollPhysics(),
                   children: myPage.map((Widget widget) {
                     return widget;

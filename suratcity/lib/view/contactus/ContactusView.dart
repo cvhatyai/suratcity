@@ -150,8 +150,8 @@ class _ContactusViewState extends State<ContactusView> {
       email = rs["email"].toString();
       icon = rs["icon"].toString();
       mapPic = rs["map"].toString();
-      lat = rs["lat"];
-      lng = rs["lng"];
+      lat = double.parse(rs["lat"]);
+      lng = double.parse(rs["lng"]);
     });
   }
 
@@ -210,7 +210,7 @@ class _ContactusViewState extends State<ContactusView> {
                       name,
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                        color: Colors.blue,
+                        color: Color(0xFF8C1F78),
                         fontSize: 22,
                       ),
                     ),
@@ -440,13 +440,13 @@ class _ContactusViewState extends State<ContactusView> {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(80.0)),
                         child: Container(
-                          width: 300,
+                          width: double.infinity,
                           decoration: new BoxDecoration(
                             borderRadius: BorderRadius.circular(25.0),
                             gradient: new LinearGradient(
                               colors: [
-                                Colors.blue,
-                                Colors.lightBlueAccent,
+                                Color(0xFF8C1F78),
+                                Color(0xFFBE55AB),
                               ],
                             ),
                           ),
@@ -487,6 +487,10 @@ class _ContactusViewState extends State<ContactusView> {
                       Container(
                         width: MediaQuery.of(context).size.width,
                         child: ElevatedButton(
+                          style: ButtonStyle(
+                            backgroundColor: MaterialStateProperty.all<Color>(
+                                Color(0xFF8C1F78)),
+                          ),
                           onPressed: () {
                             var urlMap =
                                 "https://www.google.com/maps/dir/?api=1&destination=" +
@@ -502,6 +506,10 @@ class _ContactusViewState extends State<ContactusView> {
                     Container(
                       width: MediaQuery.of(context).size.width,
                       child: ElevatedButton(
+                        style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all<Color>(
+                              Color(0xFF8C1F78)),
+                        ),
                         onPressed: () {
                           var urlMap = Info().baseUrl;
                           _launchInBrowser(urlMap);
@@ -513,9 +521,14 @@ class _ContactusViewState extends State<ContactusView> {
                     Container(
                       width: MediaQuery.of(context).size.width,
                       child: ElevatedButton(
+                        style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all<Color>(
+                              Color(0xFF8C1F78)),
+                        ),
                         onPressed: () {
-                          /*var urlMap = "https://www.facebook.com/suratcity";
-                          _launchInBrowser(urlMap);*/
+                          var urlMap =
+                              "https://web.facebook.com/suratthanicity?_rdc=1&_rdr";
+                          _launchInBrowser(urlMap);
                         },
                         child: Text('Facebookเทศบาล'),
                       ),

@@ -119,7 +119,7 @@ class _ForgetPasswordOtpViewState extends State<ForgetPasswordOtpView> {
                   child: ElevatedButton(
                     style: ButtonStyle(
                       backgroundColor:
-                          MaterialStateProperty.all<Color>(Color(0xFF65A5D8)),
+                          MaterialStateProperty.all<Color>(Color(0xFF8C1F78)),
                     ),
                     onPressed: () {
                       setState(() {

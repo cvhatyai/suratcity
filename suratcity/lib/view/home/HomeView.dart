@@ -19,6 +19,7 @@ import 'package:cvapp/view/setting/SettingView.dart';
 
 import 'frontpage/Activity.dart';
 import 'frontpage/FooterView.dart';
+import 'frontpage/GreenMarketView.dart';
 
 class HomeView extends StatefulWidget {
   @override
@@ -202,14 +203,16 @@ class _HomeViewState extends State<HomeView> {
               ComplainFollowView(),
               //ทน.สุราษฎร์ธานีอัพเดท
               NewsView(),
-              //กิจกรรมห้ามพลาด
+              //กิจกรรมที่กำลังจะมาถึง
               GalleryView(),
-              //กิจกรรมห้ามพลาด
+              //กิจกรรมที่กำลังจะมาถึง
               Activity(),
-              // //เสน่ห์เมืองนนท์
-              // TravelView(),
-              // //footer
-              // FooterView(),
+              //ตลาดเขียว
+              GreenMarketView(),
+              //เที่ยว
+              TravelView(),
+              //footer
+              FooterView(),
             ],
           ),
         ),

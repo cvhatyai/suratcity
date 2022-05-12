@@ -133,7 +133,7 @@ class _VideoListViewState extends State<VideoListView> {
       ),
       body: Container(
         color: Color(0xFFFFFFFF),
-        padding: EdgeInsets.only(left: 8, right: 8),
+        padding: EdgeInsets.only(left: 8, right: 8,top: 12),
         child: (data != null && data.length != 0)
             ? GridView.count(
                 childAspectRatio: (itemWidth / itemHeight),
@@ -150,9 +150,14 @@ class _VideoListViewState extends State<VideoListView> {
                       child: Stack(
                         alignment: Alignment.topCenter,
                         children: [
-                          Image.network(
-                            data[index]["display_image"],
-                            fit: BoxFit.fill,
+                          ClipRRect(
+                            borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(10.0),
+                                topRight: Radius.circular(10.0)),
+                            child: Image.network(
+                              data[index]["display_image"],
+                              fit: BoxFit.fill,
+                            ),
                           ),
                           Positioned(
                             bottom: 20,
@@ -172,8 +177,8 @@ class _VideoListViewState extends State<VideoListView> {
                                 ],
                               ),
                               alignment: Alignment.center,
-                              width: MediaQuery.of(context).size.width * 0.42,
-                              height: 80,
+                              width: MediaQuery.of(context).size.width * 0.5,
+                              height: 75,
                               child: Container(
                                 alignment: Alignment.centerLeft,
                                 padding: EdgeInsets.all(8),
@@ -195,7 +200,7 @@ class _VideoListViewState extends State<VideoListView> {
                                             data[index]["create_date"],
                                             style: TextStyle(
                                               fontSize: 10,
-                                              color: Color(0xFF6399C4),
+                                              color: Color(0xFF7C1B6A),
                                             ),
                                           ),
                                         ),

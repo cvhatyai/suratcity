@@ -23,7 +23,7 @@ class TravelCommentListView extends StatefulWidget {
 }
 
 class _TravelCommentListViewState extends State<TravelCommentListView> {
-  var userAvatar = Info().baseUrl + "images/nopic-personal.jpg";
+  var userAvatar = Info().baseUrl + "images/nopic-personal.png";
 
   @override
   void initState() {
@@ -90,7 +90,7 @@ class _TravelCommentListViewState extends State<TravelCommentListView> {
                         userAvatar = data[index]["avatar"];
                       } else {
                         userAvatar =
-                            Info().baseUrl + "images/nopic-personal.jpg";
+                            Info().baseUrl + "images/nopic-personal.png";
                       }
                       return Column(
                         children: [
@@ -167,7 +167,7 @@ class _TravelCommentListViewState extends State<TravelCommentListView> {
                 width: 48,
                 height: 48,
                 decoration: BoxDecoration(
-                  color: Colors.blue,
+                  color: Color(0xFF8C1F78),
                   shape: BoxShape.circle,
                 ),
                 child: Icon(

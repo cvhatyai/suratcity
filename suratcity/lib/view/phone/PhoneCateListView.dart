@@ -103,7 +103,7 @@ class _PhoneCateListViewState extends State<PhoneCateListView> {
     return SafeArea(
         child: Scaffold(
       appBar: AppBarView(
-        title: "เบอร์โทรสำคัญ",
+        title: "หมายเลขโทรศัพท์ฉุกเฉิน",
         isHaveArrow: widget.isHaveArrow,
       ),
       body: Column(
@@ -127,7 +127,7 @@ class _PhoneCateListViewState extends State<PhoneCateListView> {
                         },
                         icon: Icon(
                           Icons.search,
-                          color: Color(0xFF00B9FF),
+                          color: Color(0xFF8C1F78),
                           size: 36,
                         ),
                       ),
@@ -139,7 +139,7 @@ class _PhoneCateListViewState extends State<PhoneCateListView> {
           ),
           GestureDetector(
             onTap: () {
-              _makePhoneCall('tel:025890500');
+              _makePhoneCall('tel:199');
             },
             child: Container(
               margin: EdgeInsets.only(top: 16),
@@ -154,9 +154,9 @@ class _PhoneCateListViewState extends State<PhoneCateListView> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Expanded(
-                        flex: 2,
+                        flex: 4,
                         child: Container(
-                          padding: EdgeInsets.only(left: 8),
+                          padding: EdgeInsets.only(left: 30),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -166,7 +166,8 @@ class _PhoneCateListViewState extends State<PhoneCateListView> {
                                 overflow: TextOverflow.ellipsis,
                                 style: TextStyle(
                                   color: Colors.white,
-                                  fontSize: 16,
+                                  fontFamily: 'Kanit',
+                                  fontSize: 18,
                                 ),
                               ),
                               Text(
@@ -175,18 +176,20 @@ class _PhoneCateListViewState extends State<PhoneCateListView> {
                                 overflow: TextOverflow.ellipsis,
                                 style: TextStyle(
                                   color: Colors.white,
-                                  fontSize: 12,
+                                  fontFamily: 'Kanit',
+                                  fontSize: 18,
                                 ),
                               ),
                               Container(
-                                margin: EdgeInsets.only(top: 4),
+                                margin: EdgeInsets.only(top: 0),
                                 child: Text(
                                   "เทศบาลนครสุราษฎร์ธานี",
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,
                                   style: TextStyle(
                                     color: Colors.white,
-                                    fontSize: 10,
+                                    fontFamily: 'Kanit',
+                                    fontSize: 13,
                                   ),
                                 ),
                               ),
@@ -197,12 +200,13 @@ class _PhoneCateListViewState extends State<PhoneCateListView> {
                       Expanded(
                         flex: 2,
                         child: Text(
-                          "0 2589 0500",
+                          "199",
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
                             color: Colors.white,
-                            fontSize: 18,
+                            fontFamily: 'Kanit',
+                            fontSize: 40,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -234,7 +238,8 @@ class _PhoneCateListViewState extends State<PhoneCateListView> {
                           overflow: TextOverflow.ellipsis,
                           maxLines: 1,
                           style: TextStyle(
-                            fontSize: 20,
+                            fontSize: 22,
+                            fontFamily: 'Kanit',
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -253,44 +258,74 @@ class _PhoneCateListViewState extends State<PhoneCateListView> {
                             );
                           },
                           child: Container(
-                            color: Colors.white,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(9.0),
+                              ),
+                              border: Border.all(
+                                color: Colors.white,
+                                width: 1.0,
+                              ),
+                              color: Colors.white,
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey.withOpacity(0.5),
+                                  spreadRadius: 3,
+                                  blurRadius: 7,
+                                  offset: Offset(
+                                      0, 3), // changes position of shadow
+                                ),
+                              ],
+                            ),
                             child: Column(
                               children: [
-                                Row(
-                                  children: [
-                                    CircleAvatar(
-                                      radius: 20,
-                                      backgroundImage: NetworkImage(
-                                        element["display_image"],
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Row(
+                                    children: [
+                                      /*CircleAvatar(
+                                        radius: 20,
+                                        backgroundImage: NetworkImage(
+                                          element["display_image"],
+                                        ),
+                                      ),*/
+                                      Icon(
+                                        Icons.phone,
+                                        color: Color(0xFF8C1F78),
                                       ),
-                                    ),
-                                    Expanded(
-                                      child: Container(
-                                        padding: EdgeInsets.all(8),
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              element["subject"],
-                                              overflow: TextOverflow.ellipsis,
-                                              maxLines: 1,
-                                              style: TextStyle(
-                                                fontWeight: FontWeight.bold,
+                                      Expanded(
+                                        child: Container(
+                                          padding: EdgeInsets.only(left: 10),
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                element["subject"],
+                                                overflow: TextOverflow.ellipsis,
+                                                maxLines: 1,
+                                                style: TextStyle(
+                                                    fontWeight: FontWeight.bold,
+                                                    fontFamily: 'Kanit',
+                                                    fontSize: 18),
                                               ),
-                                            ),
-                                            Text(
-                                              element["tel"],
-                                              overflow: TextOverflow.ellipsis,
-                                              maxLines: 1,
-                                            ),
-                                          ],
+                                              Text(
+                                                element["tel"],
+                                                overflow: TextOverflow.ellipsis,
+                                                maxLines: 1,
+                                                style: TextStyle(
+                                                  fontFamily: 'Kanit',
+                                                  fontSize: 16,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                  ],
+                                    ],
+                                  ),
                                 ),
-                                Divider(),
+                                // Divider(),
                               ],
                             ),
                           ),

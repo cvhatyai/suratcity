@@ -29,7 +29,7 @@ class _ChatViewState extends State<ChatView> {
 
     var defaultSubject1 = {
       'chatText':
-          'สวัสดีคร้าบบ... วันนี้มีอะไรให้โต๊ง ช่วยครับ ถามมาได้เลย จะรีบไปหาคำตอบให้ครับ',
+          'สวัสดีครับ... วันนี้มีอะไรให้ช่วยครับ ถามมาได้เลย จะรีบไปหาคำตอบให้ครับ',
       'chatTime': formattedDate,
       'type': "bot",
     };
@@ -291,7 +291,7 @@ class _ChatViewState extends State<ChatView> {
                                             bottomLeft: Radius.circular(16),
                                           ),
                                           border: Border.all(
-                                            color: Color(0xFFD5A97A),
+                                            color: Color(0xFF7C1B6A),
                                             width: 1.0,
                                           ),
                                           boxShadow: [
@@ -357,7 +357,7 @@ class _ChatViewState extends State<ChatView> {
                                           EdgeInsets.symmetric(horizontal: 8),
                                       padding: EdgeInsets.all(16),
                                       decoration: BoxDecoration(
-                                        color: Colors.lightBlueAccent,
+                                        color: Color(0xFF7C1B6A),
                                         borderRadius: BorderRadius.only(
                                           topLeft: Radius.circular(16),
                                           topRight: Radius.circular(16),
@@ -374,7 +374,7 @@ class _ChatViewState extends State<ChatView> {
                                       ),
                                       child: Text(
                                         chatArr[i]["chatText"],
-                                        style: TextStyle(fontSize: 12),
+                                        style: TextStyle(fontSize: 12,color: Colors.white),
                                       ),
                                     ),
                                   ),
@@ -395,7 +395,7 @@ class _ChatViewState extends State<ChatView> {
                         'assets/images/faq3.png',
                       ),
                       Positioned(
-                        bottom: 30,
+                        bottom: 20,
                         child: Container(
                           padding: EdgeInsets.only(left: 8),
                           width: MediaQuery.of(context).size.width,
@@ -413,7 +413,7 @@ class _ChatViewState extends State<ChatView> {
                                       bottomLeft: Radius.circular(4),
                                     ),
                                     border: Border.all(
-                                      color: Color(0xFF55C3FF),
+                                      color: Color(0xFFe6df16),
                                       width: 1.0,
                                     ),
                                   ),
@@ -449,15 +449,24 @@ class _ChatViewState extends State<ChatView> {
                                             vertical: 8,
                                           ),
                                           decoration: BoxDecoration(
-                                            color: Color(0xFF2DA3FF),
+                                            color: Color(0xFFe6df16),
                                             borderRadius: BorderRadius.only(
                                               topLeft: Radius.circular(4),
                                               bottomRight: Radius.circular(4),
                                             ),
                                           ),
-                                          child: Icon(
-                                            Icons.search,
-                                            color: Colors.white,
+                                          child: Container(
+                                            decoration: BoxDecoration(
+                                              color: Color(0xFFe6df16),
+                                              borderRadius: BorderRadius.only(
+                                                topLeft: Radius.circular(8),
+                                                bottomRight: Radius.circular(8),
+                                              ),
+                                            ),
+                                            child: Icon(
+                                              Icons.search,
+                                              color: Color(0xFF7C1B6A),
+                                            ),
                                           ),
                                         ),
                                       ),

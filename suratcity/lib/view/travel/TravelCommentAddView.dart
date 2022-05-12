@@ -133,6 +133,10 @@ class _TravelCommentAddViewState extends State<TravelCommentAddView> {
                   margin: EdgeInsets.only(top: 16),
                   width: MediaQuery.of(context).size.width,
                   child: ElevatedButton(
+                    style: ButtonStyle(
+                    backgroundColor:
+                        MaterialStateProperty.all<Color>(Color(0xFF8C1F78)),
+                  ),
                     onPressed: () {
                       setState(() {
                         _detail.text.isEmpty

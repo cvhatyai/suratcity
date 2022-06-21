@@ -24,10 +24,21 @@ String cateValSub = "";
 Map<int, String> dataCateMapSub = {0: "-- เลือกหมวด --"};
 //dropdownsub
 
+//dropdown
+var arrMapPerson;
+String cateValPerson = "";
+Map<int, String> dataCateMapPerson = {0: "-- เลือกกอง --"};
+//dropdown
+
 class NewsListView extends StatefulWidget {
-  NewsListView({Key key, this.isHaveArrow = "", this.isHasCate = true})
+  NewsListView(
+      {Key key,
+      this.isHaveArrow = "",
+      this.isHasCate = true,
+      this.cateDefault = ""})
       : super(key: key);
   final String isHaveArrow;
+  String cateDefault;
   final bool isHasCate;
 
   @override
@@ -54,6 +65,10 @@ class _NewsListViewState extends State<NewsListView> {
     });
     if (widget.isHasCate) {
       getCateList();
+      getCatePersonList();
+    }
+    if (widget.cateDefault == "no") {
+      cateVal = "0";
     }
     getNewsList();
   }
@@ -63,6 +78,7 @@ class _NewsListViewState extends State<NewsListView> {
     _map.addAll({
       "rows": "100",
       "cid": cateVal,
+      "pid": cateValPerson,
     });
 
     EasyLoading.show(status: 'loading...');
@@ -111,6 +127,79 @@ class _NewsListViewState extends State<NewsListView> {
     );
   }
 
+  getCatePersonList() {
+    Map _map = {};
+    _map.addAll({
+      "cmd": "service_guide",
+      "parent_id": "1",
+    });
+    var body = json.encode(_map);
+    return postCatePersonData(http.Client(), body, _map);
+  }
+
+  Future<List<AllList>> postCatePersonData(
+      http.Client client, jsonMap, Map map) async {
+    final response = await client.post(Uri.parse(Info().cateAllList),
+        headers: {"Content-Type": "application/json"}, body: jsonMap);
+    return parseCatePersonData(response.body);
+  }
+
+  List<AllList> parseCatePersonData(String responseBody) {
+    //print("responseBody" + responseBody.toString());
+    final parsed = json.decode(responseBody).cast<Map<String, dynamic>>();
+    arrMapPerson = parsed.map<AllList>((json) => AllList.fromJson(json)).toList();
+    print("arrMap" + arrMapPerson.toString());
+
+    Map<int, String> tmpDataCateMapPerson;
+    tmpDataCateMapPerson =
+        Map.fromIterable(arrMapPerson, key: (e) => e.id, value: (e) => e.cate_name);
+    dataCateMapPerson.addAll(tmpDataCateMapPerson);
+
+    print("dataCateMap" + dataCateMapPerson.toString());
+
+    setState(() {});
+
+    return parsed.map<AllList>((json) => AllList.fromJson(json)).toList();
+  }
+
+  Widget dropDownCatePerson() {
+    return (arrMapPerson != null && arrMapPerson.length != 0)
+        ? DropdownButton<String>(
+            value: widget.cateDefault == "no" ? "0" : dropdownValue3,
+            isExpanded: true,
+            icon: Icon(Icons.keyboard_arrow_down_outlined),
+            iconSize: 24,
+            elevation: 16,
+            style: TextStyle(color: Color(0xFF7C1B6A)),
+            underline: Container(
+              height: 1,
+              color: Colors.grey,
+            ),
+            onChanged: (String newValue) {
+              setState(() {
+                dropdownValue3 = newValue;
+                cateValPerson = dropdownValue3;
+                widget.cateDefault = cateValPerson;
+                getNewsList();
+                // getCateSubList();
+                print("cateValPerson" + cateValPerson);
+              });
+            },
+            items: dataCateMapPerson.entries
+                .map<DropdownMenuItem<String>>(
+                    (MapEntry<int, String> e) => DropdownMenuItem<String>(
+                          value: e.key.toString(),
+                          child: Text(
+                            e.value,
+                            overflow: TextOverflow.ellipsis,
+                            maxLines: 1,
+                          ),
+                        ))
+                .toList(),
+          )
+        : Container();
+  }
+
   //dropdown
   getCateList() {
     Map _map = {};
@@ -148,11 +237,12 @@ class _NewsListViewState extends State<NewsListView> {
   }
 
   String dropdownValue2 = (cateVal != "") ? cateVal : "0";
+  String dropdownValue3 = (cateValPerson != "") ? cateValPerson : "0";
 
   Widget dropDownCate() {
     return (arrMap != null && arrMap.length != 0)
         ? DropdownButton<String>(
-            value: dropdownValue2,
+            value: widget.cateDefault == "no" ? "0" : dropdownValue2,
             isExpanded: true,
             icon: Icon(Icons.keyboard_arrow_down_outlined),
             iconSize: 24,
@@ -166,6 +256,7 @@ class _NewsListViewState extends State<NewsListView> {
               setState(() {
                 dropdownValue2 = newValue;
                 cateVal = dropdownValue2;
+                widget.cateDefault = cateVal;
                 getNewsList();
                 // getCateSubList();
                 print("cateVal" + cateVal);
@@ -291,6 +382,14 @@ class _NewsListViewState extends State<NewsListView> {
               margin: EdgeInsets.only(top: 16),
               padding: EdgeInsets.only(left: 16, right: 16),
               child: dropDownCate(),
+            ),
+          ),
+          Visibility(
+            visible: widget.isHasCate ? true : false,
+            child: Container(
+              margin: EdgeInsets.only(bottom: 12),
+              padding: EdgeInsets.only(left: 16, right: 16),
+              child: dropDownCatePerson(),
             ),
           ),
           Visibility(

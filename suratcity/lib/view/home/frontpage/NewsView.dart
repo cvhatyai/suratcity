@@ -208,6 +208,7 @@ class _NewsViewState extends State<NewsView> {
                       MaterialPageRoute(
                         builder: (context) => NewsListView(
                           isHaveArrow: "1",
+                          cateDefault: "no",
                         ),
                       ),
                     );

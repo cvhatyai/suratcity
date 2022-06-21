@@ -416,14 +416,14 @@ class _GalleryDetailViewState extends State<GalleryDetailView> {
                             borderRadius: BorderRadius.circular(25.0),
                             gradient: new LinearGradient(
                               colors: [
-                                Colors.lightBlueAccent,
-                                Colors.blueAccent,
+                                 Color(0xFF7C1B6A),
+                                Color(0xFF7C1B6A),
                               ],
                             )),
                         child: Container(
                           alignment: Alignment.center,
                           child: Text(
-                            "กดเพื่อรับชมวิดีโอ",
+                            "ลิงก์",
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               fontSize: 18,

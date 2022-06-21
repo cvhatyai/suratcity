@@ -8,7 +8,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 
 import '../AppBarView.dart';
-import 'GalleryDetailView.dart';
+import 'sportDetailView.dart';
 
 var data;
 
@@ -18,16 +18,16 @@ String cateValPerson = "";
 Map<int, String> dataCateMapPerson = {0: "-- เลือกกอง --"};
 //dropdown
 
-class GalleryListView extends StatefulWidget {
-  GalleryListView({Key key, this.isHaveArrow = "", this.cateDefault = ""})
+class sportListView extends StatefulWidget {
+  sportListView({Key key, this.isHaveArrow = "", this.cateDefault = ""})
       : super(key: key);
   final String isHaveArrow;
   String cateDefault;
   @override
-  _GalleryListViewState createState() => _GalleryListViewState();
+  _sportListViewState createState() => _sportListViewState();
 }
 
-class _GalleryListViewState extends State<GalleryListView> {
+class _sportListViewState extends State<sportListView> {
   var userFullname;
   var uid;
 
@@ -139,7 +139,7 @@ class _GalleryListViewState extends State<GalleryListView> {
 
   Future<List<AllList>> postNewsList(
       http.Client client, jsonMap, Map map) async {
-    final response = await client.post(Uri.parse(Info().galleryList),
+    final response = await client.post(Uri.parse(Info().sportList),
         headers: {"Content-Type": "application/json"}, body: jsonMap);
     parseNewsList(response.body);
   }
@@ -185,13 +185,13 @@ class _GalleryListViewState extends State<GalleryListView> {
     return SafeArea(
         child: Scaffold(
       appBar: AppBarView(
-        title: "ภาพกิจกรรม",
+        title: "สถานที่ออกกำลังกาย",
         isHaveArrow: widget.isHaveArrow,
       ),
       body: Column(
         children: [
           Visibility(
-            visible: true,
+            visible: false,
             child: Container(
               margin: EdgeInsets.only(bottom: 12),
               padding: EdgeInsets.only(left: 16, right: 16),
@@ -212,7 +212,7 @@ class _GalleryListViewState extends State<GalleryListView> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => GalleryDetailView(
+                                builder: (context) => sportDetailView(
                                     topicID: data[index]["id"].toString()),
                               ),
                             );
@@ -233,7 +233,7 @@ class _GalleryListViewState extends State<GalleryListView> {
                                   ),
                                 ),
                                 Positioned(
-                                  bottom: 20,
+                                  bottom: 0,
                                   child: Container(
                                     decoration: BoxDecoration(
                                       color: Colors.white,

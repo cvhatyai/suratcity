@@ -17,25 +17,25 @@ var data;
 List<String> imgList = [];
 var fileList;
 
-class NewsDetailView extends StatefulWidget {
-  NewsDetailView({Key key, this.topicID}) : super(key: key);
+class sportDetailView extends StatefulWidget {
+  sportDetailView({Key key, this.topicID}) : super(key: key);
   final String topicID;
 
   @override
-  _NewsDetailViewState createState() => _NewsDetailViewState();
+  _sportDetailViewState createState() => _sportDetailViewState();
 }
 
-class _NewsDetailViewState extends State<NewsDetailView> {
+class _sportDetailViewState extends State<sportDetailView> {
   var userFullname;
   var uid;
 
   var subject = "";
   var detail = "";
+  var link = "";
   int imgcount = 0;
   int filecount = 0;
   var url = "";
   var create_date = "";
-  var link = "";
   var img = "";
   var display_image = Info().baseUrl + "images/nopic.png";
   int _currentPage = 0;
@@ -70,22 +70,20 @@ class _NewsDetailViewState extends State<NewsDetailView> {
 
   Future<List<AllList>> postNewsDetail(
       http.Client client, jsonMap, Map map) async {
-    final response = await client.post(Uri.parse(Info().newsDetail),
+    final response = await client.post(Uri.parse(Info().sportDetail),
         headers: {"Content-Type": "application/json"}, body: jsonMap);
     imgList.clear();
-
     data = json.decode(response.body);
-    //print("data" + data.toString());
 
     setState(() {
       subject = data['subject'].toString();
+      link = data['link'].toString();
       detail = data['description'].toString();
       if (data['url'].toString() != "null") {
         url = data['url'].toString();
       }
       display_image = data['display_image'].toString();
       create_date = data['create_date'].toString();
-      link = data['link'].toString();
       imgcount = data['imgcount'];
       imgList.add(display_image);
       if (imgcount > 0) {
@@ -94,7 +92,6 @@ class _NewsDetailViewState extends State<NewsDetailView> {
         tmp = tmp.replaceAll("]", "");
         imgList.addAll(tmp.split(","));
       }
-
       filecount = data['filecount'];
       if (filecount > 0) {
         fileList = [];
@@ -169,13 +166,13 @@ class _NewsDetailViewState extends State<NewsDetailView> {
     return SafeArea(
         child: Scaffold(
       appBar: AppBarView(
-        title: "ทน.สุราษฎร์ธานีอัพเดท",
+        title: "OTOP",
         isHaveArrow: "1",
       ),
       body: Container(
         width: double.infinity,
         height: double.infinity,
-        color: Color(0xFFFFFFFF),
+        // color: Color(0xFFD8E2EB),
         child: SingleChildScrollView(
           child: Container(
             margin: EdgeInsets.only(top: 8),
@@ -205,7 +202,6 @@ class _NewsDetailViewState extends State<NewsDetailView> {
                                       _launchInBrowser(image.trim());
                                     },
                                     child: Container(
-                                      padding: EdgeInsets.all(1),
                                       width: MediaQuery.of(context).size.width *
                                           0.97,
                                       decoration: BoxDecoration(
@@ -218,6 +214,7 @@ class _NewsDetailViewState extends State<NewsDetailView> {
                                         image.trim(),
                                       ),
                                       alignment: Alignment.center,
+                                      padding: EdgeInsets.all(1),
                                     ),
                                   ),
                                   /*Text(
@@ -279,14 +276,13 @@ class _NewsDetailViewState extends State<NewsDetailView> {
                     ),
                   ),
                 ),
-                //ไฟล์
                 if (filecount > 0)
                   Container(
                     margin: EdgeInsets.only(left: 16, right: 16),
                     padding:
                         EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 8),
                     width: MediaQuery.of(context).size.width,
-                    color: Color(0xFF7C1B6A),
+                    color: Colors.blue,
                     child: Text(
                       "เอกสารดาวน์โหลด",
                       style: TextStyle(color: Colors.white),
@@ -344,7 +340,7 @@ class _NewsDetailViewState extends State<NewsDetailView> {
                         ),
                     ],
                   ),
-//เวลา
+                //เวลา
                 Container(
                   alignment: Alignment.centerLeft,
                   padding: EdgeInsets.only(left: 16, right: 16, bottom: 8),
@@ -420,14 +416,14 @@ class _NewsDetailViewState extends State<NewsDetailView> {
                             borderRadius: BorderRadius.circular(25.0),
                             gradient: new LinearGradient(
                               colors: [
-                                Colors.lightBlueAccent,
+                                 Color(0xFF7C1B6A),
                                 Color(0xFF7C1B6A),
                               ],
                             )),
                         child: Container(
                           alignment: Alignment.center,
                           child: Text(
-                            "กดเพื่อรับชมวิดีโอ",
+                            "ลิงก์",
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               fontSize: 18,

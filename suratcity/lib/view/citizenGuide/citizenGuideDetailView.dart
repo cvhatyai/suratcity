@@ -1,12 +1,9 @@
 import 'dart:convert';
 
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:cvapp/model/AllList.dart';
 import 'package:cvapp/system/Info.dart';
-import 'package:share/share.dart';
-
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 import 'package:url_launcher/url_launcher.dart';
@@ -14,18 +11,17 @@ import 'package:url_launcher/url_launcher.dart';
 import '../AppBarView.dart';
 
 var data;
-List<String> imgList = [];
 var fileList;
 
-class NewsDetailView extends StatefulWidget {
-  NewsDetailView({Key key, this.topicID}) : super(key: key);
+class citizenGuideDetailView extends StatefulWidget {
+  citizenGuideDetailView({Key key, this.topicID}) : super(key: key);
   final String topicID;
 
   @override
-  _NewsDetailViewState createState() => _NewsDetailViewState();
+  _citizenGuideDetailViewState createState() => _citizenGuideDetailViewState();
 }
 
-class _NewsDetailViewState extends State<NewsDetailView> {
+class _citizenGuideDetailViewState extends State<citizenGuideDetailView> {
   var userFullname;
   var uid;
 
@@ -35,7 +31,6 @@ class _NewsDetailViewState extends State<NewsDetailView> {
   int filecount = 0;
   var url = "";
   var create_date = "";
-  var link = "";
   var img = "";
   var display_image = Info().baseUrl + "images/nopic.png";
   int _currentPage = 0;
@@ -70,12 +65,10 @@ class _NewsDetailViewState extends State<NewsDetailView> {
 
   Future<List<AllList>> postNewsDetail(
       http.Client client, jsonMap, Map map) async {
-    final response = await client.post(Uri.parse(Info().newsDetail),
+    final response = await client.post(Uri.parse(Info().citizenGuideDetail),
         headers: {"Content-Type": "application/json"}, body: jsonMap);
-    imgList.clear();
 
     data = json.decode(response.body);
-    //print("data" + data.toString());
 
     setState(() {
       subject = data['subject'].toString();
@@ -85,15 +78,7 @@ class _NewsDetailViewState extends State<NewsDetailView> {
       }
       display_image = data['display_image'].toString();
       create_date = data['create_date'].toString();
-      link = data['link'].toString();
       imgcount = data['imgcount'];
-      imgList.add(display_image);
-      if (imgcount > 0) {
-        imgList.clear();
-        var tmp = data['img'].toString().replaceAll("[", "");
-        tmp = tmp.replaceAll("]", "");
-        imgList.addAll(tmp.split(","));
-      }
 
       filecount = data['filecount'];
       if (filecount > 0) {
@@ -169,7 +154,7 @@ class _NewsDetailViewState extends State<NewsDetailView> {
     return SafeArea(
         child: Scaffold(
       appBar: AppBarView(
-        title: "ทน.สุราษฎร์ธานีอัพเดท",
+        title: "คู่มือสำหรับประชาชน",
         isHaveArrow: "1",
       ),
       body: Container(
@@ -181,73 +166,6 @@ class _NewsDetailViewState extends State<NewsDetailView> {
             margin: EdgeInsets.only(top: 8),
             child: Column(
               children: [
-                //ภาพ
-                if (imgcount > 0)
-                  Stack(
-                    children: [
-                      CarouselSlider(
-                        options: CarouselOptions(
-                            height: MediaQuery.of(context).size.height * 0.3,
-                            viewportFraction: 1,
-                            enableInfiniteScroll: false,
-                            onPageChanged: (index, reason) {
-                              setState(() {
-                                _currentPage = index;
-                              });
-                            }),
-                        items: imgList.map((image) {
-                          return Builder(
-                            builder: (BuildContext context) {
-                              return Stack(
-                                children: [
-                                  GestureDetector(
-                                    onTap: () {
-                                      _launchInBrowser(image.trim());
-                                    },
-                                    child: Container(
-                                      padding: EdgeInsets.all(1),
-                                      width: MediaQuery.of(context).size.width *
-                                          0.97,
-                                      decoration: BoxDecoration(
-                                        color: Colors.black,
-                                        borderRadius: BorderRadius.all(
-                                          Radius.circular(9.0),
-                                        ),
-                                      ),
-                                      child: Image.network(
-                                        image.trim(),
-                                      ),
-                                      alignment: Alignment.center,
-                                    ),
-                                  ),
-                                  /*Text(
-                                    imgList.indexOf(image).toString(),
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                    ),
-                                  ),*/
-                                ],
-                              );
-                            },
-                          );
-                        }).toList(),
-                      ),
-                      if (imgList.length > 1)
-                        Positioned(
-                          bottom: 0,
-                          child: Container(
-                            width: MediaQuery.of(context).size.width,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: imgList.map((image) {
-                                int index = imgList.indexOf(image);
-                                return theIndicator(_currentPage, index);
-                              }).toList(),
-                            ),
-                          ),
-                        ),
-                    ],
-                  ),
                 //หัวข้อ 1 มี bar
                 /*ConstrainedBox(
                   constraints: BoxConstraints(
@@ -279,7 +197,6 @@ class _NewsDetailViewState extends State<NewsDetailView> {
                     ),
                   ),
                 ),
-                //ไฟล์
                 if (filecount > 0)
                   Container(
                     margin: EdgeInsets.only(left: 16, right: 16),
@@ -344,50 +261,22 @@ class _NewsDetailViewState extends State<NewsDetailView> {
                         ),
                     ],
                   ),
-//เวลา
+                //เวลา
                 Container(
                   alignment: Alignment.centerLeft,
                   padding: EdgeInsets.only(left: 16, right: 16, bottom: 8),
                   child: Row(
                     children: [
-                      Expanded(
-                        child: Row(
-                          children: [
-                            Icon(
-                              Icons.access_time_sharp,
-                              color: Color(0xFF7C1B6A),
-                              size: 22,
-                            ),
-                            Text(
-                              create_date,
-                              style: TextStyle(
-                                color: Color(0xFF7C1B6A),
-                                fontSize: 11,
-                              ),
-                            ),
-                          ],
-                        ),
+                      Icon(
+                        Icons.access_time_sharp,
+                        color: Color(0xFF7C1B6A),
+                        size: 22,
                       ),
-                      GestureDetector(
-                        onTap: () {
-                          //_launchInBrowser(link);
-                          Share.share(link, subject: subject);
-                        },
-                        child: Column(
-                          children: [
-                            Image.asset(
-                              'assets/images/travel/share.png',
-                              height: 12,
-                              color: Color(0xFF7C1B6A),
-                            ),
-                            Text(
-                              "แชร์",
-                              style: TextStyle(
-                                fontSize: 11,
-                                color: Color(0xFF7C1B6A),
-                              ),
-                            ),
-                          ],
+                      Text(
+                        create_date,
+                        style: TextStyle(
+                          color: Color(0xFF7C1B6A),
+                          fontSize: 11,
                         ),
                       ),
                     ],

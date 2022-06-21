@@ -78,13 +78,14 @@ class _GreenMarketViewState extends State<GreenMarketView> {
             children: [
               Container(
                 padding: EdgeInsets.only(top: 5),
-                height: MediaQuery.of(context).size.height * 0.47,
+                // height: MediaQuery.of(context).size.height * 0.47,
+                height: 340,
                 child: Stack(
                   children: [
                     //list
                     (data != null && data.length != 0)
                         ? Container(
-                            margin: EdgeInsets.only(top: 94),
+                            margin: EdgeInsets.only(top: 98),
                             child: ListView(
                               scrollDirection: Axis.horizontal,
                               children: [
@@ -151,13 +152,13 @@ class _GreenMarketViewState extends State<GreenMarketView> {
                                             ),
                                           ),
                                           Container(
-                                            height: MediaQuery.of(context)
-                                                    .size
-                                                    .height *
-                                                0.04,
+                                            // height: MediaQuery.of(context)
+                                            //         .size
+                                            //         .height *
+                                            //     0.04,
                                             child: Text(
                                               data[i]["productDetail"],
-                                              maxLines: 2,
+                                              maxLines: 1,
                                               overflow: TextOverflow.ellipsis,
                                               style: TextStyle(
                                                 fontSize: 10,

@@ -9,6 +9,7 @@ import 'package:cvapp/system/Info.dart';
 
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -439,7 +440,35 @@ class _GreenMarketAddViewState extends State<GreenMarketAddView> {
       final msg = data['msg'].toString();
 
       if (i == product.length - 1) {
-        Navigator.pop(context);
+        // Navigator.pop(context);
+        showDialog(
+          barrierDismissible: false,
+          context: context,
+          builder: (_) => new CupertinoAlertDialog(
+            title: Text(
+                "ระบบได้ส่งสมัครขายสินค้าของท่านไปยังเจ้าหน้าที่เรียบร้อยแล้ว"),
+            content: RichText(
+              text: TextSpan(
+                children: [
+                  TextSpan(
+                    text:
+                        "รอเจ้าหน้าที่ตรวจสอบและอนุมัติสมัครขายสินค้าของคุณ ",
+                    style: TextStyle(color: Colors.black, fontSize: 18),
+                  ),
+                  TextSpan(
+                    text: "ดำเนินการต่อ",
+                    style: TextStyle(color: Colors.blueAccent, fontSize: 18),
+                    recognizer: TapGestureRecognizer()
+                      ..onTap = () {
+                        Navigator.pop(context);
+                        Navigator.pop(context);
+                      },
+                  ),
+                ],
+              ),
+            ),
+          ),
+        );
       }
     }
   }

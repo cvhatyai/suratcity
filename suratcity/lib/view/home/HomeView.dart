@@ -180,9 +180,12 @@ class _HomeViewState extends State<HomeView> {
                             ),
                           );
                         },
-                        child: Image.asset(
-                          'assets/images/main/search.png',
-                          fit: BoxFit.cover,
+                        child: Container(
+                          padding: EdgeInsets.only(top:30),
+                          child: Image.asset(
+                            'assets/images/main/search.png',
+                            fit: BoxFit.cover,
+                          ),
                         ),
                       ),
                       //marquee

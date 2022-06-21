@@ -26,6 +26,14 @@ class _NearMeViewState extends State<NearMeView> {
   final Map<String, Marker> _markers = {};
   BitmapDescriptor pinTravel;
   BitmapDescriptor pinOtop;
+  BitmapDescriptor pinGuild2;
+  BitmapDescriptor pinGuild3;
+  BitmapDescriptor pinGuild4;
+  BitmapDescriptor pinGuild5;
+  BitmapDescriptor pinGuild6;
+  BitmapDescriptor pinGuild7;
+  BitmapDescriptor pinGuild8;
+  BitmapDescriptor pinAll;
   Completer<GoogleMapController> _controller = Completer();
   static final CameraPosition _kGooglePlex = CameraPosition(
     target: LatLng(9.139770709055124, 99.33046374165455),
@@ -46,6 +54,27 @@ class _NearMeViewState extends State<NearMeView> {
     pinOtop = await BitmapDescriptor.fromAssetImage(
         ImageConfiguration(size: Size(100, 100)),
         'assets/images/travel/pin_otop.png');
+    pinGuild2 = await BitmapDescriptor.fromAssetImage(
+        ImageConfiguration(size: Size(100, 100)),
+        'assets/images/travel/pin_travel_guide2.png');
+    pinGuild3 = await BitmapDescriptor.fromAssetImage(
+        ImageConfiguration(size: Size(100, 100)),
+        'assets/images/travel/pin_travel_guide3.png');
+    pinGuild4 = await BitmapDescriptor.fromAssetImage(
+        ImageConfiguration(size: Size(100, 100)),
+        'assets/images/travel/pin_travel_guide4.png');
+    pinGuild5 = await BitmapDescriptor.fromAssetImage(
+        ImageConfiguration(size: Size(100, 100)),
+        'assets/images/travel/pin_travel_guide5.png');
+    pinGuild6 = await BitmapDescriptor.fromAssetImage(
+        ImageConfiguration(size: Size(100, 100)),
+        'assets/images/travel/pin_travel_guide6.png');
+    pinGuild7 = await BitmapDescriptor.fromAssetImage(
+        ImageConfiguration(size: Size(100, 100)),
+        'assets/images/travel/pin_travel_guide7.png');
+    pinGuild8 = await BitmapDescriptor.fromAssetImage(
+        ImageConfiguration(size: Size(100, 100)),
+        'assets/images/travel/pin_travel_guide8.png');
   }
 
   getMapList() async {
@@ -67,14 +96,39 @@ class _NearMeViewState extends State<NearMeView> {
     // print("responseBodyList1" + responseBody);
     data = [];
     data.addAll(json.decode(responseBody));
+    print("parseMapList : ${data}");
     // print("responseBodyList2" + data.toString());
     final parsed = json.decode(responseBody).cast<Map<String, dynamic>>();
     parsed.map<AllList>((json) => AllList.fromJson(json)).toList();
     setState(() {
       _markers.clear();
       for (var i = 0; i < data.length; i++) {
+        if(data[i]["cmd"] == "travel_guide"){
+          if(data[i]["cid"] == "2"){
+            pinAll = pinGuild2;
+          }else if(data[i]["cid"] == "3") {
+            pinAll = pinGuild3;
+          }else if(data[i]["cid"] == "4") {
+            pinAll = pinGuild4;
+          }else if(data[i]["cid"] == "5") {
+            pinAll = pinGuild5;
+          }else if(data[i]["cid"] == "6") {
+            pinAll = pinGuild6;
+          }else if(data[i]["cid"] == "7") {
+            pinAll = pinGuild7;
+          }else if(data[i]["cid"] == "8") {
+            pinAll = pinGuild8;
+          }
+        }else{
+          if(data[i]["cmd"] == "travel"){
+            pinAll = pinTravel;
+          }else{
+            pinAll = pinOtop;
+          }
+        }
         final marker = Marker(
-          icon: (data[i]["cmd"] == "travel") ? pinTravel : pinOtop,
+          // icon: (data[i]["cmd"] == "travel") ? pinTravel : pinOtop,
+          icon: pinAll,
           markerId: MarkerId(data[i]["id"] + '_' + data[i]["cmd"]),
           position: LatLng(
               double.parse(data[i]["lat"]), double.parse(data[i]["lng"])),

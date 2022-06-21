@@ -9,6 +9,10 @@ class Info {
   String newsDetail = _base_url_api + '/newsDetail';
   String galleryList = _base_url_api + '/galleryList';
   String galleryDetail = _base_url_api + '/galleryDetail';
+  String otopList = _base_url_api + '/otopList';
+  String otopDetail = _base_url_api + '/otopDetail';
+  String sportList = _base_url_api + '/sportList';
+  String sportDetail = _base_url_api + '/sportDetail';
   String videoList = _base_url_api + '/videoList';
   String videoDetail = _base_url_api + '/videoDetail'; //Hit
   String ebookList = _base_url_api + '/ebookList';
@@ -36,6 +40,9 @@ class Info {
   String serviceGuideCateList = _base_url_api + '/serviceGuideCateList';
   String serviceGuideList = _base_url_api + '/serviceGuideList';
   String serviceGuideDetail = _base_url_api + '/serviceGuideDetail';
+  String citizenGuideCateList = _base_url_api + '/citizenGuideSlide';
+  String citizenGuideList = _base_url_api + '/citizenGuideList';
+  String citizenGuideDetail = _base_url_api + '/citizenGuideDetail';
   String newsDocumentList = _base_url_api + '/newsDocumentList';
   String newsDocumentDetail = _base_url_api + '/newsDocumentDetail';
   String cateList = _base_url_api + '/cateList'; //แสดงหมวดส่ง cmd ไป
@@ -75,8 +82,9 @@ class Info {
   String checkConnectedUser = _base_url_api + '/checkConnectedUser';
   String cancelContectUser = _base_url_api + '/cancelContectUser';
   String weatherApi = 'https://api.cityvariety.com/weather/json.php?id=1608133';
-  String weatherListApi = 'https://api.cityvariety.com/weather/json.php?type=forecast&fnList=tempList&id=1608133';
-  
+  String weatherListApi =
+      'https://api.cityvariety.com/weather/json.php?type=forecast&fnList=tempList&id=1608133';
+
   String cateListPity = _base_url_api + '/cateListPity';
   String insertMarketAndProduct = _base_url_api + '/insertMarketAndProduct';
   String getShopDetail = _base_url_api + '/getShopDetail';

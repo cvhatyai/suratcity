@@ -203,7 +203,7 @@ class _ServiceGuideDetailViewState extends State<ServiceGuideDetailView> {
                     padding:
                         EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 8),
                     width: MediaQuery.of(context).size.width,
-                    color: Colors.blue,
+                    color: Color(0xFF7C1B6A),
                     child: Text(
                       "เอกสารดาวน์โหลด",
                       style: TextStyle(color: Colors.white),
@@ -269,13 +269,13 @@ class _ServiceGuideDetailViewState extends State<ServiceGuideDetailView> {
                     children: [
                       Icon(
                         Icons.access_time_sharp,
-                        color: Colors.blue,
+                        color: Color(0xFF7C1B6A),
                         size: 22,
                       ),
                       Text(
                         create_date,
                         style: TextStyle(
-                          color: Colors.blue,
+                          color: Color(0xFF7C1B6A),
                           fontSize: 11,
                         ),
                       ),
@@ -310,7 +310,7 @@ class _ServiceGuideDetailViewState extends State<ServiceGuideDetailView> {
                             gradient: new LinearGradient(
                               colors: [
                                 Colors.lightBlueAccent,
-                                Colors.blueAccent,
+                                Color(0xFF7C1B6A),
                               ],
                             )),
                         child: Container(

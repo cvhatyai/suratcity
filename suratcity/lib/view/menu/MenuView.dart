@@ -1,6 +1,9 @@
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:cvapp/view/Otop/otopListView.dart';
+import 'package:cvapp/view/Sport/sportListView.dart';
+import 'package:cvapp/view/citizenGuide/citizenGuideListView.dart';
 import 'package:cvapp/view/greenmarket/GreenMarketListView.dart';
 import 'package:cvapp/view/webpageview/WebVdoView.dart';
 import 'package:flutter/material.dart';
@@ -770,7 +773,7 @@ class _MenuViewState extends State<MenuView> {
           ),
 
           //title menu 1
-          /*if (user.userclass != "superadmin" && user.userclass != "admin")
+          if (user.userclass != "superadmin" && user.userclass != "admin")
             Container(
               padding: EdgeInsets.only(left: 16, right: 16),
               alignment: Alignment.centerLeft,
@@ -794,7 +797,7 @@ class _MenuViewState extends State<MenuView> {
                       fontFamily: 'Kanit',
                     ),
                   ),
-                  Icon(Icons.keyboard_arrow_down,color:Color(0xFFFFF600)),
+                  Icon(Icons.keyboard_arrow_down, color: Color(0xFFFFF600)),
                 ],
               ),
             ),
@@ -842,13 +845,14 @@ class _MenuViewState extends State<MenuView> {
                           'assets/images/menu/m1.png',
                           height: 18,
                           width: 18,
+                          color: Color(0xFFed2489),
                         ),
                         Container(
                           margin: EdgeInsets.only(left: 16),
                           child: Text(
                             "ชำระภาษี",
                             style: TextStyle(
-                              fontSize: 15,
+                              fontSize: 16,
                             ),
                           ),
                         ),
@@ -902,13 +906,14 @@ class _MenuViewState extends State<MenuView> {
                           'assets/images/menu/m2.png',
                           height: 18,
                           width: 18,
+                          color: Color(0xFFed2489),
                         ),
                         Container(
                           margin: EdgeInsets.only(left: 16),
                           child: Text(
                             "ชำระค่าขยะ",
                             style: TextStyle(
-                              fontSize: 15,
+                              fontSize: 16,
                             ),
                           ),
                         ),
@@ -925,16 +930,27 @@ class _MenuViewState extends State<MenuView> {
             Container(
               padding: EdgeInsets.only(left: 16, right: 16),
               alignment: Alignment.centerLeft,
-              color: Color(0xFFE2F2FF),
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [
+                    Color(0xFF8C1F78),
+                    Color(0xFFEA8BF1),
+                  ],
+                ),
+              ),
               height: 40,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
                     "สวัสดิการ/เบี้ยยังชีพ",
-                    style: TextStyle(fontSize: 15),
+                    style: TextStyle(
+                      fontSize: 18,
+                      color: Colors.white,
+                      fontFamily: 'Kanit',
+                    ),
                   ),
-                  Icon(Icons.keyboard_arrow_down,color:Color(0xFFFFF600)),
+                  Icon(Icons.keyboard_arrow_down, color: Color(0xFFFFF600)),
                 ],
               ),
             ),
@@ -982,13 +998,14 @@ class _MenuViewState extends State<MenuView> {
                           'assets/images/menu/m3.png',
                           height: 18,
                           width: 18,
+                          color: Color(0xFFed2489),
                         ),
                         Container(
                           margin: EdgeInsets.only(left: 16),
                           child: Text(
                             "เบี้ยยังชีพผู้สูงอายุ",
                             style: TextStyle(
-                              fontSize: 15,
+                              fontSize: 16,
                             ),
                           ),
                         ),
@@ -1042,13 +1059,14 @@ class _MenuViewState extends State<MenuView> {
                           'assets/images/menu/m4.png',
                           height: 18,
                           width: 18,
+                          color: Color(0xFFed2489),
                         ),
                         Container(
                           margin: EdgeInsets.only(left: 16),
                           child: Text(
                             "เบี้ยยังชีพผู้พิการ",
                             style: TextStyle(
-                              fontSize: 15,
+                              fontSize: 16,
                             ),
                           ),
                         ),
@@ -1059,7 +1077,7 @@ class _MenuViewState extends State<MenuView> {
                 ],
               ),
             ),
-          */
+
           /*GestureDetector(
             onTap: () {
               Navigator.push(
@@ -1067,7 +1085,7 @@ class _MenuViewState extends State<MenuView> {
                 MaterialPageRoute(
                   builder: (context) => WebVdoView(
                     vdo:
-                        "https://geo.dailymotion.com/player/x8nxb.html?video=x8anisk",
+                        "https://geo.dailymotion.com/player/x8lsw.html?video=kf1x60fl6AYnj7xZKnF",
                   ),
                 ),
               );
@@ -1091,7 +1109,7 @@ class _MenuViewState extends State<MenuView> {
                         child: Text(
                           "Vdo",
                           style: TextStyle(
-                            fontSize: 15,
+                            fontSize: 16,
                           ),
                         ),
                       ),
@@ -1101,8 +1119,160 @@ class _MenuViewState extends State<MenuView> {
                 Divider(height: 1, indent: 8, endIndent: 8),
               ],
             ),
-          ),
-          */
+          ),*/
+
+          if (user.userclass != "superadmin" && user.userclass != "admin")
+            Container(
+              padding: EdgeInsets.only(left: 16, right: 16),
+              alignment: Alignment.centerLeft,
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [
+                    Color(0xFF8C1F78),
+                    Color(0xFFEA8BF1),
+                  ],
+                ),
+              ),
+              height: 40,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "E-service",
+                    style: TextStyle(
+                      fontSize: 18,
+                      color: Colors.white,
+                      fontFamily: 'Kanit',
+                    ),
+                  ),
+                  Icon(Icons.keyboard_arrow_down, color: Color(0xFFFFF600)),
+                ],
+              ),
+            ),
+          //sub menu 1
+          if (user.userclass != "superadmin" && user.userclass != "admin")
+            GestureDetector(
+              onTap: () {
+                if (isLogin) {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => WebPageView(
+                        isHaveArrow: "1",
+                        title: "การจองคิว และยื่นขออนุญาตก่อสร้าง",
+                        cmd: "complain_medical",
+                      ),
+                    ),
+                  );
+                } else {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => LoginView(
+                        isHaveArrow: "1",
+                      ),
+                    ),
+                  );
+                }
+              },
+              child: Column(
+                children: [
+                  Container(
+                    padding: EdgeInsets.only(left: 32),
+                    alignment: Alignment.centerLeft,
+                    color: Colors.transparent,
+                    height: 40,
+                    child: Row(
+                      children: [
+                        /*Image.asset(
+                        'assets/images/menu1.png',
+                        height: 22,
+                        width: 22,
+                      ),*/
+                        Image.asset(
+                          'assets/images/menu/m5.png',
+                          height: 18,
+                          width: 18,
+                          color: Color(0xFFed2489),
+                        ),
+                        Container(
+                          margin: EdgeInsets.only(left: 16),
+                          child: Text(
+                            "การจองคิว และ ยื่นขออนุญาตก่อสร้าง",
+                            style: TextStyle(
+                              fontSize: 16,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Divider(height: 1, indent: 8, endIndent: 8),
+                ],
+              ),
+            ),
+          if (user.userclass != "superadmin" && user.userclass != "admin")
+            GestureDetector(
+              onTap: () {
+                if (isLogin) {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => WebPageView(
+                        isHaveArrow: "1",
+                        title: "ลงทะเบียนเลี้ยงสัตว์",
+                        cmd: "pet",
+                      ),
+                    ),
+                  );
+                } else {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => LoginView(
+                        isHaveArrow: "1",
+                      ),
+                    ),
+                  );
+                }
+              },
+              child: Column(
+                children: [
+                  Container(
+                    padding: EdgeInsets.only(left: 32),
+                    alignment: Alignment.centerLeft,
+                    color: Colors.transparent,
+                    height: 40,
+                    child: Row(
+                      children: [
+                        /*Image.asset(
+                        'assets/images/menu1.png',
+                        height: 22,
+                        width: 22,
+                      ),*/
+                        Image.asset(
+                          'assets/images/menu/m32.png',
+                          height: 18,
+                          width: 18,
+                          color: Color(0xFFed2489),
+                        ),
+                        Container(
+                          margin: EdgeInsets.only(left: 16),
+                          child: Text(
+                            "ลงทะเบียนเลี้ยงสัตว์",
+                            style: TextStyle(
+                              fontSize: 16,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Divider(height: 1, indent: 8, endIndent: 8),
+                ],
+              ),
+            ),
+
           //title menu 3
           Container(
             padding: EdgeInsets.only(left: 16, right: 16),
@@ -1176,7 +1346,59 @@ class _MenuViewState extends State<MenuView> {
                         child: Text(
                           "ข้อมูลทั่วไปของเทศบาล",
                           style: TextStyle(
-                            fontSize: 15,
+                            fontSize: 16,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Divider(height: 1, indent: 8, endIndent: 8),
+              ],
+            ),
+          ),
+          GestureDetector(
+            onTap: () {
+              /*Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => GeneralView(
+                    isHaveArrow: "1",
+                  ),
+                ),
+              );*/
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => WebPageView(
+                    isHaveArrow: "1",
+                    title: "คณะผู้บริหาร",
+                    cmd: "personal",
+                  ),
+                ),
+              );
+            },
+            child: Column(
+              children: [
+                Container(
+                  padding: EdgeInsets.only(left: 30),
+                  alignment: Alignment.centerLeft,
+                  color: Colors.transparent,
+                  height: 40,
+                  child: Row(
+                    children: [
+                      Image.asset(
+                        'assets/images/menu/m30.png',
+                        color: Color(0xFFed2489),
+                        height: 22,
+                        width: 22,
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(left: 14),
+                        child: Text(
+                          "คณะผู้บริหาร",
+                          style: TextStyle(
+                            fontSize: 16,
                           ),
                         ),
                       ),
@@ -1223,7 +1445,7 @@ class _MenuViewState extends State<MenuView> {
                         child: Text(
                           "นครสุราษฎร์วันนี้",
                           style: TextStyle(
-                            fontSize: 15,
+                            fontSize: 16,
                           ),
                         ),
                       ),
@@ -1276,7 +1498,7 @@ class _MenuViewState extends State<MenuView> {
                         child: Text(
                           "ประกาศจัดซื้อจัดจ้าง",
                           style: TextStyle(
-                            fontSize: 15,
+                            fontSize: 16,
                           ),
                         ),
                       ),
@@ -1323,7 +1545,7 @@ class _MenuViewState extends State<MenuView> {
                         child: Text(
                           "ระเบียบข้อกฏหมาย/ข้อบัญญัติ",
                           style: TextStyle(
-                            fontSize: 15,
+                            fontSize: 16,
                           ),
                         ),
                       ),
@@ -1333,7 +1555,7 @@ class _MenuViewState extends State<MenuView> {
                 Divider(height: 1, indent: 8, endIndent: 8),
               ],
             ),
-          ),
+          ), */
           GestureDetector(
             onTap: () {
               Navigator.push(
@@ -1341,8 +1563,8 @@ class _MenuViewState extends State<MenuView> {
                 MaterialPageRoute(
                   builder: (context) => NewsStyleListView(
                     isHaveArrow: "1",
-                    cid: "4",
-                    title: "ข่าวสมัครงาน",
+                    cid: "41",
+                    title: "ข่าวสำคัญ/ข่าวฝาก",
                   ),
                 ),
               );
@@ -1370,9 +1592,9 @@ class _MenuViewState extends State<MenuView> {
                       Container(
                         margin: EdgeInsets.only(left: 16),
                         child: Text(
-                          "ข่าวสมัครงาน",
+                          "ข่าวสำคัญ/ข่าวฝาก",
                           style: TextStyle(
-                            fontSize: 15,
+                            fontSize: 16,
                           ),
                         ),
                       ),
@@ -1383,7 +1605,7 @@ class _MenuViewState extends State<MenuView> {
               ],
             ),
           ),
-      */
+
           GestureDetector(
             onTap: () {
               Navigator.push(
@@ -1420,7 +1642,7 @@ class _MenuViewState extends State<MenuView> {
                         child: Text(
                           "ภาพกิจกรรม",
                           style: TextStyle(
-                            fontSize: 15,
+                            fontSize: 16,
                           ),
                         ),
                       ),
@@ -1467,7 +1689,7 @@ class _MenuViewState extends State<MenuView> {
                         child: Text(
                           "กิจกรรมที่กำลังจะมาถึง",
                           style: TextStyle(
-                            fontSize: 15,
+                            fontSize: 16,
                           ),
                         ),
                       ),
@@ -1514,7 +1736,7 @@ class _MenuViewState extends State<MenuView> {
                         child: Text(
                           "วิดีโอกิจกรรม",
                           style: TextStyle(
-                            fontSize: 15,
+                            fontSize: 16,
                           ),
                         ),
                       ),
@@ -1525,7 +1747,7 @@ class _MenuViewState extends State<MenuView> {
               ],
             ),
           ),
-          /*GestureDetector(
+          GestureDetector(
             onTap: () {
               Navigator.push(
                 context,
@@ -1561,7 +1783,7 @@ class _MenuViewState extends State<MenuView> {
                         child: Text(
                           "บริการของเทศบาล",
                           style: TextStyle(
-                            fontSize: 15,
+                            fontSize: 16,
                           ),
                         ),
                       ),
@@ -1572,7 +1794,54 @@ class _MenuViewState extends State<MenuView> {
               ],
             ),
           ),
-          */
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => citizenGuideListView(
+                    isHaveArrow: "1",
+                  ),
+                ),
+              );
+            },
+            child: Column(
+              children: [
+                Container(
+                  padding: EdgeInsets.only(left: 32),
+                  alignment: Alignment.centerLeft,
+                  color: Colors.transparent,
+                  height: 40,
+                  child: Row(
+                    children: [
+                      /*Image.asset(
+                        'assets/images/menu1.png',
+                        height: 22,
+                        width: 22,
+                      ),*/
+                      Image.asset(
+                        'assets/images/menu/m11.png',
+                        color: Color(0xFFed2489),
+                        height: 18,
+                        width: 18,
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(left: 16),
+                        child: Text(
+                          "คู่มือสำหรับประชาชน",
+                          style: TextStyle(
+                            fontSize: 16,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Divider(height: 1, indent: 8, endIndent: 8),
+              ],
+            ),
+          ),
+
           GestureDetector(
             onTap: () {
               Navigator.push(
@@ -1609,7 +1878,7 @@ class _MenuViewState extends State<MenuView> {
                         child: Text(
                           "เอกสาร/แบบฟอร์ม",
                           style: TextStyle(
-                            fontSize: 15,
+                            fontSize: 16,
                           ),
                         ),
                       ),
@@ -1656,7 +1925,7 @@ class _MenuViewState extends State<MenuView> {
                         child: Text(
                           "วารสาร",
                           style: TextStyle(
-                            fontSize: 15,
+                            fontSize: 16,
                           ),
                         ),
                       ),
@@ -1708,7 +1977,7 @@ class _MenuViewState extends State<MenuView> {
                         child: Text(
                           "หมายเลขโทรศัพท์ฉุกเฉิน",
                           style: TextStyle(
-                            fontSize: 15,
+                            fontSize: 16,
                           ),
                         ),
                       ),
@@ -1759,7 +2028,7 @@ class _MenuViewState extends State<MenuView> {
                         child: Text(
                           "ประเมินความพึงพอใจ",
                           style: TextStyle(
-                            fontSize: 15,
+                            fontSize: 16,
                           ),
                         ),
                       ),
@@ -1845,7 +2114,7 @@ class _MenuViewState extends State<MenuView> {
                         child: Text(
                           "เที่ยว",
                           style: TextStyle(
-                            fontSize: 15,
+                            fontSize: 16,
                           ),
                         ),
                       ),
@@ -1898,7 +2167,7 @@ class _MenuViewState extends State<MenuView> {
                         child: Text(
                           "กิน",
                           style: TextStyle(
-                            fontSize: 15,
+                            fontSize: 16,
                           ),
                         ),
                       ),
@@ -1951,7 +2220,7 @@ class _MenuViewState extends State<MenuView> {
                         child: Text(
                           "ชอป",
                           style: TextStyle(
-                            fontSize: 15,
+                            fontSize: 16,
                           ),
                         ),
                       ),
@@ -2004,7 +2273,7 @@ class _MenuViewState extends State<MenuView> {
                         child: Text(
                           "พัก",
                           style: TextStyle(
-                            fontSize: 15,
+                            fontSize: 16,
                           ),
                         ),
                       ),
@@ -2055,7 +2324,109 @@ class _MenuViewState extends State<MenuView> {
                         child: Text(
                           "ตลาดชาวบ้าน",
                           style: TextStyle(
-                            fontSize: 15,
+                            fontSize: 16,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Divider(height: 1, indent: 8, endIndent: 8),
+              ],
+            ),
+          ),
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => otopListView(
+                    isHaveArrow: "1",
+                  ),
+                ),
+              ).then((value) {
+                setState(() {
+                  initFav();
+                });
+              });
+            },
+            child: Column(
+              children: [
+                Container(
+                  padding: EdgeInsets.only(left: 32),
+                  alignment: Alignment.centerLeft,
+                  color: Colors.transparent,
+                  height: 40,
+                  child: Row(
+                    children: [
+                      /*Image.asset(
+                        'assets/images/menu1.png',
+                        height: 22,
+                        width: 22,
+                      ),*/
+                      Image.asset(
+                        'assets/images/menu/m16.png',
+                        color: Color(0xFFed2489),
+                        height: 18,
+                        width: 18,
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(left: 16),
+                        child: Text(
+                          "OTOP",
+                          style: TextStyle(
+                            fontSize: 16,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Divider(height: 1, indent: 8, endIndent: 8),
+              ],
+            ),
+          ),
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => sportListView(
+                    isHaveArrow: "1",
+                  ),
+                ),
+              ).then((value) {
+                setState(() {
+                  initFav();
+                });
+              });
+            },
+            child: Column(
+              children: [
+                Container(
+                  padding: EdgeInsets.only(left: 32),
+                  alignment: Alignment.centerLeft,
+                  color: Colors.transparent,
+                  height: 40,
+                  child: Row(
+                    children: [
+                      /*Image.asset(
+                        'assets/images/menu1.png',
+                        height: 22,
+                        width: 22,
+                      ),*/
+                      Image.asset(
+                        'assets/images/menu/m31.png',
+                        color: Color(0xFFed2489),
+                        height: 18,
+                        width: 18,
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(left: 16),
+                        child: Text(
+                          "สถานที่ออกกำลังกาย",
+                          style: TextStyle(
+                            fontSize: 16,
                           ),
                         ),
                       ),
@@ -2135,7 +2506,7 @@ class _MenuViewState extends State<MenuView> {
                         child: Text(
                           "FAQ ถาม-ตอบ",
                           style: TextStyle(
-                            fontSize: 15,
+                            fontSize: 16,
                           ),
                         ),
                       ),
@@ -2193,7 +2564,7 @@ class _MenuViewState extends State<MenuView> {
                         child: Text(
                           "ติดต่อเทศบาล",
                           style: TextStyle(
-                            fontSize: 15,
+                            fontSize: 16,
                           ),
                         ),
                       ),
@@ -2240,7 +2611,7 @@ class _MenuViewState extends State<MenuView> {
                         child: Text(
                           "แจ้งปัญหา/ติดต่อผู้พัฒนา",
                           style: TextStyle(
-                            fontSize: 15,
+                            fontSize: 16,
                           ),
                         ),
                       ),
@@ -2323,7 +2694,7 @@ class _MenuViewState extends State<MenuView> {
                           child: Text(
                             "ตรวจสอบเรื่องร้องเรียน",
                             style: TextStyle(
-                              fontSize: 15,
+                              fontSize: 16,
                             ),
                           ),
                         ),
@@ -2373,7 +2744,7 @@ class _MenuViewState extends State<MenuView> {
                           child: Text(
                             "แผนที่แสดงจุดเรื่องร้องเรียน",
                             style: TextStyle(
-                              fontSize: 15,
+                              fontSize: 16,
                             ),
                           ),
                         ),
@@ -2423,7 +2794,7 @@ class _MenuViewState extends State<MenuView> {
                           child: Text(
                             "กราฟสรุปผลเรื่องร้องเรียน",
                             style: TextStyle(
-                              fontSize: 15,
+                              fontSize: 16,
                             ),
                           ),
                         ),
@@ -2434,8 +2805,6 @@ class _MenuViewState extends State<MenuView> {
                 ],
               ),
             ),
-
-/*            
           if (user.userclass == "superadmin" || user.userclass == "admin")
             GestureDetector(
               onTap: () {
@@ -2475,7 +2844,7 @@ class _MenuViewState extends State<MenuView> {
                           child: Text(
                             "รายการภาษี",
                             style: TextStyle(
-                              fontSize: 15,
+                              fontSize: 16,
                             ),
                           ),
                         ),
@@ -2525,7 +2894,7 @@ class _MenuViewState extends State<MenuView> {
                           child: Text(
                             "รายการค่าขยะ",
                             style: TextStyle(
-                              fontSize: 15,
+                              fontSize: 16,
                             ),
                           ),
                         ),
@@ -2576,7 +2945,7 @@ class _MenuViewState extends State<MenuView> {
                           child: Text(
                             "รายการเบี้ยยังชีพผู้พิการ",
                             style: TextStyle(
-                              fontSize: 15,
+                              fontSize: 16,
                             ),
                           ),
                         ),
@@ -2627,7 +2996,7 @@ class _MenuViewState extends State<MenuView> {
                           child: Text(
                             "รายการเบี้ยยังชีพผู้สูงอายุ",
                             style: TextStyle(
-                              fontSize: 15,
+                              fontSize: 16,
                             ),
                           ),
                         ),
@@ -2638,7 +3007,106 @@ class _MenuViewState extends State<MenuView> {
                 ],
               ),
             ),
-*/
+          if (user.userclass == "superadmin" || user.userclass == "admin")
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => WebPageView(
+                      isHaveArrow: "1",
+                      title: "รายการจองคิว และยื่นขออนุญาตก่อสร้าง",
+                      cmd: "complain_medical_admin",
+                    ),
+                  ),
+                );
+              },
+              child: Column(
+                children: [
+                  Container(
+                    padding: EdgeInsets.only(left: 32),
+                    alignment: Alignment.centerLeft,
+                    color: Colors.transparent,
+                    height: 40,
+                    child: Row(
+                      children: [
+                        /*Image.asset(
+                        'assets/images/menu1.png',
+                        height: 22,
+                        width: 22,
+                      ),*/
+                        Image.asset(
+                          'assets/images/menu/m11.png',
+                          color: Color(0xFFed2489),
+                          height: 18,
+                          width: 18,
+                        ),
+                        Container(
+                          margin: EdgeInsets.only(left: 16),
+                          child: Text(
+                            "รายการจองคิว และยื่นขออนุญาตก่อสร้าง",
+                            style: TextStyle(
+                              fontSize: 16,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Divider(height: 1, indent: 8, endIndent: 8),
+                ],
+              ),
+            ),
+          if (user.userclass == "superadmin" || user.userclass == "admin")
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => WebPageView(
+                      isHaveArrow: "1",
+                      title: "รายการลงทะเบียนสัตว์เลี้ยง",
+                      cmd: "pet_admin",
+                    ),
+                  ),
+                );
+              },
+              child: Column(
+                children: [
+                  Container(
+                    padding: EdgeInsets.only(left: 32),
+                    alignment: Alignment.centerLeft,
+                    color: Colors.transparent,
+                    height: 40,
+                    child: Row(
+                      children: [
+                        /*Image.asset(
+                        'assets/images/menu1.png',
+                        height: 22,
+                        width: 22,
+                      ),*/
+                        Image.asset(
+                          'assets/images/menu/m11.png',
+                          color: Color(0xFFed2489),
+                          height: 18,
+                          width: 18,
+                        ),
+                        Container(
+                          margin: EdgeInsets.only(left: 16),
+                          child: Text(
+                            "รายการลงทะเบียนสัตว์เลี้ยง",
+                            style: TextStyle(
+                              fontSize: 16,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Divider(height: 1, indent: 8, endIndent: 8),
+                ],
+              ),
+            ),
           //version
           /*Stack(
             children: [

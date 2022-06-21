@@ -8,19 +8,19 @@ import 'package:cvapp/system/Info.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../AppBarView.dart';
-import 'ServiceGuideSubListView.dart';
+import 'citizenGuideCateView.dart';
 
 var data;
 
-class ServiceGuideListView extends StatefulWidget {
-  ServiceGuideListView({Key key, this.isHaveArrow = ""}) : super(key: key);
+class citizenGuideListView extends StatefulWidget {
+  citizenGuideListView({Key key, this.isHaveArrow = ""}) : super(key: key);
   final String isHaveArrow;
 
   @override
   _ServiceGuideListViewState createState() => _ServiceGuideListViewState();
 }
 
-class _ServiceGuideListViewState extends State<ServiceGuideListView> {
+class _ServiceGuideListViewState extends State<citizenGuideListView> {
   var userFullname;
   var uid;
 
@@ -56,7 +56,7 @@ class _ServiceGuideListViewState extends State<ServiceGuideListView> {
 
   Future<List<AllList>> postNewsList(
       http.Client client, jsonMap, Map map) async {
-    final response = await client.post(Uri.parse(Info().serviceGuideCateList),
+    final response = await client.post(Uri.parse(Info().citizenGuideCateList),
         headers: {"Content-Type": "application/json"}, body: jsonMap);
     parseNewsList(response.body);
   }
@@ -77,9 +77,9 @@ class _ServiceGuideListViewState extends State<ServiceGuideListView> {
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => ServiceGuideSubListView(
+          builder: (context) => citizenGuideCateView(
             isHaveArrow: "1",
-            title: "บริการของเทศบาล",
+            title: "คู่มือสำหรับประชาชน",
             keyword: keyword.text,
           ),
         ),
@@ -92,7 +92,7 @@ class _ServiceGuideListViewState extends State<ServiceGuideListView> {
     return SafeArea(
         child: Scaffold(
       appBar: AppBarView(
-        title: "บริการของเทศบาล",
+        title: "คู่มือสำหรับประชาชน",
         isHaveArrow: widget.isHaveArrow,
       ),
       body: Column(
@@ -139,7 +139,7 @@ class _ServiceGuideListViewState extends State<ServiceGuideListView> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => ServiceGuideSubListView(
+                                builder: (context) => citizenGuideCateView(
                                   isHaveArrow: "1",
                                   title: data[index]["cate_name"],
                                   cid: data[index]["id"],

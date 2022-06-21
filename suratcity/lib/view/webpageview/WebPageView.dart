@@ -103,6 +103,8 @@ class _WebPageViewState extends State<WebPageView> {
   checkCmd() {
     var thisCmdNeedCitizen = [
       "tax",
+      "pet",
+      "complain_medical",
       "garbage",
       "elder",
       "disabled",
@@ -198,6 +200,20 @@ class _WebPageViewState extends State<WebPageView> {
           "&redirect=" +
           Info().baseUrl +
           "tax_request/formSelect/?app=1";
+    } else if (widget.cmd == "pet") {
+      url_service = Info().baseUrl +
+          'app_api_v1/authentication?authen_token=' +
+          user.authen_token +
+          "&redirect=" +
+          Info().baseUrl +
+          "pet/showList/";
+    } else if (widget.cmd == "complain_medical") {
+      url_service = Info().baseUrl +
+          'app_api_v1/authentication?authen_token=' +
+          user.authen_token +
+          "&redirect=" +
+          Info().baseUrl +
+          "complain_medical/showList/?app=1";
     } else if (widget.cmd == "taxHistory") {
       url_service = Info().baseUrl +
           'app_api_v1/authentication?authen_token=' +
@@ -296,6 +312,42 @@ class _WebPageViewState extends State<WebPageView> {
             "&redirect=" +
             Info().baseUrl +
             "behind/tax_request/showList?app=1";
+      }
+    } else if (widget.cmd == "pet_admin") {
+      if (widget.edit != "") {
+        url_service = Info().baseUrl +
+            'app_api_v1/authentication?authen_token=' +
+            user.authen_token +
+            "&redirect=" +
+            Info().baseUrl +
+            "behind/pet/edit/" +
+            widget.edit +
+            "?app=1";
+      } else {
+        url_service = Info().baseUrl +
+            'app_api_v1/authentication?authen_token=' +
+            user.authen_token +
+            "&redirect=" +
+            Info().baseUrl +
+            "behind/pet/showList?app=1";
+      }
+    } else if (widget.cmd == "complain_medical_admin") {
+      if (widget.edit != "") {
+        url_service = Info().baseUrl +
+            'app_api_v1/authentication?authen_token=' +
+            user.authen_token +
+            "&redirect=" +
+            Info().baseUrl +
+            "behind/complain_medical/edit/" +
+            widget.edit +
+            "?app=1";
+      } else {
+        url_service = Info().baseUrl +
+            'app_api_v1/authentication?authen_token=' +
+            user.authen_token +
+            "&redirect=" +
+            Info().baseUrl +
+            "behind/complain_medical/showList?app=1";
       }
     } else if (widget.cmd == "sewer_pipe_admin") {
       if (widget.edit != "") {
@@ -408,7 +460,9 @@ class _WebPageViewState extends State<WebPageView> {
     } else if (widget.cmd == "general") {
       url_service = Info().baseUrl + 'app_api_v1/history_ios_preview';
     } else if (widget.cmd == "personal") {
-      url_service = Info().baseUrl + 'content/personal_management?app=1';
+      // url_service = Info().baseUrl + 'content/personal_management?app=1';
+      url_service =
+          'https://www.suratcity.go.th/web/index.php/th/menu-about-us-th/menu-executive-commitee-new-2-th';
     } else if (widget.cmd == "elder_admin") {
       if (widget.edit != "") {
         url_service = Info().baseUrl +
@@ -590,14 +644,20 @@ class _WebPageViewState extends State<WebPageView> {
                 ),
                 actions: <Widget>[
                   TextButton(
-                    child: Text('ยกเลิก'),
+                    child: Text(
+                      'ยกเลิก',
+                      style: TextStyle(color: Colors.black),
+                    ),
                     onPressed: () {
                       Navigator.of(context).pop();
                       Navigator.of(this.context).pop();
                     },
                   ),
                   TextButton(
-                    child: Text('ดำเนินการต่อ'),
+                    child: Text(
+                      'ดำเนินการต่อ',
+                      style: TextStyle(color: Colors.black),
+                    ),
                     onPressed: () {
                       setState(() {
                         _citizenID.text.isEmpty
@@ -634,11 +694,13 @@ class _WebPageViewState extends State<WebPageView> {
       Navigator.of(context).pop();
     } else if (urigoback == 'formselect?app=1' ||
         urigoback == 'showlist?app=1' ||
+        urigoback == '' ||
         urigoback == 'showList?app=1' ||
         urigoback == 'graph1?app=1' ||
         urigoback == '?app=1' ||
         urigoback == 'personal_management?app=1' ||
         urigoback == 'graph1?secret_key=' ||
+        urigoback == 'menu-executive-commitee-new-2-th' ||
         urigoback == 'history_ios_preview') {
       Navigator.of(context).pop();
     } else {
@@ -679,7 +741,7 @@ class _WebPageViewState extends State<WebPageView> {
         ),
         body: Container(
           color: Color(0xFFFFFFFF),
-          margin:  EdgeInsets.only(top: 20),
+          margin: EdgeInsets.only(top: 20),
           padding: EdgeInsets.only(left: 8, right: 8),
           child: _webView,
         ),

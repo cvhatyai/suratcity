@@ -50,7 +50,7 @@ class _MarqueeViewState extends State<MarqueeView> {
       ),
       child: Row(
         children: [
-          Container(width: 50),
+          Container(width: 60),
           Expanded(
             child: Marquee(
               text: msg,

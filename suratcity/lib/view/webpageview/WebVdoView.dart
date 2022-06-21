@@ -42,6 +42,14 @@ class _WebVdoViewState extends State<WebVdoView> {
           allowFileURLs: true,
           withOverviewMode: false,
           url: url,
+          /*initialChild: Container(
+            // color: Colors.redAccent,
+            child: const Center(
+              child: Icon(
+                Icons.play_circle_filled_outlined,
+              ),
+            ),
+          ),*/
         );
       }
     });
@@ -57,7 +65,23 @@ class _WebVdoViewState extends State<WebVdoView> {
       body: Container(
         color: Color(0xFFFFFFFF),
         padding: EdgeInsets.only(left: 8, right: 8),
-        child: _webView,
+        child: Column(
+          children: [
+            Expanded(
+              child: Stack(
+                children: [
+                  Container(child: _webView),
+                  Icon(
+                    Icons.play_circle_filled_outlined,
+                    color: Colors.red,
+                    size: 500,
+                  ),
+                ],
+              ),
+            ),
+            // Expanded(child: Container()),
+          ],
+        ),
       ),
     ));
   }

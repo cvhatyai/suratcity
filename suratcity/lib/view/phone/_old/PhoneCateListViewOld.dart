@@ -124,7 +124,7 @@ class _PhoneCateListViewOldState extends State<PhoneCateListViewOld> {
                         },
                         icon: Icon(
                           Icons.search,
-                          color: Color(0xFF00B9FF),
+                          color: Color(0xFFed2489),
                           size: 36,
                         ),
                       ),

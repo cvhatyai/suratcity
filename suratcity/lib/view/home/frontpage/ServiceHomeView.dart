@@ -1,3 +1,4 @@
+import 'package:cvapp/view/contactus/ContactusView.dart';
 import 'package:cvapp/view/download/DownloadListView.dart';
 import 'package:cvapp/view/nearview/NearMeView.dart';
 import 'package:cvapp/view/phone/PhoneCateListView.dart';
@@ -67,6 +68,8 @@ class _ServiceHomeViewState extends State<ServiceHomeView> {
           Container(
             margin: EdgeInsets.only(top: 28),
             child: Row(
+              // crossAxisAlignment: CrossAxisAlignment.stretch,
+              mainAxisSize: MainAxisSize.max,
               children: [
                 Expanded(
                   child: GestureDetector(
@@ -90,7 +93,7 @@ class _ServiceHomeViewState extends State<ServiceHomeView> {
                           Container(
                             margin: EdgeInsets.only(top: 4),
                             child: Text(
-                              "หมายเลข\nโทรศัพท์ฉุกเฉิน",
+                              "หมายเลข\nโทรศัพท์ฉุก...",
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   fontSize: 12, color: Color(0xFFFFF600)),
@@ -200,129 +203,222 @@ class _ServiceHomeViewState extends State<ServiceHomeView> {
                     ),
                   ),
                 ),
+                Expanded(
+                  child: GestureDetector(
+                    onTap: () {
+                      if (isLogin) {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => WebPageView(
+                              isHaveArrow: "1",
+                              title: "เบี้ยยังชีพผู้สูงอายุ",
+                              cmd: "elder",
+                            ),
+                          ),
+                        );
+                      } else {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => LoginView(
+                              isHaveArrow: "1",
+                            ),
+                          ),
+                        );
+                      }
+                    },
+                    child: Container(
+                      child: Column(
+                        children: [
+                          Image.asset(
+                            'assets/images/main/sug12.png',
+                            height: 69,
+                          ),
+                          Container(
+                            margin: EdgeInsets.only(top: 4),
+                            child: Text(
+                              "เบี้ยยังชีพ\nผู้สูงอายุ",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  fontSize: 12, color: Color(0xFFFFF600)),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: GestureDetector(
+                    onTap: () {
+                      if (isLogin) {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => WebPageView(
+                              isHaveArrow: "1",
+                              title: "เบี้ยยังชีพผู้พิการ",
+                              cmd: "disabled",
+                            ),
+                          ),
+                        );
+                      } else {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => LoginView(
+                              isHaveArrow: "1",
+                            ),
+                          ),
+                        );
+                      }
+                    },
+                    child: Container(
+                      child: Column(
+                        children: [
+                          Image.asset(
+                            'assets/images/main/sug13.png',
+                            height: 69,
+                          ),
+                          Container(
+                            margin: EdgeInsets.only(top: 4),
+                            child: Text(
+                              "เบี้ยยังชีพ\nผู้พิการ",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  fontSize: 12, color: Color(0xFFFFF600)),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
           Container(
             child: Row(
+              mainAxisSize: MainAxisSize.max,
               children: [
-                Expanded(
-                  child: GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => TravelListView(
-                            isHaveArrow: "1",
-                            title: "เที่ยว",
-                            tid: "1",
-                          ),
-                        ),
-                      ).then((value) {
-                        setState(() {
-                          // initFav();
-                        });
-                      });
-                    },
-                    child: Container(
-                      child: Column(
-                        children: [
-                          Image.asset(
-                            'assets/images/main/sug5.png',
-                            height: 69,
-                          ),
-                          Container(
-                            margin: EdgeInsets.only(top: 4),
-                            child: Text(
-                              "เที่ยว",
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  fontSize: 12, color: Color(0xFFFFF600)),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-                Expanded(
-                  child: GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => TravelListView(
-                            isHaveArrow: "1",
-                            title: "กิน",
-                            tid: "3",
-                          ),
-                        ),
-                      ).then((value) {
-                        setState(() {
-                          // initFav();
-                        });
-                      });
-                    },
-                    child: Container(
-                      child: Column(
-                        children: [
-                          Image.asset(
-                            'assets/images/main/sug6.png',
-                            height: 69,
-                          ),
-                          Container(
-                            margin: EdgeInsets.only(top: 4),
-                            child: Text(
-                              "กิน",
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  fontSize: 12, color: Color(0xFFFFF600)),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-                Expanded(
-                  child: GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => TravelListView(
-                            isHaveArrow: "1",
-                            title: "ที่พัก",
-                            tid: "2",
-                          ),
-                        ),
-                      ).then((value) {
-                        // setState(() {
-                        //   initFav();
-                        // });
-                      });
-                    },
-                    child: Container(
-                      child: Column(
-                        children: [
-                          Image.asset(
-                            'assets/images/main/sug7.png',
-                            height: 69,
-                          ),
-                          Container(
-                            margin: EdgeInsets.only(top: 4),
-                            child: Text(
-                              "ที่พัก",
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  fontSize: 12, color: Color(0xFFFFF600)),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
+                // Expanded(
+                //   child: GestureDetector(
+                //     onTap: () {
+                //       Navigator.push(
+                //         context,
+                //         MaterialPageRoute(
+                //           builder: (context) => TravelListView(
+                //             isHaveArrow: "1",
+                //             title: "เที่ยว",
+                //             tid: "1",
+                //           ),
+                //         ),
+                //       ).then((value) {
+                //         setState(() {
+                //           // initFav();
+                //         });
+                //       });
+                //     },
+                //     child: Container(
+                //       child: Column(
+                //         children: [
+                //           Image.asset(
+                //             'assets/images/main/sug5.png',
+                //             height: 69,
+                //           ),
+                //           Container(
+                //             margin: EdgeInsets.only(top: 4),
+                //             child: Text(
+                //               "เที่ยว",
+                //               textAlign: TextAlign.center,
+                //               style: TextStyle(
+                //                   fontSize: 12, color: Color(0xFFFFF600)),
+                //             ),
+                //           ),
+                //         ],
+                //       ),
+                //     ),
+                //   ),
+                // ),
+                // Expanded(
+                //   child: GestureDetector(
+                //     onTap: () {
+                //       Navigator.push(
+                //         context,
+                //         MaterialPageRoute(
+                //           builder: (context) => TravelListView(
+                //             isHaveArrow: "1",
+                //             title: "กิน",
+                //             tid: "3",
+                //           ),
+                //         ),
+                //       ).then((value) {
+                //         setState(() {
+                //           // initFav();
+                //         });
+                //       });
+                //     },
+                //     child: Container(
+                //       child: Column(
+                //         children: [
+                //           Image.asset(
+                //             'assets/images/main/sug6.png',
+                //             height: 69,
+                //           ),
+                //           Container(
+                //             margin: EdgeInsets.only(top: 4),
+                //             child: Text(
+                //               "กิน",
+                //               textAlign: TextAlign.center,
+                //               style: TextStyle(
+                //                   fontSize: 12, color: Color(0xFFFFF600)),
+                //             ),
+                //           ),
+                //         ],
+                //       ),
+                //     ),
+                //   ),
+                // ),
+                // Expanded(
+                //   child: GestureDetector(
+                //     onTap: () {
+                //       Navigator.push(
+                //         context,
+                //         MaterialPageRoute(
+                //           builder: (context) => TravelListView(
+                //             isHaveArrow: "1",
+                //             title: "ที่พัก",
+                //             tid: "2",
+                //           ),
+                //         ),
+                //       ).then((value) {
+                //         // setState(() {
+                //         //   initFav();
+                //         // });
+                //       });
+                //     },
+                //     child: Container(
+                //       child: Column(
+                //         children: [
+                //           Image.asset(
+                //             'assets/images/main/sug7.png',
+                //             height: 69,
+                //           ),
+                //           Container(
+                //             margin: EdgeInsets.only(top: 4),
+                //             child: Text(
+                //               "ที่พัก",
+                //               textAlign: TextAlign.center,
+                //               style: TextStyle(
+                //                   fontSize: 12, color: Color(0xFFFFF600)),
+                //             ),
+                //           ),
+                //         ],
+                //       ),
+                //     ),
+                //   ),
+                // ),
                 Expanded(
                   child: GestureDetector(
                     onTap: () {
@@ -346,6 +442,234 @@ class _ServiceHomeViewState extends State<ServiceHomeView> {
                             margin: EdgeInsets.only(top: 4),
                             child: Text(
                               "บริการ \n นักท่องเที่ยว",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  fontSize: 12, color: Color(0xFFFFF600)),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: GestureDetector(
+                    onTap: () {
+                      if (!isLogin) {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => LoginView(
+                              isHaveArrow: "1",
+                            ),
+                          ),
+                        );
+                      } else {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ContactusView(
+                              isHaveArrow: "1",
+                            ),
+                          ),
+                        );
+                      }
+                    },
+                    child: Container(
+                      child: Column(
+                        children: [
+                          Image.asset(
+                            'assets/images/main/sug9.png',
+                            height: 69,
+                          ),
+                          Container(
+                            margin: EdgeInsets.only(top: 4),
+                            child: Text(
+                              "ติดต่อ\nสอบถาม",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  fontSize: 12, color: Color(0xFFFFF600)),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: GestureDetector(
+                    onTap: () {
+                      if (isLogin) {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => WebPageView(
+                              isHaveArrow: "1",
+                              title: "ชำระภาษี",
+                              cmd: "tax",
+                            ),
+                          ),
+                        );
+                      } else {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => LoginView(
+                              isHaveArrow: "1",
+                            ),
+                          ),
+                        );
+                      }
+                    },
+                    child: Container(
+                      child: Column(
+                        children: [
+                          Image.asset(
+                            'assets/images/main/sug10.png',
+                            height: 69,
+                          ),
+                          Container(
+                            margin: EdgeInsets.only(top: 4),
+                            child: Text(
+                              "ชำระภาษี \n ",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  fontSize: 12, color: Color(0xFFFFF600)),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: GestureDetector(
+                    onTap: () {
+                      if (isLogin) {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => WebPageView(
+                              isHaveArrow: "1",
+                              title: "ชำระค่าขยะ",
+                              cmd: "garbage",
+                            ),
+                          ),
+                        );
+                      } else {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => LoginView(
+                              isHaveArrow: "1",
+                            ),
+                          ),
+                        );
+                      }
+                    },
+                    child: Container(
+                      child: Column(
+                        children: [
+                          Image.asset(
+                            'assets/images/main/sug11.png',
+                            height: 69,
+                          ),
+                          Container(
+                            margin: EdgeInsets.only(top: 4),
+                            child: Text(
+                              "ชำระค่าขยะ \n ",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  fontSize: 12, color: Color(0xFFFFF600)),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: GestureDetector(
+                    onTap: () {
+                      if (isLogin) {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => WebPageView(
+                              isHaveArrow: "1",
+                              title: "การจองคิว และยื่นขออนุญาตก่อสร้าง",
+                              cmd: "complain_medical",
+                            ),
+                          ),
+                        );
+                      } else {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => LoginView(
+                              isHaveArrow: "1",
+                            ),
+                          ),
+                        );
+                      }
+                    },
+                    child: Container(
+                      child: Column(
+                        children: [
+                          Image.asset(
+                            'assets/images/main/sug14.png',
+                            height: 69,
+                          ),
+                          Container(
+                            margin: EdgeInsets.only(top: 4),
+                            child: Text(
+                              "จองคิวขอก่อสร้าง",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  fontSize: 12, color: Color(0xFFFFF600)),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: GestureDetector(
+                    onTap: () {
+                      if (isLogin) {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => WebPageView(
+                              isHaveArrow: "1",
+                              title: "ลงทะเบียนเลี้ยงสัตว์",
+                              cmd: "pet",
+                            ),
+                          ),
+                        );
+                      } else {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => LoginView(
+                              isHaveArrow: "1",
+                            ),
+                          ),
+                        );
+                      }
+                    },
+                    child: Container(
+                      child: Column(
+                        children: [
+                          Image.asset(
+                            'assets/images/main/sug15.png',
+                            height: 69,
+                          ),
+                          Container(
+                            margin: EdgeInsets.only(top: 4),
+                            child: Text(
+                              "ลงทะเบียนเลี้ยงสัตว์",
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   fontSize: 12, color: Color(0xFFFFF600)),

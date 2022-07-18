@@ -3,6 +3,7 @@ import 'dart:convert';
 
 import 'package:cvapp/view/Otop/otopListView.dart';
 import 'package:cvapp/view/Sport/sportListView.dart';
+import 'package:cvapp/view/calendarTravel/CalendarTravelListView.dart';
 import 'package:cvapp/view/citizenGuide/citizenGuideListView.dart';
 import 'package:cvapp/view/greenmarket/GreenMarketListView.dart';
 import 'package:cvapp/view/webpageview/WebVdoView.dart';
@@ -697,7 +698,7 @@ class _MenuViewState extends State<MenuView> {
                                             height: 10,
                                           ),
                                           Text(
-                                            "ติดต่อ\nเจ้าหน้าที่",
+                                            "ติดต่อ\nสอบถาม",
                                             textAlign: TextAlign.center,
                                             style: TextStyle(
                                                 fontSize: 11,
@@ -1889,6 +1890,7 @@ class _MenuViewState extends State<MenuView> {
               ],
             ),
           ),
+          
           /*GestureDetector(
             onTap: () {
               Navigator.push(
@@ -2437,6 +2439,53 @@ class _MenuViewState extends State<MenuView> {
               ],
             ),
           ),
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => CalendarTravelListView(
+                    isHaveArrow: "1",
+                  ),
+                ),
+              );
+            },
+            child: Column(
+              children: [
+                Container(
+                  padding: EdgeInsets.only(left: 32),
+                  alignment: Alignment.centerLeft,
+                  color: Colors.transparent,
+                  height: 40,
+                  child: Row(
+                    children: [
+                      /*Image.asset(
+                        'assets/images/menu1.png',
+                        height: 22,
+                        width: 22,
+                      ),*/
+                      Image.asset(
+                        'assets/images/menu/m8.png',
+                        color: Color(0xFFed2489),
+                        height: 18,
+                        width: 18,
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(left: 16),
+                        child: Text(
+                          "ตารางเที่ยวบิน/การเดินรถ",
+                          style: TextStyle(
+                            fontSize: 16,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Divider(height: 1, indent: 8, endIndent: 8),
+              ],
+            ),
+          ),
 
           //title menu 5
           Container(
@@ -2562,7 +2611,7 @@ class _MenuViewState extends State<MenuView> {
                       Container(
                         margin: EdgeInsets.only(left: 16),
                         child: Text(
-                          "ติดต่อเทศบาล",
+                          "ติดต่อสอบถาม",
                           style: TextStyle(
                             fontSize: 16,
                           ),

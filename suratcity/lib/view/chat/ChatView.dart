@@ -1,12 +1,15 @@
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:cvapp/view/home/HomeView.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:http/http.dart' as http;
 import 'package:cvapp/model/AllList.dart';
 import 'package:cvapp/system/Info.dart';
 import 'package:url_launcher/url_launcher.dart';
+
+import '../FrontPageView.dart';
 
 List<Map<String, dynamic>> chatArr;
 var data;
@@ -232,6 +235,28 @@ class _ChatViewState extends State<ChatView> {
                 padding: EdgeInsets.only(bottom: 200),
                 controller: _scrollController,
                 children: [
+                  Align(
+                    alignment: Alignment.topRight,
+                    child: Container(
+                      // height: 50,
+                      margin: EdgeInsets.only(right: 8),
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => FrontPageView(),
+                              ),
+                            );
+                        },
+                        child: Icon(
+                          Icons.cancel_outlined,
+                          color: Color(0xFF8C1F78),
+                          size: 36,
+                        ),
+                      ),
+                    ),
+                  ),
                   Container(
                     margin: EdgeInsets.symmetric(horizontal: 8),
                     child: Column(
@@ -374,7 +399,8 @@ class _ChatViewState extends State<ChatView> {
                                       ),
                                       child: Text(
                                         chatArr[i]["chatText"],
-                                        style: TextStyle(fontSize: 12,color: Colors.white),
+                                        style: TextStyle(
+                                            fontSize: 12, color: Colors.white),
                                       ),
                                     ),
                                   ),

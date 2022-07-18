@@ -202,20 +202,22 @@ class _SuggustViewState extends State<SuggustView> {
                                         horizontal: 4, vertical: 4),
                                     child: Stack(
                                       children: [
-                                        ClipRRect(
-                                          borderRadius: BorderRadius.only(
-                                              topLeft: Radius.circular(10.0),
-                                              topRight: Radius.circular(10.0)),
-                                          child: Image.network(
-                                            _currentPage == 1
-                                                ? data[index + 4]
-                                                    ["display_image"]
-                                                : _currentPage == 2
-                                                    ? data[index + 8]
-                                                        ["display_image"]
-                                                    : data[index]
-                                                        ["display_image"],
-                                            fit: BoxFit.cover,
+                                        Center(
+                                          child: ClipRRect(
+                                            borderRadius: BorderRadius.only(
+                                                topLeft: Radius.circular(10.0),
+                                                topRight: Radius.circular(10.0)),
+                                            child: Image.network(
+                                              _currentPage == 1
+                                                  ? data[index + 4]
+                                                      ["display_image"]
+                                                  : _currentPage == 2
+                                                      ? data[index + 8]
+                                                          ["display_image"]
+                                                      : data[index]
+                                                          ["display_image"],
+                                              fit: BoxFit.cover,
+                                            ),
                                           ),
                                         ),
                                         Align(

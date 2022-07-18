@@ -51,7 +51,9 @@ class Info {
   String serviceDescription = _base_url_api + '/serviceDescription';
   String serviceSubject = _base_url_api + '/serviceSubject';
   String eventsList = _base_url_api + '/eventsList';
+  String travelEventsList = _base_url_api + '/travelEventsList';
   String eventsDetail = _base_url_api + '/eventsDetail';
+  String travelEventsDetail = _base_url_api + '/travelEventsDetail';
   String cateInformList = _base_url_api + '/cateInformList';
   String cateInformStatusList = _base_url_api + '/cateInformStatusList';
   String informAdd = _base_url_api + '/informAdd';

@@ -51,13 +51,13 @@ class _MarqueeViewState extends State<MarqueeView> {
       child: Row(
         children: [
           Container(width: 60),
-          Expanded(
+          /*Expanded(
             child: Marquee(
               text: msg,
               style: TextStyle(height: 1.5),
               blankSpace: 280,
             ),
-          ),
+          ),*/
           Container(width: 10),
         ],
       ),

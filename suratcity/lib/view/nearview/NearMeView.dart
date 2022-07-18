@@ -103,26 +103,26 @@ class _NearMeViewState extends State<NearMeView> {
     setState(() {
       _markers.clear();
       for (var i = 0; i < data.length; i++) {
-        if(data[i]["cmd"] == "travel_guide"){
-          if(data[i]["cid"] == "2"){
+        if (data[i]["cmd"] == "travel_guide") {
+          if (data[i]["cid"] == "2") {
             pinAll = pinGuild2;
-          }else if(data[i]["cid"] == "3") {
+          } else if (data[i]["cid"] == "3") {
             pinAll = pinGuild3;
-          }else if(data[i]["cid"] == "4") {
+          } else if (data[i]["cid"] == "4") {
             pinAll = pinGuild4;
-          }else if(data[i]["cid"] == "5") {
+          } else if (data[i]["cid"] == "5") {
             pinAll = pinGuild5;
-          }else if(data[i]["cid"] == "6") {
+          } else if (data[i]["cid"] == "6") {
             pinAll = pinGuild6;
-          }else if(data[i]["cid"] == "7") {
+          } else if (data[i]["cid"] == "7") {
             pinAll = pinGuild7;
-          }else if(data[i]["cid"] == "8") {
+          } else if (data[i]["cid"] == "8") {
             pinAll = pinGuild8;
           }
-        }else{
-          if(data[i]["cmd"] == "travel"){
+        } else {
+          if (data[i]["cmd"] == "travel") {
             pinAll = pinTravel;
-          }else{
+          } else {
             pinAll = pinOtop;
           }
         }
@@ -157,37 +157,40 @@ class _NearMeViewState extends State<NearMeView> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBarView(
-        title: "บริการนักท่องเที่ยว",
-        isHaveArrow: widget.isHaveArrow,
-      ),
-      body: Container(
-        color: Color(0xFFFFFFFF),
-        child: Column(
-          children: [
-            Expanded(
-              child: GoogleMap(
-                mapType: MapType.normal,
-                initialCameraPosition: _kGooglePlex,
-                onMapCreated: (GoogleMapController controller) {
-                  _controller.complete(controller);
-                },
-                markers: _markers.values.toSet(),
-              ),
-            ),
-            Container(
-              height: 200,
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Image.asset(
-                  'assets/images/btn-sv-travel.png',
-                  fit: BoxFit.contain,
-                  alignment: Alignment.center,
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBarView(
+          title: "บริการนักท่องเที่ยว",
+          isHaveArrow: widget.isHaveArrow,
+        ),
+        body: Container(
+          color: Color(0xFFFFFFFF),
+          child: Column(
+            children: [
+              Expanded(
+                child: GoogleMap(
+                  mapType: MapType.normal,
+                  myLocationEnabled: true,
+                  initialCameraPosition: _kGooglePlex,
+                  onMapCreated: (GoogleMapController controller) {
+                    _controller.complete(controller);
+                  },
+                  markers: _markers.values.toSet(),
                 ),
               ),
-            ),
-          ],
+              Container(
+                height: 200,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Image.asset(
+                    'assets/images/btn-sv-travel.png',
+                    fit: BoxFit.contain,
+                    alignment: Alignment.center,
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

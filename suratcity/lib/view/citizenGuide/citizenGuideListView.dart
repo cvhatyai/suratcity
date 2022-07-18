@@ -120,6 +120,24 @@ class _ServiceGuideListViewState extends State<citizenGuideListView> {
                           size: 36,
                         ),
                       ),
+                      /*suffixIcon: Material(
+                        elevation: 5.0,
+                        color: Color(0xFF8D2191),
+                        shadowColor: Color(0xFF8D2191),
+                        borderRadius: BorderRadius.all(Radius.circular(50)),
+                        child: Padding(
+                          padding: EdgeInsets.all(10),
+                          child: GestureDetector(
+                            onTap: () {
+
+                            },
+                            child: Icon(
+                              Icons.search,
+                              color: Color(0xFFFFFF16),
+                            ),
+                          ),
+                        ),
+                      ),*/
                     ),
                   ),
                 ),

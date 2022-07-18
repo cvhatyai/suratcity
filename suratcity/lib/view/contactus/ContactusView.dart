@@ -187,7 +187,7 @@ class _ContactusViewState extends State<ContactusView> {
     return SafeArea(
         child: Scaffold(
       appBar: AppBarView(
-        title: "ติดต่อเจ้าหน้าที่",
+        title: "ติดต่อสอบถาม",
         isHaveArrow: "1",
       ),
       body: Container(

@@ -88,20 +88,24 @@ class _FooterViewState extends State<FooterView> {
                 ),
               ),
               Expanded(
-                child: GestureDetector(
-                  onTap: () {
-                    if (lineLink != "") {
-                      _launchInBrowser(lineLink);
-                    } else {
-                      Toast.show("ไม่มีข้อมูล", context,
-                          duration: Toast.LENGTH_LONG, gravity: Toast.BOTTOM);
-                    }
-                  },
-                  child: Image.asset(
-                    'assets/images/main/line.png',
-                  ),
-                ),
+                // flex: 1,
+                child: Container(),
               ),
+              // Expanded(
+              //   child: GestureDetector(
+              //     onTap: () {
+              //       if (lineLink != "") {
+              //         _launchInBrowser(lineLink);
+              //       } else {
+              //         Toast.show("ไม่มีข้อมูล", context,
+              //             duration: Toast.LENGTH_LONG, gravity: Toast.BOTTOM);
+              //       }
+              //     },
+              //     child: Image.asset(
+              //       'assets/images/main/line.png',
+              //     ),
+              //   ),
+              // ),
             ],
           ),
           RichText(

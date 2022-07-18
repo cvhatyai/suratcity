@@ -13,6 +13,12 @@ import 'GalleryDetailView.dart';
 var data;
 
 //dropdown
+var arrMap;
+String cateVal = "";
+Map<int, String> dataCateMap = {0: "-- เลือกหมวด --"};
+//dropdown
+
+//dropdown
 var arrMapPerson;
 String cateValPerson = "";
 Map<int, String> dataCateMapPerson = {0: "-- เลือกกอง --"};
@@ -35,6 +41,7 @@ class _GalleryListViewState extends State<GalleryListView> {
   void initState() {
     // TODO: implement initState
     super.initState();
+    getCateList();
     getCatePersonList();
     getUserDetail();
   }
@@ -46,6 +53,82 @@ class _GalleryListViewState extends State<GalleryListView> {
       uid = prefs.getString('uid').toString();
     });
     getNewsList();
+  }
+
+  String dropdownValue2 = (cateVal != "") ? cateVal : "0";
+
+  Widget dropDownCate() {
+    return (arrMap != null && arrMap.length != 0)
+        ? DropdownButton<String>(
+            value: widget.cateDefault == "no" ? "0" : dropdownValue2,
+            isExpanded: true,
+            icon: Icon(Icons.keyboard_arrow_down_outlined),
+            iconSize: 24,
+            elevation: 16,
+            style: TextStyle(color: Color(0xFF7C1B6A)),
+            underline: Container(
+              height: 1,
+              color: Colors.grey,
+            ),
+            onChanged: (String newValue) {
+              setState(() {
+                dropdownValue2 = newValue;
+                cateVal = dropdownValue2;
+                widget.cateDefault = cateVal;
+                getNewsList();
+                // getCateSubList();
+                print("cateVal" + cateVal);
+              });
+            },
+            items: dataCateMap.entries
+                .map<DropdownMenuItem<String>>(
+                    (MapEntry<int, String> e) => DropdownMenuItem<String>(
+                          value: e.key.toString(),
+                          child: Text(
+                            e.value,
+                            overflow: TextOverflow.ellipsis,
+                            maxLines: 1,
+                          ),
+                        ))
+                .toList(),
+          )
+        : Container();
+  }
+
+  //dropdown
+  getCateList() {
+    Map _map = {};
+    _map.addAll({
+      "cmd": "gallery",
+      "parent_id": "1",
+    });
+    var body = json.encode(_map);
+    return postCateData(http.Client(), body, _map);
+  }
+
+  Future<List<AllList>> postCateData(
+      http.Client client, jsonMap, Map map) async {
+    final response = await client.post(Uri.parse(Info().cateAllList),
+        headers: {"Content-Type": "application/json"}, body: jsonMap);
+    return parseCateData(response.body);
+  }
+
+  List<AllList> parseCateData(String responseBody) {
+    //print("responseBody" + responseBody.toString());
+    final parsed = json.decode(responseBody).cast<Map<String, dynamic>>();
+    arrMap = parsed.map<AllList>((json) => AllList.fromJson(json)).toList();
+    print("arrMap" + arrMap.toString());
+
+    Map<int, String> tmpDataCateMap;
+    tmpDataCateMap =
+        Map.fromIterable(arrMap, key: (e) => e.id, value: (e) => e.cate_name);
+    dataCateMap.addAll(tmpDataCateMap);
+
+    print("dataCateMap" + dataCateMap.toString());
+
+    setState(() {});
+
+    return parsed.map<AllList>((json) => AllList.fromJson(json)).toList();
   }
 
   getCatePersonList() {
@@ -128,6 +211,7 @@ class _GalleryListViewState extends State<GalleryListView> {
     Map _map = {};
     _map.addAll({
       "rows": "100",
+      "cid": cateVal,
       "pid": cateValPerson,
     });
 
@@ -190,6 +274,14 @@ class _GalleryListViewState extends State<GalleryListView> {
       ),
       body: Column(
         children: [
+          Visibility(
+            visible: true,
+            child: Container(
+              margin: EdgeInsets.only(top: 16),
+              padding: EdgeInsets.only(left: 16, right: 16),
+              child: dropDownCate(),
+            ),
+          ),
           Visibility(
             visible: true,
             child: Container(

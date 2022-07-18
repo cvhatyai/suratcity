@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bb0e5aca-3641-4ffd-a8b0-afedbee53152" name="Default Changelist" comment="" />
+    <list default="true" id="bb0e5aca-3641-4ffd-a8b0-afedbee53152" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/key-23-6-65.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/key-23-6-65/key.jks" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/key-23-6-65/key.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/suratcity/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/suratcity/pubspec.yaml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

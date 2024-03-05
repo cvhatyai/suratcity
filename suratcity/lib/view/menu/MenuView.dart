@@ -2375,7 +2375,7 @@ class _MenuViewState extends State<MenuView> {
                       Container(
                         margin: EdgeInsets.only(left: 16),
                         child: Text(
-                          "OTOP",
+                          "ผลิตภัณฑ์ตำบล OTOP",
                           style: TextStyle(
                             fontSize: 16,
                           ),

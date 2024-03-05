@@ -33,6 +33,7 @@ class _CalendarDetailViewState extends State<CalendarDetailView> {
   var location = "";
   var cost = "";
   var detail = "";
+  var url = "";
   int imgcount = 0;
   int filecount = 0;
   var event_date = "";
@@ -91,6 +92,7 @@ class _CalendarDetailViewState extends State<CalendarDetailView> {
       location = data['location'].toString();
       cost = data['cost'].toString();
       detail = data['description'].toString();
+      url = data['url'].toString();
       event_date = data['event_date'].toString();
       display_image = data['display_image'].toString();
 
@@ -124,6 +126,8 @@ class _CalendarDetailViewState extends State<CalendarDetailView> {
       throw 'Could not launch $url';
     }
   }
+
+  
 
   BoxDecoration boxWhite() {
     return BoxDecoration(
@@ -283,6 +287,29 @@ class _CalendarDetailViewState extends State<CalendarDetailView> {
                         Expanded(
                           flex: 3,
                           child: Text(detail),
+                        ),
+                      ],
+                    ),
+                  ),
+                //url
+                if (url != "")
+                  Container(
+                    margin: EdgeInsets.only(top: 16),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Expanded(
+                          flex: 2,
+                          child: Text("LINK"),
+                        ),
+                        Expanded(
+                          flex: 3,
+                          child: GestureDetector(
+                            onTap: () {
+                              _launchInBrowser(url);
+                            },
+                            child: Text(url,style: TextStyle(color: Colors.blueAccent),),
+                          ),
                         ),
                       ],
                     ),

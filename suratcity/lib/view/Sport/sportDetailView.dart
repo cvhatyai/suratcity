@@ -166,7 +166,7 @@ class _sportDetailViewState extends State<sportDetailView> {
     return SafeArea(
         child: Scaffold(
       appBar: AppBarView(
-        title: "OTOP",
+        title: "สถานที่ออกกำลังกาย",
         isHaveArrow: "1",
       ),
       body: Container(

@@ -207,21 +207,21 @@ class _MyHomePageState extends State<MyHomePage> {
     print("_configureSelectNotic");
   }
 
-  PackageInfo _packageInfo = PackageInfo(
-    appName: 'Unknown',
-    packageName: 'Unknown',
-    version: 'Unknown',
-    buildNumber: 'Unknown',
-  );
+  // PackageInfo _packageInfo = PackageInfo(
+  //   appName: 'Unknown',
+  //   packageName: 'Unknown',
+  //   version: 'Unknown',
+  //   buildNumber: 'Unknown',
+  // );
 
   Future<void> _initPackageInfo() async {
     isUpDateApp();
     return;
-    final PackageInfo info = await PackageInfo.fromPlatform();
-    setState(() {
-      _packageInfo = info;
-    });
-    _ParamCheckAppData();
+    // final PackageInfo info = await PackageInfo.fromPlatform();
+    // setState(() {
+    //   _packageInfo = info;
+    // });
+    // _ParamCheckAppData();
   }
 
   _ParamCheckAppData() async {
@@ -235,7 +235,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
     _map.addAll({
       "platform": platform,
-      "version": _packageInfo.version,
+      // "version": _packageInfo.version,
       //"version": "1.0.0",
     });
 

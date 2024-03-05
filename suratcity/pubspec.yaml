@@ -15,7 +15,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 # In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-version: 1.0.3+7
+version: 1.0.9+15
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
@@ -59,9 +59,10 @@ dependencies:
   google_sign_in: ^4.5.5
   share: ^2.0.1
   rxdart: ^0.27.1
-  flutter_inappwebview: ^5.3.2
+  # flutter_inappwebview: ^5.3.2
+  flutter_inappwebview: 
+  firebase_analytics: ^6.0.0
   #flutter_html: ^1.3.0 webview compatible ref ChatView Html
-
 
 
 dev_dependencies:
@@ -74,6 +75,12 @@ flutter_icons:
   ios: true
   remove_alpha_ios: true
   image_path: assets/images/app-icon-1024.png
+
+# dependency_overrides:
+#   flutter_inappwebview:
+#     git:
+#       url: https://github.com/rshrc/flutter_inappwebview
+#       ref: master
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

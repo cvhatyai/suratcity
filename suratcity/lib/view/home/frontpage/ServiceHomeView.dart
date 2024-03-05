@@ -23,6 +23,8 @@ class ServiceHomeView extends StatefulWidget {
 class _ServiceHomeViewState extends State<ServiceHomeView> {
   var user = User();
   bool isLogin = false;
+  double _width = 0.0;
+  double _height = 0.0;
 
   @override
   void initState() {
@@ -33,6 +35,9 @@ class _ServiceHomeViewState extends State<ServiceHomeView> {
 
   getUsers() async {
     await user.init();
+    _width = MediaQuery.of(context).size.width;
+    _height = MediaQuery.of(context).size.width;
+    print('_width, _height : ${_width} , ${_height}');
     setState(() {
       isLogin = user.isLogin;
     });
@@ -55,7 +60,7 @@ class _ServiceHomeViewState extends State<ServiceHomeView> {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(top: 12),
-      height: 250,
+      height: 285,
       decoration: BoxDecoration(
         image: DecorationImage(
           image: AssetImage("assets/images/main/service_bg.png"),
@@ -299,6 +304,12 @@ class _ServiceHomeViewState extends State<ServiceHomeView> {
             ),
           ),
           Container(
+            margin: EdgeInsets.only(
+                top: _width >= 428.0
+                    ? 20
+                    : _width >= 414.0
+                        ? 15
+                        : 2),
             child: Row(
               mainAxisSize: MainAxisSize.max,
               children: [

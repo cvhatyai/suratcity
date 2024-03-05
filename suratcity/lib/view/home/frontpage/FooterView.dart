@@ -67,7 +67,7 @@ class _FooterViewState extends State<FooterView> {
             children: [
               Expanded(
                 child: Text(
-                  "คุยสดกับเจ้าหน้าที่",
+                  "แชทผ่าน facebook",
                   textAlign: TextAlign.center,
                   style: TextStyle(fontSize: 11),
                 ),

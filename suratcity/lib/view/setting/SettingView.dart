@@ -26,6 +26,7 @@ import '../AppBarView.dart';
 import '../FrontPageView.dart';
 import 'ChangePasswordView.dart';
 import 'ChangePhoneView.dart';
+import 'UserDeleteView.dart';
 
 var data;
 
@@ -1339,6 +1340,60 @@ class _SettingViewState extends State<SettingView> {
                         alignment: Alignment.center,
                         child: Text(
                           'บันทึก',
+                        ),
+                      ),
+                    ),
+                  ),
+                  Divider(),
+                  GestureDetector(
+                    onTap: () async {
+                      final confirm = await showDialog<bool>(
+                        context: context,
+                        barrierDismissible: false,
+                        builder: (_) => UserDeleteDialog(),
+                      );
+                      if (confirm == null || !confirm) {
+                        return;
+                      }
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => UserDeleteView(),
+                        ),
+                      );
+                    },
+                    child: Container(
+                      color: Colors.white,
+                      alignment: Alignment.center,
+                      child: Padding(
+                        padding: const EdgeInsets.fromLTRB(16, 0, 16, 24),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Center(
+                              child: Container(
+                                color: Colors.white,
+                                child: Padding(
+                                  padding:
+                                      const EdgeInsets.fromLTRB(8, 8, 12, 8),
+                                  child: const Image(
+                                    image: AssetImage(
+                                        "assets/images/user-delete.png"),
+                                    width: 24,
+                                    color: Colors.black,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Container(
+                                child: Text(
+                              'ลบบัญชี',
+                              style: TextStyle(
+                                  color: Colors.red,
+                                  fontWeight: FontWeight.bold),
+                            )),
+                          ],
                         ),
                       ),
                     ),

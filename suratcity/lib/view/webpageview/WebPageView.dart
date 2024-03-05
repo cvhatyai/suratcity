@@ -700,6 +700,8 @@ class _WebPageViewState extends State<WebPageView> {
         urigoback == '?app=1' ||
         urigoback == 'personal_management?app=1' ||
         urigoback == 'graph1?secret_key=' ||
+        urigoback == '?accountId=970oggyw' ||
+        urigoback == 'page.line.me' ||
         urigoback == 'menu-executive-commitee-new-2-th' ||
         urigoback == 'history_ios_preview') {
       Navigator.of(context).pop();

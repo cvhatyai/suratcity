@@ -61,6 +61,7 @@ class Info {
   String pollVote = _base_url_api + '/pollVote';
 
   String userLogin = _base_url_api + '/userLogin';
+  String userDelete = _base_url_api + '/userDelete';
   String checkCitizenID = _base_url_api + '/checkCitizenID';
   String updateCitizenID = _base_url_api + '/updateCitizenID';
   String checkHavePhone = _base_url_api + '/checkHavePhone';

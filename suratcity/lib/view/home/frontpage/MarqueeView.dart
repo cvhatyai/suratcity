@@ -28,8 +28,10 @@ class _MarqueeViewState extends State<MarqueeView> {
     return postMessageList(http.Client(), body, _map);
   }
 
-  Future<List<AllList>> postMessageList(http.Client client, jsonMap, Map map) async {
-    final response = await client.post(Uri.parse(Info().messageList), headers: {"Content-Type": "application/json"}, body: jsonMap);
+  Future<List<AllList>> postMessageList(
+      http.Client client, jsonMap, Map map) async {
+    final response = await client.post(Uri.parse(Info().messageList),
+        headers: {"Content-Type": "application/json"}, body: jsonMap);
     var rs = json.decode(response.body);
     setState(() {
       msg = rs["msg"].toString();
@@ -51,13 +53,13 @@ class _MarqueeViewState extends State<MarqueeView> {
       child: Row(
         children: [
           Container(width: 60),
-          /*Expanded(
+          Expanded(
             child: Marquee(
               text: msg,
               style: TextStyle(height: 1.5),
               blankSpace: 280,
             ),
-          ),*/
+          ),
           Container(width: 10),
         ],
       ),

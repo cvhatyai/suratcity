@@ -1,6 +1,11 @@
 import UIKit
 import Flutter
 import GoogleMaps
+import Firebase
+import FirebaseMessaging
+import FirebaseAnalytics
+
+
 
 @UIApplicationMain
 @objc class AppDelegate: FlutterAppDelegate {

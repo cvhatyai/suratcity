@@ -171,14 +171,14 @@ class _HomeViewState extends State<HomeView> {
                       ),
                       GestureDetector(
                         onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => FrontPageView(
-                                tab: "2",
-                              ),
-                            ),
-                          );
+                          // Navigator.push(
+                          //   context,
+                          //   MaterialPageRoute(
+                          //     builder: (context) => FrontPageView(
+                          //       tab: "2",
+                          //     ),
+                          //   ),
+                          // );
                         },
                         child: Container(
                           padding: EdgeInsets.only(top:30),

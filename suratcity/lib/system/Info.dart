@@ -94,6 +94,7 @@ class Info {
   String marketList = _base_url_api + '/marketList';
   String marketDetail = _base_url_api + '/marketDetail';
   String nearMe = _base_url_api + '/nearMe';
+  String datatravelDetail = _base_url_api + '/datatravelDetail';
 
   Info() : super();
 }

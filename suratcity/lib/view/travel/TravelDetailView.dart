@@ -39,6 +39,7 @@ class _TravelDetailViewState extends State<TravelDetailView> {
   var favCount = 0;
 
   var favFnName = "";
+  // var fnName = "";
   var fnName = Info().travelDetail;
   List<String> arrFav = [];
 
@@ -61,8 +62,7 @@ class _TravelDetailViewState extends State<TravelDetailView> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    getNewsDetail();
-
+    print("tid : ${widget.tid}");
     if (widget.tid == "1") {
       fnName = Info().travelDetail;
       favFnName = "travelList";
@@ -75,7 +75,12 @@ class _TravelDetailViewState extends State<TravelDetailView> {
     } else if (widget.tid == "4") {
       fnName = Info().shopDetail;
       favFnName = "shopList";
+    }else if (widget.tid == "99"){
+      fnName = Info().datatravelDetail;
+      favFnName = "datatravelDetail";
     }
+    print("fnName : $fnName");
+    getNewsDetail();
 
     initLove(widget.topicID, "travel");
     var tmpContain = widget.topicID + "_" + favFnName;
@@ -88,7 +93,7 @@ class _TravelDetailViewState extends State<TravelDetailView> {
     _map.addAll({
       "id": widget.topicID,
     });
-
+    print(_map);
     EasyLoading.show(status: 'loading...');
     print("_map : " + _map.toString());
     var body = json.encode(_map);
@@ -99,8 +104,10 @@ class _TravelDetailViewState extends State<TravelDetailView> {
       http.Client client, jsonMap, Map map) async {
     final response = await client.post(Uri.parse(fnName),
         headers: {"Content-Type": "application/json"}, body: jsonMap);
+    print(Uri.parse(fnName));
     imgList.clear();
     data = json.decode(response.body);
+    print(data);
 
     setState(() {
       subject = data['subject'].toString();

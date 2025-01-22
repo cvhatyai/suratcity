@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_facebook_login/flutter_facebook_login.dart';
-import 'package:flutter_line_sdk/flutter_line_sdk.dart';
+// import 'package:flutter_line_sdk/flutter_line_sdk.dart';
 import 'package:http/http.dart' as http;
 import 'package:cvapp/model/AllList.dart';
 import 'package:cvapp/model/user.dart';
@@ -29,13 +29,13 @@ GoogleSignIn _googleSignIn = GoogleSignIn(
   clientId: "",
 );
 
-class SignInLine {
-  void lineSDKInit() async {
-    await LineSDK.instance.setup("1657127329").then((_) {
-      print("LineSDK is Prepared");
-    });
-  }
-}
+// class SignInLine {
+//   void lineSDKInit() async {
+//     await LineSDK.instance.setup("1657127329").then((_) {
+//       print("LineSDK is Prepared");
+//     });
+//   }
+// }
 
 class LoginView extends StatefulWidget {
   LoginView({Key key, this.isHaveArrow = ""}) : super(key: key);
@@ -65,7 +65,7 @@ class _LoginViewState extends State<LoginView> {
     // TODO: implement initState
     super.initState();
 
-    SignInLine().lineSDKInit();
+    // SignInLine().lineSDKInit();
 
     if (Platform.isIOS) {
       platform = "ios";
@@ -198,20 +198,20 @@ class _LoginViewState extends State<LoginView> {
 
   void _loginLine() async {
     //EasyLoading.show(status: 'loading...');
-    try {
-      final result = await LineSDK.instance
-          .login(scopes: ["profile"], option: LoginOption(false, "normal"));
-      setState(() {
-        lineID = result.userProfile.userId;
-        lineAvatar = result.userProfile.pictureUrl;
-        if (lineID != "") {
-          checkHasUserLine();
-        }
-      });
-    } on PlatformException catch (e) {
-      // Error handling.
-      print(e);
-    }
+    // try {
+    //   final result = await LineSDK.instance
+    //       .login(scopes: ["profile"], option: LoginOption(false, "normal"));
+    //   setState(() {
+    //     lineID = result.userProfile.userId;
+    //     lineAvatar = result.userProfile.pictureUrl;
+    //     if (lineID != "") {
+    //       checkHasUserLine();
+    //     }
+    //   });
+    // } on PlatformException catch (e) {
+    //   // Error handling.
+    //   print(e);
+    // }
   }
 
   checkHasUserLine() {
